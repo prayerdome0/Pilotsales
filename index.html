@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Pilot Sales Enterprise | Commission-Based Outreach Representatives | Earn $1.50 per 10 Clicks</title>
-    <meta name="description" content="Join Pilot Sales Enterprise as a Commission-Based Outreach Representative. Promote home loan services in Colorado, USA. Earn $1.50 per 10 valid USA clicks. $500 bonus per verified conversion. Flexible remote work.">
-    <meta name="keywords" content="commission based work, remote job, outreach representative, earn online, work from home, USA marketing">
+    <title>Pilot Sales Enterprise | Commission-Based Jobs | Earn $1.50 per 10 Clicks or $50 per Website Sale</title>
+    <meta name="description" content="Join Pilot Sales Enterprise. Two commission-based jobs: Home Loan Outreach ($1.50 per 10 USA clicks) or Website Lead Generator ($50 per website sold). Flexible remote work.">
+    <meta name="keywords" content="commission based work, remote job, outreach representative, website lead generator, earn online, work from home">
     <meta name="author" content="Pilot Sales Enterprise">
     
     <!-- Open Graph for Social Media -->
-    <meta property="og:title" content="Pilot Sales Enterprise | Earn $1.50 per 10 Clicks">
-    <meta property="og:description" content="Join us as a Commission-Based Outreach Representative. Flexible, remote, performance-based.">
-    <meta property="og:image" content="https://i.ibb.co/zTWP4s8F/IMG-20260515-WA0010.png">
+    <meta property="og:title" content="Pilot Sales Enterprise | Earn $1.50 per 10 Clicks or $50 per Website Sale">
+    <meta property="og:description" content="Join us for commission-based remote jobs. Flexible, performance-based.">
+    <meta property="og:image" content="https://i.ibb.co/5h0YbLsv/IMG-20260515-WA0012.png">
     <meta property="og:type" content="website">
 
     <!-- Google Fonts -->
@@ -103,6 +103,7 @@
             display: flex;
             gap: 12px;
             align-items: center;
+            flex-wrap: wrap;
         }
         .whatsapp-badge {
             background: rgba(37, 211, 102, 0.15);
@@ -289,12 +290,13 @@
             line-height: 1.6;
         }
 
-        /* Commission Table */
+        /* Commission Tables */
         .commission-table {
             background: rgba(20, 22, 30, 0.5);
             border-radius: 20px;
             overflow: hidden;
             border: 1px solid rgba(0, 200, 255, 0.1);
+            margin-bottom: 30px;
         }
         .commission-row {
             display: flex;
@@ -434,6 +436,114 @@
             font-weight: 600;
         }
 
+        /* Jobs Modal - Choose Your Job */
+        .jobs-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(12px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        .jobs-modal.active {
+            display: flex;
+        }
+        .jobs-modal-content {
+            background: linear-gradient(135deg, #11131a, #0a0c10);
+            border: 1px solid rgba(0, 200, 255, 0.3);
+            border-radius: 28px;
+            padding: 32px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        .jobs-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #8892b0;
+            transition: 0.3s;
+        }
+        .jobs-modal-close:hover {
+            color: #00c8ff;
+        }
+        .jobs-modal-content h2 {
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+            color: #00c8ff;
+        }
+        .jobs-modal-content > p {
+            color: #8892b0;
+            margin-bottom: 28px;
+            font-size: 0.9rem;
+        }
+        .job-option-card {
+            background: rgba(20, 22, 30, 0.8);
+            border: 1px solid rgba(0, 200, 255, 0.15);
+            border-radius: 20px;
+            padding: 22px;
+            margin-bottom: 18px;
+            transition: 0.3s;
+        }
+        .job-option-card:hover {
+            border-color: #00c8ff;
+            transform: translateX(5px);
+            background: rgba(0, 200, 255, 0.05);
+        }
+        .job-option-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #00ff88;
+        }
+        .job-option-card .commission {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #00c8ff;
+            margin: 8px 0;
+        }
+        .job-option-card .description {
+            color: #a0a8b8;
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+        .job-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: 0.3s;
+            margin-top: 8px;
+        }
+        .job-btn-primary {
+            background: linear-gradient(135deg, #00c8ff, #0077ff);
+            color: white;
+        }
+        .job-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 200, 255, 0.3);
+        }
+        .job-btn-whatsapp {
+            background: #25d366;
+            color: #0a0c10;
+        }
+        .job-btn-whatsapp:hover {
+            transform: translateY(-2px);
+        }
+
         /* Footer */
         .footer {
             padding: 40px 0 30px;
@@ -447,49 +557,6 @@
         }
         .footer a:hover {
             color: #00c8ff;
-        }
-
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(8px);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-        .modal.active {
-            display: flex;
-        }
-        .modal-content {
-            background: #11131a;
-            border: 1px solid rgba(0, 200, 255, 0.2);
-            border-radius: 28px;
-            padding: 32px;
-            max-width: 500px;
-            width: 90%;
-            position: relative;
-        }
-        .modal-close {
-            position: absolute;
-            top: 20px;
-            right: 24px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #8892b0;
-        }
-        .modal-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 8px;
-        }
-        .modal-btn {
-            width: 100%;
-            justify-content: center;
         }
 
         @media (max-width: 768px) {
@@ -522,10 +589,10 @@
                 <span class="logo-text">PILOT SALES ENTERPRISE</span>
             </div>
             <div class="header-actions">
-                <a href="https://chat.whatsapp.com/IRTXYuEpJZW6JqXKTPqQ5V" target="_blank" class="whatsapp-badge">
-                    <i class="fab fa-whatsapp"></i> Join WhatsApp Group
+                <a href="https://whatsapp.com/channel/0029Vb80vPW9RZAdW2E9hE1V" target="_blank" class="whatsapp-badge">
+                    <i class="fab fa-whatsapp"></i> Join WhatsApp Channel
                 </a>
-                <a href="#apply" class="btn btn-primary" style="padding: 8px 20px;">Apply Now</a>
+                <a href="#" class="btn btn-primary" id="applyNowBtn" style="padding: 8px 20px;">Apply Now</a>
             </div>
         </div>
     </div>
@@ -536,16 +603,16 @@
     <section class="hero">
         <div class="container">
             <div class="badge"><i class="fas fa-bolt"></i> WE'RE HIRING COMMISSION-BASED REPS</div>
-            <h1>Earn <span class="highlight">$1.50 per 10 Clicks</span><br>Promoting Home Loan Services in USA</h1>
-            <p>Join Pilot Sales Enterprise as a Commission-Based Outreach Representative. Flexible, remote, and performance-driven. No experience needed. Work from anywhere.</p>
+            <h1>Choose Your Job: <span class="highlight">$1.50 per 10 Clicks</span> or <span class="highlight">$50 per Website Sold</span></h1>
+            <p>Join Pilot Sales Enterprise. Two remote, commission-based opportunities. No experience needed. Work from anywhere.</p>
             <div class="hero-stats">
                 <div class="stat-item"><div class="stat-number">$1.50</div><div class="stat-label">per 10 USA clicks</div></div>
-                <div class="stat-item"><div class="stat-number">$500</div><div class="stat-label">per verified loan</div></div>
+                <div class="stat-item"><div class="stat-number">$50</div><div class="stat-label">per website sold</div></div>
                 <div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">flexible schedule</div></div>
                 <div class="stat-item"><div class="stat-number">1.2K+</div><div class="stat-label">active members</div></div>
             </div>
             <div style="margin-top: 32px;">
-                <a href="#apply" class="btn btn-primary"><i class="fas fa-rocket"></i> Start Earning Today</a>
+                <a href="#" class="btn btn-primary" id="heroApplyBtn"><i class="fas fa-rocket"></i> Apply Now</a>
                 <a href="#payment-proofs" class="btn btn-outline" style="margin-left: 12px;"><i class="fas fa-image"></i> View Payment Proofs</a>
             </div>
         </div>
@@ -555,14 +622,13 @@
     <section class="section">
         <div class="container">
             <div style="text-align: center; margin-bottom: 48px;">
-                <div class="section-subtitle">The Opportunity</div>
-                <h2 class="section-title">What You'll Do</h2>
+                <div class="section-subtitle">The Opportunities</div>
+                <h2 class="section-title">Two Ways to Earn</h2>
                 <p style="color: #8892b0; max-width: 600px; margin: 0 auto;">Simple, transparent, and performance-based. No experience required.</p>
             </div>
-            <div class="grid-3">
-                <div class="card"><div class="card-icon"><i class="fas fa-share-alt"></i></div><h3>Share Your Unique Link</h3><p>Receive your personal tracking link. Share it on Facebook, Instagram, Twitter, WhatsApp, or through referrals.</p></div>
-                <div class="card"><div class="card-icon"><i class="fas fa-chart-line"></i></div><h3>Generate USA Clicks</h3><p>Promote home loan services to individuals in Colorado, USA. Every valid USA click counts toward your earnings.</p></div>
-                <div class="card"><div class="card-icon"><i class="fas fa-dollar-sign"></i></div><h3>Get Paid Instantly</h3><p>$1.50 for every 10 USA clicks. Plus $500 bonus for verified loan conversions. Payments via Bitcoin or crypto.</p></div>
+            <div class="grid-2">
+                <div class="card"><div class="card-icon"><i class="fas fa-share-alt"></i></div><h3>Home Loan Outreach</h3><p>Share your unique tracking link on social media. Earn $1.50 for every 10 valid USA clicks. Promote home loan services in Colorado, USA.</p><p style="margin-top:10px;"><strong>💰 $1.50 per 10 clicks</strong></p></div>
+                <div class="card"><div class="card-icon"><i class="fas fa-globe"></i></div><h3>Website Lead Generator</h3><p>Find businesses that need a website. Submit leads. We build the website. You earn $50 for every successful sale.</p><p style="margin-top:10px;"><strong>💰 $50 per website sold</strong></p></div>
             </div>
         </div>
     </section>
@@ -577,77 +643,77 @@
             </div>
             <div class="swiper payment-swiper" id="paymentSwiper">
                 <div class="swiper-wrapper">
-                    <!-- Payment Slide 1 -->
-                    <div class="swiper payment-swiper" id="paymentSwiper">
-    <div class="swiper-wrapper">
-        <!-- Slide 1: Binance 0.13720797 BTC -->
-        <div class="swiper-slide payment-slide">
-            <img src="https://i.ibb.co/tPkc92JN/48ca5e3ade8b145252c66f72739d348a.jpg" alt="Payment Proof 1" style="width:100%; height:250px; object-fit:cover; border-radius:12px;">
-            <div class="payment-amount" style="margin-top:12px; font-weight:700; color:#00ff88;">+ 0.13720797 BTC</div>
-            <div class="payment-person" style="font-size:0.75rem; color:#8892b0;">John Martinez - Texas, USA</div>
-            <div style="display:flex; align-items:center; gap:8px; margin-top:8px;">
-                <img src="https://randomuser.me/api/portraits/men/32.jpg" style="width:30px; height:30px; border-radius:50%;">
-                <span style="font-size:0.7rem;">Real member payment</span>
-            </div>
-        </div>
+                    <!-- Slide 1: Binance 0.13720797 BTC -->
+                    <div class="swiper-slide payment-slide">
+                        <img src="https://i.ibb.co/tPkc92JN/48ca5e3ade8b145252c66f72739d348a.jpg" alt="Payment Proof 1" style="width:100%; height:250px; object-fit:cover; border-radius:12px;">
+                        <div class="payment-amount" style="margin-top:12px; font-weight:700; color:#00ff88;">+ 0.13720797 BTC</div>
+                        <div class="payment-person" style="font-size:0.75rem; color:#8892b0;">John Martinez - Texas, USA</div>
+                        <div style="display:flex; align-items:center; gap:8px; margin-top:8px;">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" style="width:30px; height:30px; border-radius:50%;">
+                            <span style="font-size:0.7rem;">Real member payment</span>
+                        </div>
+                    </div>
 
-        <!-- Slide 2: Coinbase 0.0981707 BTC ($5,997.58) -->
-        <div class="swiper-slide payment-slide">
-            <img src="https://i.ibb.co/fV5jKmJD/f9f76f516f20e5cb3d8146add9d7fa96.jpg" alt="Payment Proof 2" style="width:100%; height:250px; object-fit:cover; border-radius:12px;">
-            <div class="payment-amount" style="margin-top:12px; font-weight:700; color:#00ff88;">+ 0.0981707 BTC ($5,997.58)</div>
-            <div class="payment-person" style="font-size:0.75rem; color:#8892b0;">Sarah Williams - California, USA</div>
-            <div style="display:flex; align-items:center; gap:8px; margin-top:8px;">
-                <img src="https://randomuser.me/api/portraits/women/68.jpg" style="width:30px; height:30px; border-radius:50%;">
-                <span style="font-size:0.7rem;">Real member payment</span>
-            </div>
-        </div>
+                    <!-- Slide 2: Coinbase 0.0981707 BTC ($5,997.58) -->
+                    <div class="swiper-slide payment-slide">
+                        <img src="https://i.ibb.co/fV5jKmJD/f9f76f516f20e5cb3d8146add9d7fa96.jpg" alt="Payment Proof 2" style="width:100%; height:250px; object-fit:cover; border-radius:12px;">
+                        <div class="payment-amount" style="margin-top:12px; font-weight:700; color:#00ff88;">+ 0.0981707 BTC ($5,997.58)</div>
+                        <div class="payment-person" style="font-size:0.75rem; color:#8892b0;">Sarah Williams - California, USA</div>
+                        <div style="display:flex; align-items:center; gap:8px; margin-top:8px;">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" style="width:30px; height:30px; border-radius:50%;">
+                            <span style="font-size:0.7rem;">Real member payment</span>
+                        </div>
+                    </div>
 
-        <!-- Slide 3: Binance 0.01212042 BTC -->
-        <div class="swiper-slide payment-slide">
-            <img src="https://i.ibb.co/JWwp7xm5/9ca2313b9c7a93361e683384c2d0edc5.jpg" alt="Payment Proof 3" style="width:100%; height:250px; object-fit:cover; border-radius:12px;">
-            <div class="payment-amount" style="margin-top:12px; font-weight:700; color:#00ff88;">+ 0.01212042 BTC</div>
-            <div class="payment-person" style="font-size:0.75rem; color:#8892b0;">David Chen - New York, USA</div>
-            <div style="display:flex; align-items:center; gap:8px; margin-top:8px;">
-                <img src="https://randomuser.me/api/portraits/men/45.jpg" style="width:30px; height:30px; border-radius:50%;">
-                <span style="font-size:0.7rem;">Real member payment</span>
-            </div>
-        </div>
+                    <!-- Slide 3: Binance 0.01212042 BTC -->
+                    <div class="swiper-slide payment-slide">
+                        <img src="https://i.ibb.co/JWwp7xm5/9ca2313b9c7a93361e683384c2d0edc5.jpg" alt="Payment Proof 3" style="width:100%; height:250px; object-fit:cover; border-radius:12px;">
+                        <div class="payment-amount" style="margin-top:12px; font-weight:700; color:#00ff88;">+ 0.01212042 BTC</div>
+                        <div class="payment-person" style="font-size:0.75rem; color:#8892b0;">David Chen - New York, USA</div>
+                        <div style="display:flex; align-items:center; gap:8px; margin-top:8px;">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" style="width:30px; height:30px; border-radius:50%;">
+                            <span style="font-size:0.7rem;">Real member payment</span>
+                        </div>
+                    </div>
 
-        <!-- Slide 4: PayPal Multiple Payments -->
-        <div class="swiper-slide payment-slide">
-            <img src="https://i.ibb.co/4nBb6F7w/708dee53167330c8f80bfc41480b4930.jpg" alt="Payment Proof 4" style="width:100%; height:250px; object-fit:cover; border-radius:12px;">
-            <div class="payment-amount" style="margin-top:12px; font-weight:700; color:#00ff88;">+ Multiple Payments ($500 + $69.98 + $500 + $25 + $25 + $75 + $25)</div>
-            <div class="payment-person" style="font-size:0.75rem; color:#8892b0;">Maria Santos - Manila, Philippines</div>
-            <div style="display:flex; align-items:center; gap:8px; margin-top:8px;">
-                <img src="https://randomuser.me/api/portraits/women/45.jpg" style="width:30px; height:30px; border-radius:50%;">
-                <span style="font-size:0.7rem;">Real member payment</span>
-            </div>
-        </div>
+                    <!-- Slide 4: PayPal Multiple Payments -->
+                    <div class="swiper-slide payment-slide">
+                        <img src="https://i.ibb.co/4nBb6F7w/708dee53167330c8f80bfc41480b4930.jpg" alt="Payment Proof 4" style="width:100%; height:250px; object-fit:cover; border-radius:12px;">
+                        <div class="payment-amount" style="margin-top:12px; font-weight:700; color:#00ff88;">+ Multiple Payments ($500 + $69.98 + $500 + $25 + $25 + $75 + $25)</div>
+                        <div class="payment-person" style="font-size:0.75rem; color:#8892b0;">Maria Santos - Manila, Philippines</div>
+                        <div style="display:flex; align-items:center; gap:8px; margin-top:8px;">
+                            <img src="https://randomuser.me/api/portraits/women/45.jpg" style="width:30px; height:30px; border-radius:50%;">
+                            <span style="font-size:0.7rem;">Real member payment</span>
+                        </div>
+                    </div>
 
-        <!-- Slide 5: Binance 0.1281206 BTC -->
-        <div class="swiper-slide payment-slide">
-            <img src="https://i.ibb.co/h1MhLXcH/898400560befffdb582b18a2e0430abe.jpg" alt="Payment Proof 5" style="width:100%; height:250px; object-fit:cover; border-radius:12px;">
-            <div class="payment-amount" style="margin-top:12px; font-weight:700; color:#00ff88;">+ 0.1281206 BTC</div>
-            <div class="payment-person" style="font-size:0.75rem; color:#8892b0;">Robert Brown - Colorado, USA</div>
-            <div style="display:flex; align-items:center; gap:8px; margin-top:8px;">
-                <img src="https://randomuser.me/api/portraits/men/75.jpg" style="width:30px; height:30px; border-radius:50%;">
-                <span style="font-size:0.7rem;">Real member payment</span>
+                    <!-- Slide 5: Binance 0.1281206 BTC -->
+                    <div class="swiper-slide payment-slide">
+                        <img src="https://i.ibb.co/h1MhLXcH/898400560befffdb582b18a2e0430abe.jpg" alt="Payment Proof 5" style="width:100%; height:250px; object-fit:cover; border-radius:12px;">
+                        <div class="payment-amount" style="margin-top:12px; font-weight:700; color:#00ff88;">+ 0.1281206 BTC</div>
+                        <div class="payment-person" style="font-size:0.75rem; color:#8892b0;">Robert Brown - Colorado, USA</div>
+                        <div style="display:flex; align-items:center; gap:8px; margin-top:8px;">
+                            <img src="https://randomuser.me/api/portraits/men/75.jpg" style="width:30px; height:30px; border-radius:50%;">
+                            <span style="font-size:0.7rem;">Real member payment</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
             </div>
         </div>
-    </div>
-    <div class="swiper-pagination"></div>
-</div>
-</div>
     </section>
 
-    <!-- Compensation Table -->
+    <!-- Compensation Tables -->
     <section class="section">
         <div class="container">
             <div style="text-align: center; margin-bottom: 40px;">
                 <div class="section-subtitle">Earnings Structure</div>
                 <h2 class="section-title">Commission-Based. No Caps. Unlimited Earnings.</h2>
-                <p style="color: #8892b0;">The more clicks you generate, the more you earn. Simple as that.</p>
+                <p style="color: #8892b0;">Choose your path. The more you work, the more you earn.</p>
             </div>
+
+            <!-- Job 1: Home Loan Commission Table -->
+            <h3 style="color: #00c8ff; margin-bottom: 15px;">🏠 Home Loan Outreach</h3>
             <div class="commission-table">
                 <div class="commission-row"><span class="commission-clicks">10 Clicks</span><span class="commission-earnings">$1.50</span></div>
                 <div class="commission-row"><span class="commission-clicks">50 Clicks</span><span class="commission-earnings">$7.50</span></div>
@@ -657,9 +723,20 @@
                 <div class="commission-row"><span class="commission-clicks">5,000 Clicks</span><span class="commission-earnings">$750.00</span></div>
                 <div class="commission-row"><span class="commission-clicks">10,000 Clicks</span><span class="commission-earnings">$1,500.00</span></div>
             </div>
+
+            <!-- Job 2: Website Lead Gen Commission Table -->
+            <h3 style="color: #00c8ff; margin-bottom: 15px; margin-top: 30px;">🌐 Website Lead Generator</h3>
+            <div class="commission-table">
+                <div class="commission-row"><span class="commission-clicks">1 Website Sold</span><span class="commission-earnings">$50.00</span></div>
+                <div class="commission-row"><span class="commission-clicks">5 Websites Sold</span><span class="commission-earnings">$250.00</span></div>
+                <div class="commission-row highlight"><span class="commission-clicks">10 Websites Sold</span><span class="commission-earnings">$500.00</span></div>
+                <div class="commission-row"><span class="commission-clicks">20 Websites Sold</span><span class="commission-earnings">$1,000.00</span></div>
+                <div class="commission-row"><span class="commission-clicks">50 Websites Sold</span><span class="commission-earnings">$2,500.00</span></div>
+            </div>
+
             <div style="margin-top: 24px; text-align: center; background: rgba(0, 255, 136, 0.08); border-radius: 16px; padding: 18px;">
                 <span class="bonus-badge"><i class="fas fa-gem"></i> BONUS OPPORTUNITY</span>
-                <p style="margin-top: 12px; color: #a0a8b8;">If you can verify that someone who clicked your link completed the loan service, you receive <strong style="color: #00ff88;">$500 in Bitcoin</strong>.</p>
+                <p style="margin-top: 12px; color: #a0a8b8;">Home Loan: <strong style="color: #00ff88;">$500 bonus</strong> per verified loan conversion. | Website Sales: <strong style="color: #00ff88;">$100 bonus</strong> for 5+ sales in a month.</p>
             </div>
         </div>
     </section>
@@ -672,16 +749,32 @@
                 <h2 class="section-title">How It Works in 4 Simple Steps</h2>
             </div>
             <div class="grid-2" style="gap: 30px;">
-                <div class="step"><div class="step-number">1</div><div><h3>Apply & Get Approved</h3><p style="color: #8892b0;">Fill out the application form. No experience needed. Just self-motivation and a smartphone/computer.</p></div></div>
-                <div class="step"><div class="step-number">2</div><div><h3>Receive Your Tracking Link</h3><p style="color: #8892b0;">We'll provide your unique Bitly tracking link. All clicks are tracked automatically and transparently.</p></div></div>
-                <div class="step"><div class="step-number">3</div><div><h3>Promote & Share</h3><p style="color: #8892b0;">Share your link on Facebook groups, Instagram, Twitter, WhatsApp, TikTok, or through direct referrals. Target USA audiences.</p></div></div>
-                <div class="step"><div class="step-number">4</div><div><h3>Earn & Get Paid</h3><p style="color: #8892b0;">Track your clicks in real-time. Get paid $1.50 per 10 valid USA clicks. Payments sent weekly via crypto.</p></div></div>
+                <div class="step"><div class="step-number">1</div><div><h3>Choose Your Job</h3><p style="color: #8892b0;">Select either Home Loan Outreach or Website Lead Generator. Both are remote and flexible.</p></div></div>
+                <div class="step"><div class="step-number">2</div><div><h3>Apply & Get Approved</h3><p style="color: #8892b0;">Fill out the application or contact admin. No experience needed. Just self-motivation.</p></div></div>
+                <div class="step"><div class="step-number">3</div><div><h3>Start Working</h3><p style="color: #8892b0;">Share your tracking link (Home Loan) OR find businesses needing websites (Lead Gen).</p></div></div>
+                <div class="step"><div class="step-number">4</div><div><h3>Get Paid</h3><p style="color: #8892b0;">Earn $1.50 per 10 USA clicks OR $50 per website sold. Payments in BTC/XMR.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Website Examples Section (for Lead Gen job) -->
+    <section class="section" style="background: rgba(0, 200, 255, 0.02);">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <div class="section-subtitle">Our Work</div>
+                <h2 class="section-title">Websites We Build For Clients</h2>
+                <p style="color: #8892b0;">Examples of websites we create for our leads</p>
+            </div>
+            <div class="grid-3">
+                <div class="card"><div class="card-icon"><i class="fas fa-utensils"></i></div><h3>Taqueria Mar</h3><p><a href="https://taqueriamorachinohills.com" target="_blank" style="color:#00c8ff;">taqueriamorachinohills.com</a></p><p>Restaurant website with online ordering</p></div>
+                <div class="card"><div class="card-icon"><i class="fas fa-cut"></i></div><h3>Omar's Barbershop</h3><p><a href="https://omarsbarbershopanaheim.com" target="_blank" style="color:#00c8ff;">omarsbarbershopanaheim.com</a></p><p>Barbershop booking website</p></div>
+                <div class="card"><div class="card-icon"><i class="fas fa-car"></i></div><h3>VIP Window Tint</h3><p><a href="https://vipwindowtintpomona.com" target="_blank" style="color:#00c8ff;">vipwindowtintpomona.com</a></p><p>Auto service business website</p></div>
             </div>
         </div>
     </section>
 
     <!-- Testimonials Horizontal Scrolling -->
-    <section class="section" style="background: rgba(0, 200, 255, 0.02);">
+    <section class="section">
         <div class="container">
             <div style="text-align: center; margin-bottom: 40px;">
                 <div class="section-subtitle">Success Stories</div>
@@ -693,8 +786,8 @@
                     <div class="swiper-slide testimonial-slide"><div class="testimonial-stars">★★★★★</div><div class="testimonial-text">"This is legit! I received my first payment of $45 within my first week. The support team is very responsive on WhatsApp."</div><div class="testimonial-author"><div class="testimonial-avatar"><i class="fas fa-user"></i></div><div><div class="testimonial-name">James Thompson</div><div class="testimonial-location">📍 Denver, Colorado, USA</div></div></div></div>
                     <div class="swiper-slide testimonial-slide"><div class="testimonial-stars">★★★★★</div><div class="testimonial-text">"I was skeptical at first but after receiving my first $150 payout, I knew this was real. Perfect side hustle for students!"</div><div class="testimonial-author"><div class="testimonial-avatar"><i class="fas fa-user"></i></div><div><div class="testimonial-name">John Davis</div><div class="testimonial-location">📍 Houston, Texas, USA</div></div></div></div>
                     <div class="swiper-slide testimonial-slide"><div class="testimonial-stars">★★★★★</div><div class="testimonial-text">"I've invited my friends and family to join. We're all earning together. Best decision I made this year!"</div><div class="testimonial-author"><div class="testimonial-avatar"><i class="fas fa-user"></i></div><div><div class="testimonial-name">Catherine Lee</div><div class="testimonial-location">📍 Cebu, Philippines</div></div></div></div>
-                    <div class="swiper-slide testimonial-slide"><div class="testimonial-stars">★★★★★</div><div class="testimonial-text">"I work from home and this has become my main source of income. $500+ monthly. Thank you Pilot Sales!"</div><div class="testimonial-author"><div class="testimonial-avatar"><i class="fas fa-user"></i></div><div><div class="testimonial-name">Michael Brown</div><div class="testimonial-location">📍 Miami, Florida, USA</div></div></div></div>
-                    <div class="swiper-slide testimonial-slide"><div class="testimonial-stars">★★★★★</div><div class="testimonial-text">"Very easy to understand and the tracking system is transparent. I see my clicks and earnings in real-time."</div><div class="testimonial-author"><div class="testimonial-avatar"><i class="fas fa-user"></i></div><div><div class="testimonial-name">Sarah Wilson</div><div class="testimonial-location">📍 Los Angeles, California, USA</div></div></div></div>
+                    <div class="swiper-slide testimonial-slide"><div class="testimonial-stars">★★★★★</div><div class="testimonial-text">"The website lead gen job is amazing. I sold 3 websites in my first month and made $150!"</div><div class="testimonial-author"><div class="testimonial-avatar"><i class="fas fa-user"></i></div><div><div class="testimonial-name">Michael Brown</div><div class="testimonial-location">📍 Miami, Florida, USA</div></div></div></div>
+                    <div class="swiper-slide testimonial-slide"><div class="testimonial-stars">★★★★★</div><div class="testimonial-text">"Very easy to understand. The tracking system is transparent. I see my clicks and earnings in real-time."</div><div class="testimonial-author"><div class="testimonial-avatar"><i class="fas fa-user"></i></div><div><div class="testimonial-name">Sarah Wilson</div><div class="testimonial-location">📍 Los Angeles, California, USA</div></div></div></div>
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
@@ -713,42 +806,42 @@
                         <li style="margin-bottom: 14px; display: flex; align-items: center; gap: 10px;"><i class="fas fa-check-circle" style="color: #00ff88;"></i> Self-motivated and able to work independently</li>
                         <li style="margin-bottom: 14px; display: flex; align-items: center; gap: 10px;"><i class="fas fa-check-circle" style="color: #00ff88;"></i> Access to social media platforms (Facebook, Instagram, Twitter, TikTok)</li>
                         <li style="margin-bottom: 14px; display: flex; align-items: center; gap: 10px;"><i class="fas fa-check-circle" style="color: #00ff88;"></i> Must use honest outreach methods (no spam, bots, or fake clicks)</li>
-                        <li style="margin-bottom: 14px; display: flex; align-items: center; gap: 10px;"><i class="fas fa-check-circle" style="color: #00ff88;"></i> Ability to target or reach USA audiences (Colorado focus)</li>
+                        <li style="margin-bottom: 14px; display: flex; align-items: center; gap: 10px;"><i class="fas fa-check-circle" style="color: #00ff88;"></i> For Home Loan: Ability to target USA audiences</li>
                     </ul>
                 </div>
                 <div>
                     <div class="section-subtitle">Tools Provided</div>
                     <h2 class="section-title">What You Get</h2>
                     <ul style="list-style: none; margin-top: 24px;">
-                        <li style="margin-bottom: 14px; display: flex; align-items: center; gap: 10px;"><i class="fas fa-link" style="color: #00c8ff;"></i> Unique Bitly tracking link</li>
+                        <li style="margin-bottom: 14px; display: flex; align-items: center; gap: 10px;"><i class="fas fa-link" style="color: #00c8ff;"></i> Unique tracking link (Home Loan)</li>
                         <li style="margin-bottom: 14px; display: flex; align-items: center; gap: 10px;"><i class="fas fa-chart-simple" style="color: #00c8ff;"></i> Real-time performance dashboard</li>
-                        <li style="margin-bottom: 14px; display: flex; align-items: center; gap: 10px;"><i class="fas fa-book-open" style="color: #00c8ff;"></i> Basic promotion guidelines</li>
+                        <li style="margin-bottom: 14px; display: flex; align-items: center; gap: 10px;"><i class="fas fa-book-open" style="color: #00c8ff;"></i> Training & promotion guidelines</li>
                         <li style="margin-bottom: 14px; display: flex; align-items: center; gap: 10px;"><i class="fas fa-headset" style="color: #00c8ff;"></i> 24/7 Support from the Pilot Sales team</li>
-                        <li style="margin-bottom: 14px; display: flex; align-items: center; gap: 10px;"><i class="fab fa-whatsapp" style="color: #25d366;"></i> WhatsApp group community for tips and support</li>
+                        <li style="margin-bottom: 14px; display: flex; align-items: center; gap: 10px;"><i class="fab fa-whatsapp" style="color: #25d366;"></i> WhatsApp channel for updates and tips</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact & WhatsApp Group -->
+    <!-- Contact & WhatsApp Channel -->
     <section class="section">
         <div class="container">
             <div style="text-align: center; margin-bottom: 40px;">
                 <div class="section-subtitle">Join Our Community</div>
-                <h2 class="section-title">Connect With Us On WhatsApp</h2>
+                <h2 class="section-title">Stay Updated Via WhatsApp</h2>
             </div>
             <div class="grid-2" style="gap: 30px; max-width: 600px; margin: 0 auto;">
                 <div class="contact-card">
                     <i class="fab fa-whatsapp"></i>
-                    <h3>Join WhatsApp Group</h3>
-                    <p style="color: #8892b0; margin: 10px 0;">Get tips, support, and connect with other members.</p>
-                    <a href="https://chat.whatsapp.com/IRTXYuEpJZW6JqXKTPqQ5V" target="_blank" class="btn btn-whatsapp" style="margin-top: 10px;"><i class="fab fa-whatsapp"></i> Join Group</a>
+                    <h3>Join WhatsApp Channel</h3>
+                    <p style="color: #8892b0; margin: 10px 0;">Get updates on jobs, payments, and success stories.</p>
+                    <a href="https://whatsapp.com/channel/0029Vb80vPW9RZAdW2E9hE1V" target="_blank" class="btn btn-whatsapp" style="margin-top: 10px;"><i class="fab fa-whatsapp"></i> Join Channel</a>
                 </div>
                 <div class="contact-card">
                     <i class="fas fa-phone-alt"></i>
                     <h3>Contact Admin Directly</h3>
-                    <p style="color: #8892b0; margin: 10px 0;">If the group link is not working, message me directly.</p>
+                    <p style="color: #8892b0; margin: 10px 0;">Questions? Need help? Message me directly.</p>
                     <a href="https://wa.me/260973028342" target="_blank" class="btn btn-primary" style="margin-top: 10px;"><i class="fab fa-whatsapp"></i> +260 973 028 342</a>
                 </div>
             </div>
@@ -761,7 +854,7 @@
             <div style="background: linear-gradient(135deg, rgba(0, 200, 255, 0.08), rgba(0, 119, 255, 0.05)); border-radius: 32px; padding: 50px 30px;">
                 <h2 style="font-size: 1.8rem; margin-bottom: 16px;">Ready to Start Earning?</h2>
                 <p style="color: #a0a8b8; max-width: 500px; margin: 0 auto 28px;">No fixed hours. No minimum quota. Work when you want, from anywhere in the world.</p>
-                <a href="#" class="btn btn-primary" id="applyNowBtn"><i class="fas fa-paper-plane"></i> Apply Now — It's Free</a>
+                <a href="#" class="btn btn-primary" id="footerApplyBtn"><i class="fas fa-paper-plane"></i> Apply Now — It's Free</a>
                 <p style="margin-top: 20px; font-size: 0.75rem; color: #5a6577;">Join over 1,200+ active members earning daily</p>
             </div>
         </div>
@@ -771,24 +864,42 @@
 <footer class="footer">
     <div class="container">
         <p>&copy; 2025 Pilot Sales Enterprise. All rights reserved.</p>
-        <p style="margin-top: 12px; font-size: 0.75rem; color: #5a6577;">Commission-based independent contractor role. Payment terms as described. USA clicks only.</p>
+        <p style="margin-top: 12px; font-size: 0.75rem; color: #5a6577;">Commission-based independent contractor roles. Payments in BTC/XMR.</p>
         <p style="margin-top: 8px;">
-            <a href="https://chat.whatsapp.com/IRTXYuEpJZW6JqXKTPqQ5V">WhatsApp Group</a> | 
+            <a href="https://whatsapp.com/channel/0029Vb80vPW9RZAdW2E9hE1V">WhatsApp Channel</a> | 
             <a href="https://wa.me/260973028342">Contact Admin</a>
         </p>
     </div>
 </footer>
 
-<!-- Application Modal -->
-<div id="applyModal" class="modal">
-    <div class="modal-content">
-        <span class="modal-close" id="closeModal">&times;</span>
-        <h3>Apply to Pilot Sales Enterprise</h3>
-        <p>Fill out the application form to receive your unique tracking link and start earning.</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScCvmBRX46ZrY14uVwgqI6Kzmug3XGkjew5PHotNPl8WUi21g/viewform?usp=header" target="_blank" class="btn btn-primary modal-btn" style="width: 100%; justify-content: center;">
-            <i class="fas fa-external-link-alt"></i> Open Application Form
-        </a>
-        <p style="margin-top: 20px; font-size: 0.7rem; color: #5a6577; text-align: center;">You will be redirected to Google Forms to complete your application.</p>
+<!-- Jobs Selection Modal -->
+<div id="jobsModal" class="jobs-modal">
+    <div class="jobs-modal-content">
+        <span class="jobs-modal-close" id="closeJobsModal">&times;</span>
+        <h2>Choose Your Job Opportunity</h2>
+        <p>Select the position you want to apply for. Both are commission-based and remote.</p>
+
+        <!-- Job 1: Home Loan Outreach -->
+        <div class="job-option-card">
+            <h3>🏠 Home Loan Outreach Representative</h3>
+            <div class="commission">💰 $1.50 per 10 USA clicks</div>
+            <div class="description">Promote home loan services to individuals in Colorado, USA. Share your unique tracking link on social media. No experience needed. Weekly payments in crypto.</div>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScCvmBRX46ZrY14uVwgqI6Kzmug3XGkjew5PHotNPl8WUi21g/viewform" target="_blank" class="job-btn job-btn-primary">
+                <i class="fas fa-paper-plane"></i> Apply Now (Home Loan)
+            </a>
+        </div>
+
+        <!-- Job 2: Website Lead Generator -->
+        <div class="job-option-card">
+            <h3>🌐 Website Lead Generator</h3>
+            <div class="commission">💰 $50 PER WEBSITE SOLD</div>
+            <div class="description">Find businesses that need a website. Submit leads through our form. We build the website. You get paid $50 for every successful sale. No experience required. Examples: restaurants, barbershops, salons, contractors.</div>
+            <a href="https://wa.me/260973028342?text=Hi%20Admin%2C%20I%20want%20to%20apply%20for%20the%20Website%20Lead%20Generator%20position.%20Please%20send%20me%20the%20application%20link." target="_blank" class="job-btn job-btn-whatsapp">
+                <i class="fab fa-whatsapp"></i> Contact Admin to Apply
+            </a>
+        </div>
+
+        <p style="margin-top: 16px; font-size: 0.7rem; color: #5a6577; text-align: center;">All payments are processed in Bitcoin (BTC) or Monero (XMR).</p>
     </div>
 </div>
 
@@ -827,23 +938,27 @@
         breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
     });
 
-    // Modal logic
-    const modal = document.getElementById('applyModal');
-    const applyBtn = document.getElementById('applyNowBtn');
-    const closeModal = document.getElementById('closeModal');
+    // Jobs Modal Logic
+    const jobsModal = document.getElementById('jobsModal');
+    const closeJobsModal = document.getElementById('closeJobsModal');
+    const applyBtns = document.querySelectorAll('#applyNowBtn, #heroApplyBtn, #footerApplyBtn');
 
-    applyBtn.addEventListener('click', (e) => {
+    function openJobsModal(e) {
         e.preventDefault();
-        modal.classList.add('active');
+        jobsModal.classList.add('active');
+    }
+
+    applyBtns.forEach(btn => {
+        btn.addEventListener('click', openJobsModal);
     });
 
-    closeModal.addEventListener('click', () => {
-        modal.classList.remove('active');
+    closeJobsModal.addEventListener('click', () => {
+        jobsModal.classList.remove('active');
     });
 
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.classList.remove('active');
+    jobsModal.addEventListener('click', (e) => {
+        if (e.target === jobsModal) {
+            jobsModal.classList.remove('active');
         }
     });
 
