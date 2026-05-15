@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Contact Us | Pilot Sales Enterprise</title>
+    <meta name="description" content="Contact Pilot Sales Enterprise. Reach out to our team for questions about Home Loan Outreach or Website Seller jobs.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0a0c10 0%, #0f1117 100%);
+            color: #ffffff;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .bg-animation span {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(0, 200, 255, 0.2);
+            border-radius: 50%;
+            animation: floatBG 14s linear infinite;
+        }
+        @keyframes floatBG {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 0.4; }
+            90% { opacity: 0.1; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Header */
+        .header {
+            padding: 25px 0 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            background: rgba(10, 12, 16, 0.85);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo-img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+        }
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .nav-link {
+            color: #a0a8b8;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            padding: 5px 0;
+            position: relative;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .nav-link:hover {
+            color: #00c8ff;
+        }
+        .nav-link.active {
+            color: #00c8ff;
+        }
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(135deg, #00c8ff, #00ff88);
+            border-radius: 2px;
+        }
+
+        /* Contact Hero */
+        .contact-hero {
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+        .contact-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 15px;
+        }
+        .contact-hero p {
+            color: #a0a8b8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Contact Cards */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 35px;
+            margin: 40px 0 60px;
+        }
+        .contact-card {
+            background: rgba(20, 22, 30, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 28px;
+            padding: 35px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .contact-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 200, 255, 0.4);
+            box-shadow: 0 25px 40px rgba(0, 0, 0, 0.3);
+        }
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(0, 200, 255, 0.15), rgba(0, 255, 136, 0.05));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        .contact-icon i {
+            font-size: 2.5rem;
+            color: #00c8ff;
+        }
+        .contact-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+        .contact-card .role {
+            color: #00ff88;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        .contact-card .location {
+            color: #8892b0;
+            font-size: 0.75rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .contact-number {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            margin: 10px 0;
+            transition: all 0.3s;
+        }
+        .contact-number i {
+            color: #25d366;
+            font-size: 1.2rem;
+        }
+        .contact-number:hover {
+            background: #25d366;
+            color: #0a0c10;
+        }
+        .contact-number:hover i {
+            color: #0a0c10;
+        }
+        .whatsapp-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: #25d366;
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        /* Channel Card */
+        .channel-card {
+            background: linear-gradient(135deg, rgba(37, 211, 102, 0.1), rgba(0, 200, 255, 0.05));
+            border: 1px solid rgba(37, 211, 102, 0.3);
+            border-radius: 28px;
+            padding: 35px;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .channel-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .channel-card p {
+            color: #a0a8b8;
+            margin-bottom: 20px;
+        }
+        .btn-channel {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #25d366;
+            color: #0a0c10;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .btn-channel:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 50px 0 30px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 20px;
+        }
+        .footer-logo {
+            height: 45px;
+            margin-bottom: 15px;
+        }
+        .footer p {
+            color: #5a6577;
+            font-size: 0.75rem;
+        }
+        .footer a {
+            color: #8892b0;
+            text-decoration: none;
+            transition: color 0.3s;
+            margin: 0 8px;
+        }
+        .footer a:hover {
+            color: #00c8ff;
+        }
+
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            .nav-menu {
+                gap: 20px;
+            }
+            .nav-link {
+                font-size: 0.8rem;
+            }
+            .contact-card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="bg-animation" id="bgAnimation"></div>
+
+<header class="header">
+    <div class="container">
+        <div class="logo-container">
+            <img src="https://i.ibb.co/5h0YbLsv/IMG-20260515-WA0012.png" alt="Pilot Sales Enterprise" class="logo-img">
+        </div>
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-link">HOME</a>
+            <button class="nav-link" id="applyNavBtn" style="background:none; border:none; cursor:pointer;">APPLY</button>
+            <a href="about.html" class="nav-link">ABOUT</a>
+            <a href="contact.html" class="nav-link active">CONTACT</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section class="contact-hero">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p>Have questions about our job opportunities? Reach out to our team directly.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Contact Grid -->
+        <div class="contact-grid">
+            <!-- CEO - Tony Sosa (USA) -->
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <h3>Tony Sosa</h3>
+                <div class="role">CEO / Founder</div>
+                <div class="location"><i class="fas fa-map-marker-alt"></i> California, USA</div>
+                <a href="https://wa.me/19517733282" target="_blank" class="contact-number">
+                    <i class="fab fa-whatsapp"></i> +1 951 773 3282
+                </a>
+                <div style="margin-top: 15px;">
+                    <a href="tel:+19517733282" style="color: #8892b0; font-size: 0.75rem; text-decoration: none;">
+                        <i class="fas fa-phone"></i> Call: +1 951 773 3282
+                    </a>
+                </div>
+            </div>
+
+            <!-- Executive Manager - Shai Mercado (Philippines) -->
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-chalkboard-user"></i>
+                </div>
+                <h3>Shai Mercado</h3>
+                <div class="role">Personal Assistant</div>
+                <div class="location"><i class="fas fa-map-marker-alt"></i> Manila, Philippines</div>
+                <a href="https://wa.me/639613979190" target="_blank" class="contact-number">
+                    <i class="fab fa-whatsapp"></i> +63 961 397 9190
+                </a>
+                <div style="margin-top: 15px;">
+                    <a href="tel:+639613979190" style="color: #8892b0; font-size: 0.75rem; text-decoration: none;">
+                        <i class="fas fa-phone"></i> Call: +63 961 397 9190
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Executive Manager - Shai Mercado (Philippines) -->
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-chalkboard-user"></i>
+                </div>
+                <h3>Zacheus Simbaya</h3>
+                <div class="role">Personal Assistant</div>
+                <div class="location"><i class="fas fa-map-marker-alt"></i> Kabwe, Zambia</div>
+                <a href="https://wa.me/260973028342" target="_blank" class="contact-number">
+                    <i class="fab fa-whatsapp"></i> +260 973028342
+                </a>
+                <div style="margin-top: 15px;">
+                    <a href="tel:+639613979190" style="color: #8892b0; font-size: 0.75rem; text-decoration: none;">
+                        <i class="fas fa-phone"></i> Call: +260 973028342
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- WhatsApp Channel Card -->
+        <div class="channel-card">
+            <i class="fab fa-whatsapp" style="font-size: 3rem; color: #25d366; margin-bottom: 15px; display: block;"></i>
+            <h3>Join Our WhatsApp Channel</h3>
+            <p>Get instant updates about new job opportunities, payment proofs, and success stories.</p>
+            <a href="https://whatsapp.com/channel/0029Vb80vPW9RZAdW2E9hE1V" target="_blank" class="btn-channel">
+                <i class="fab fa-whatsapp"></i> Join Channel
+            </a>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <img src="https://i.ibb.co/5h0YbLsv/IMG-20260515-WA0012.png" alt="Pilot Sales Enterprise" class="footer-logo">
+        <p>&copy; 2025 Pilot Sales Enterprise. All rights reserved.</p>
+        <p style="margin-top: 10px;">
+            <a href="index.html">Home</a> | 
+            <a href="home-loan.html">Home Loan Job</a> | 
+            <a href="website-seller.html">Website Seller Job</a> |
+            <a href="https://whatsapp.com/channel/0029Vb80vPW9RZAdW2E9hE1V">WhatsApp Channel</a>
+        </p>
+    </div>
+</footer>
+
+<!-- Popup Modal for Apply Button -->
+<div id="applyPopup" class="popup-modal" style="display: none; position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); backdrop-filter:blur(12px); z-index:2000; align-items:center; justify-content:center;">
+    <div class="popup-content" style="background: linear-gradient(135deg, #11131a, #0a0c10); border: 1px solid rgba(0,200,255,0.3); border-radius: 32px; padding: 40px 35px; max-width: 550px; width: 90%; position: relative; animation: slideUpBounce 0.4s ease;">
+        <span class="popup-close" id="closePopup" style="position: absolute; top: 20px; right: 25px; font-size: 1.8rem; cursor: pointer; color: #8892b0;">&times;</span>
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 10px; color: #00c8ff;">Select a Job</h2>
+        <p style="color: #8892b0; margin-bottom: 30px;">Choose which position you want to apply for</p>
+        <div class="popup-jobs" style="display: flex; flex-direction: column; gap: 18px;">
+            <div class="popup-job-card" id="popupHomeLoan" style="background: rgba(20,22,30,0.8); border: 1px solid rgba(0,200,255,0.15); border-radius: 20px; padding: 20px; cursor: pointer;">
+                <h3 style="font-size: 1.3rem;">🏠 Home Loan Outreach</h3>
+                <div class="popup-commission" style="color: #00ff88; font-weight: 700;">💰 $1.50 per 10 USA clicks</div>
+                <div class="popup-desc" style="color: #a0a8b8; font-size: 0.8rem;">Promote home loan services. Share your tracking link. Weekly payments.</div>
+            </div>
+            <div class="popup-job-card" id="popupWebsiteSeller" style="background: rgba(20,22,30,0.8); border: 1px solid rgba(0,200,255,0.15); border-radius: 20px; padding: 20px; cursor: pointer;">
+                <h3 style="font-size: 1.3rem;">🌐 Website Seller</h3>
+                <div class="popup-commission" style="color: #00ff88; font-weight: 700;">💰 $50 PER WEBSITE SOLD</div>
+                <div class="popup-desc" style="color: #a0a8b8; font-size: 0.8rem;">Find businesses needing websites. We build them. You get paid $50 per sale.</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Background particles
+    const bgAnim = document.getElementById('bgAnimation');
+    for (let i = 0; i < 80; i++) {
+        const span = document.createElement('span');
+        const size = Math.random() * 5 + 2;
+        span.style.width = size + 'px';
+        span.style.height = size + 'px';
+        span.style.left = Math.random() * 100 + '%';
+        span.style.animationDuration = (Math.random() * 15 + 8) + 's';
+        span.style.animationDelay = Math.random() * 10 + 's';
+        bgAnim.appendChild(span);
+    }
+
+    // Popup Modal Logic
+    const popup = document.getElementById('applyPopup');
+    const closePopup = document.getElementById('closePopup');
+    const applyNavBtn = document.getElementById('applyNavBtn');
+    const popupHomeLoan = document.getElementById('popupHomeLoan');
+    const popupWebsiteSeller = document.getElementById('popupWebsiteSeller');
+
+    function openPopup(e) {
+        if (e) e.preventDefault();
+        popup.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closePopupModal() {
+        popup.style.display = 'none';
+        document.body.style.overflow = '';
+    }
+
+    if (applyNavBtn) applyNavBtn.addEventListener('click', openPopup);
+    if (closePopup) closePopup.addEventListener('click', closePopupModal);
+    if (popup) popup.addEventListener('click', (e) => {
+        if (e.target === popup) closePopupModal();
+    });
+
+    if (popupHomeLoan) {
+        popupHomeLoan.addEventListener('click', () => {
+            window.location.href = 'home-loan.html';
+        });
+    }
+    if (popupWebsiteSeller) {
+        popupWebsiteSeller.addEventListener('click', () => {
+            window.location.href = 'website-seller.html';
+        });
+    }
+</script>
+</body>
+</html>

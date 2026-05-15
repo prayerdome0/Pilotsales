@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Website Seller | Pilot Sales Enterprise | $50 per Website Sold</title>
+    <meta name="description" content="Website Seller - Earn $50 per website sold. Find businesses that need a website. Remote, flexible, commission-based. No experience needed.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0a0c10 0%, #0f1117 100%);
+            color: #ffffff;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .bg-animation span {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(0, 200, 255, 0.2);
+            border-radius: 50%;
+            animation: floatBG 14s linear infinite;
+        }
+        @keyframes floatBG {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 0.4; }
+            90% { opacity: 0.1; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header {
+            padding: 25px 0 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            background: rgba(10, 12, 16, 0.85);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo-img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+        }
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .nav-link {
+            color: #a0a8b8;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            padding: 5px 0;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .nav-link:hover {
+            color: #00c8ff;
+        }
+
+        .job-hero {
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+        .job-badge {
+            display: inline-block;
+            background: rgba(0, 200, 255, 0.12);
+            border: 1px solid rgba(0, 200, 255, 0.3);
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            color: #00c8ff;
+            margin-bottom: 25px;
+        }
+        .job-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 15px;
+        }
+        .job-hero .commission-large {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #00ff88;
+            margin: 20px 0;
+        }
+        .job-hero p {
+            color: #a0a8b8;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .section {
+            padding: 60px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            margin-bottom: 30px;
+        }
+        .section-subtitle {
+            color: #00c8ff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.7rem;
+            margin-bottom: 12px;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .info-card {
+            background: rgba(20, 22, 30, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 28px;
+            transition: 0.3s;
+        }
+        .info-card:hover {
+            border-color: rgba(0, 200, 255, 0.3);
+            transform: translateY(-5px);
+        }
+        .info-card i {
+            font-size: 2rem;
+            color: #00c8ff;
+            margin-bottom: 15px;
+        }
+        .info-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+        .info-card ul {
+            list-style: none;
+        }
+        .info-card li {
+            padding: 6px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #a0a8b8;
+            font-size: 0.85rem;
+        }
+        .info-card li i {
+            font-size: 0.7rem;
+            margin-bottom: 0;
+            color: #00ff88;
+        }
+
+        .commission-table {
+            background: rgba(20, 22, 30, 0.5);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 200, 255, 0.1);
+        }
+        .commission-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 16px 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .commission-row.highlight {
+            background: rgba(0, 200, 255, 0.05);
+        }
+        .commission-earnings {
+            color: #00ff88;
+            font-weight: 700;
+        }
+
+        /* Application Form */
+        .application-form {
+            background: rgba(20, 22, 30, 0.7);
+            border: 1px solid rgba(0, 200, 255, 0.2);
+            border-radius: 28px;
+            padding: 40px;
+            margin-top: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            color: #a0a8b8;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(10, 12, 16, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #00c8ff;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .btn-submit {
+            width: 100%;
+            background: linear-gradient(135deg, #00c8ff, #0077ff);
+            color: white;
+            padding: 16px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 200, 255, 0.3);
+        }
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 30px;
+            background: rgba(0, 255, 136, 0.1);
+            border-radius: 20px;
+            color: #00ff88;
+        }
+        .form-success i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .website-examples {
+            background: rgba(20, 22, 30, 0.5);
+            border-radius: 20px;
+            padding: 25px;
+            margin-top: 20px;
+        }
+        .website-examples a {
+            color: #00c8ff;
+            text-decoration: none;
+            display: block;
+            margin: 8px 0;
+        }
+        .website-examples a:hover {
+            text-decoration: underline;
+        }
+
+        .payment-swiper {
+            width: 100%;
+            padding: 20px 5px 40px;
+        }
+        .payment-slide {
+            background: rgba(20, 22, 30, 0.6);
+            border-radius: 20px;
+            padding: 15px;
+            text-align: center;
+        }
+        .payment-slide img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            border-radius: 16px;
+        }
+        .payment-amount {
+            margin-top: 12px;
+            font-weight: 700;
+            color: #00ff88;
+        }
+        .payment-person {
+            font-size: 0.75rem;
+            color: #8892b0;
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .payment-person img {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid #00c8ff;
+        }
+
+        .footer {
+            padding: 50px 0 30px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .footer-logo {
+            height: 45px;
+            margin-bottom: 15px;
+        }
+        .footer p {
+            color: #5a6577;
+            font-size: 0.75rem;
+        }
+        .footer a {
+            color: #8892b0;
+            text-decoration: none;
+            margin: 0 8px;
+        }
+        .footer a:hover {
+            color: #00c8ff;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .nav-menu {
+                gap: 20px;
+            }
+            .nav-link {
+                font-size: 0.8rem;
+            }
+            .job-hero .commission-large {
+                font-size: 1.3rem;
+            }
+            .payment-slide img {
+                height: 200px;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            .application-form {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="bg-animation" id="bgAnimation"></div>
+
+<header class="header">
+    <div class="container">
+        <div class="logo-container">
+            <img src="https://i.ibb.co/5h0YbLsv/IMG-20260515-WA0012.png" alt="Pilot Sales Enterprise" class="logo-img">
+        </div>
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-link">HOME</a>
+            <button class="nav-link" id="applyNavBtn" style="background:none; border:none; cursor:pointer;">APPLY</button>
+            <a href="about.html" class="nav-link">ABOUT</a>
+            <a href="contact.html" class="nav-link">CONTACT</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section class="job-hero">
+        <div class="container">
+            <div class="job-badge"><i class="fas fa-bolt"></i> NOW HIRING</div>
+            <h1>Website Seller</h1>
+            <div class="commission-large">💰 $50 PER WEBSITE SOLD</div>
+            <p>Find businesses that need a website. Submit leads. We build the website. You get paid $50 for every successful sale. No experience required. Work remotely.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="grid-2">
+                <div class="info-card">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>What You'll Do</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Find businesses that need a website</li>
+                        <li><i class="fas fa-check"></i> Submit leads via our form or WhatsApp</li>
+                        <li><i class="fas fa-check"></i> We build the professional website</li>
+                        <li><i class="fas fa-check"></i> You earn $50 per successful sale</li>
+                        <li><i class="fas fa-check"></i> No design or tech skills needed</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h3>Requirements</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> No experience required</li>
+                        <li><i class="fas fa-check"></i> Good communication skills</li>
+                        <li><i class="fas fa-check"></i> Self-motivated and independent</li>
+                        <li><i class="fas fa-check"></i> Professional when talking to clients</li>
+                        <li><i class="fas fa-check"></i> Honest outreach methods only</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: rgba(0, 200, 255, 0.02);">
+        <div class="container">
+            <div class="section-subtitle">Earnings Structure</div>
+            <h2 class="section-title">Commission Breakdown</h2>
+            <div class="commission-table">
+                <div class="commission-row"><span>1 Website Sold</span><span class="commission-earnings">$50</span></div>
+                <div class="commission-row"><span>5 Websites Sold</span><span class="commission-earnings">$250</span></div>
+                <div class="commission-row highlight"><span>10 Websites Sold</span><span class="commission-earnings">$500</span></div>
+                <div class="commission-row"><span>20 Websites Sold</span><span class="commission-earnings">$1,000</span></div>
+                <div class="commission-row"><span>50 Websites Sold</span><span class="commission-earnings">$2,500</span></div>
+            </div>
+            <div style="margin-top: 24px; text-align: center; background: rgba(0, 255, 136, 0.08); border-radius: 16px; padding: 18px;">
+                <span style="background: linear-gradient(135deg, #ffd700, #ffaa00); color: #0a0c10; padding: 4px 12px; border-radius: 30px; font-size: 0.7rem; font-weight: 700;">🎯 BONUS</span>
+                <p style="margin-top: 12px;">Sell 5+ websites in a month and earn an extra <strong style="color: #00ff88;">$100 bonus</strong>!</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-subtitle">Examples</div>
+            <h2 class="section-title">Websites We Build For Clients</h2>
+            <div class="website-examples">
+                <a href="https://taqueriamorachinohills.com" target="_blank"><i class="fas fa-external-link-alt"></i> taqueriamorachinohills.com - Restaurant Website</a>
+                <a href="https://omarsbarbershopanaheim.com" target="_blank"><i class="fas fa-external-link-alt"></i> omarsbarbershopanaheim.com - Barbershop Booking</a>
+                <a href="https://vipwindowtintpomona.com" target="_blank"><i class="fas fa-external-link-alt"></i> vipwindowtintpomona.com - Auto Service Business</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Form Section -->
+    <section id="apply" class="section">
+        <div class="container">
+            <div class="section-subtitle">Apply Now</div>
+            <h2 class="section-title">Fill Out The Application Form</h2>
+            <div class="application-form">
+                <div id="formSuccess" class="form-success" style="display: none;">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Application Submitted Successfully!</h3>
+                    <p>We have received your application. Our team will contact you within 24 hours via WhatsApp.</p>
+                </div>
+                <form id="websiteSellerForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Full Name *</label>
+                            <input type="text" id="fullName" required placeholder="e.g., John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label>WhatsApp Number *</label>
+                            <input type="tel" id="whatsappNumber" required placeholder="e.g., 260973028342">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" id="email" placeholder="youremail@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Location (City, Country) *</label>
+                            <input type="text" id="location" required placeholder="e.g., Lusaka, Zambia">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>How did you hear about us?</label>
+                        <select id="heardFrom">
+                            <option value="">Select an option</option>
+                            <option value="Facebook">Facebook</option>
+                            <option value="WhatsApp">WhatsApp Group/Channel</option>
+                            <option value="Instagram">Instagram</option>
+                            <option value="Friend/Family">Friend or Family</option>
+                            <option value="Google Search">Google Search</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Why do you want to join as a Website Seller? (Optional)</label>
+                        <textarea id="reason" rows="3" placeholder="Tell us why you're interested in this position..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit" id="submitBtn">
+                        <i class="fas fa-paper-plane"></i> Submit Application
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Proofs Gallery -->
+    <section class="section" style="background: rgba(0, 200, 255, 0.02);">
+        <div class="container">
+            <div class="section-subtitle">Real Earnings</div>
+            <h2 class="section-title">Payment Proofs From Members</h2>
+            <div class="swiper payment-swiper" id="paymentSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide payment-slide"><img src="https://i.ibb.co/tPkc92JN/48ca5e3ade8b145252c66f72739d348a.jpg" alt="Payment"><div class="payment-amount">+ 0.13720797 BTC</div><div class="payment-person"><img src="https://randomuser.me/api/portraits/men/32.jpg"> John - Texas</div></div>
+                    <div class="swiper-slide payment-slide"><img src="https://i.ibb.co/fV5jKmJD/f9f76f516f20e5cb3d8146add9d7fa96.jpg" alt="Payment"><div class="payment-amount">+ $5,997.58 USD</div><div class="payment-person"><img src="https://randomuser.me/api/portraits/women/68.jpg"> Sarah - California</div></div>
+                    <div class="swiper-slide payment-slide"><img src="https://i.ibb.co/JWwp7xm5/9ca2313b9c7a93361e683384c2d0edc5.jpg" alt="Payment"><div class="payment-amount">+ 0.01212042 BTC</div><div class="payment-person"><img src="https://randomuser.me/api/portraits/men/45.jpg"> David - New York</div></div>
+                    <div class="swiper-slide payment-slide"><img src="https://i.ibb.co/4nBb6F7w/708dee53167330c8f80bfc41480b4930.jpg" alt="Payment"><div class="payment-amount">+ $500 + $69.98 + $500</div><div class="payment-person"><img src="https://randomuser.me/api/portraits/women/45.jpg"> Maria - Philippines</div></div>
+                    <div class="swiper-slide payment-slide"><img src="https://i.ibb.co/h1MhLXcH/898400560befffdb582b18a2e0430abe.jpg" alt="Payment"><div class="payment-amount">+ 0.1281206 BTC</div><div class="payment-person"><img src="https://randomuser.me/api/portraits/men/75.jpg"> Robert - Colorado</div></div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section" style="text-align: center;">
+        <div class="container">
+            <div style="background: linear-gradient(135deg, rgba(0, 200, 255, 0.08), rgba(0, 119, 255, 0.05)); border-radius: 32px; padding: 50px 30px;">
+                <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 16px;">Ready to Start Earning?</h2>
+                <p style="color: #a0a8b8; max-width: 500px; margin: 0 auto 28px;">Fill out the application form above. No experience needed. Start finding clients today.</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <img src="https://i.ibb.co/5h0YbLsv/IMG-20260515-WA0012.png" alt="Pilot Sales Enterprise" class="footer-logo">
+        <p>&copy; 2025 Pilot Sales Enterprise. All rights reserved.</p>
+        <p><a href="index.html">Home</a> | <a href="home-loan.html">Home Loan Job</a> | <a href="website-seller.html">Website Seller Job</a> | <a href="https://whatsapp.com/channel/0029Vb80vPW9RZAdW2E9hE1V">WhatsApp Channel</a></p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    // Background particles
+    for(let i=0;i<80;i++){
+        let s=document.createElement('span');
+        s.style.width=(Math.random()*5+2)+'px';
+        s.style.height=s.style.width;
+        s.style.left=Math.random()*100+'%';
+        s.style.animationDuration=(Math.random()*15+8)+'s';
+        s.style.animationDelay=Math.random()*10+'s';
+        document.getElementById('bgAnimation').appendChild(s);
+    }
+
+    // Initialize Swipers
+    new Swiper('#paymentSwiper',{
+        slidesPerView:1,spaceBetween:20,loop:true,autoplay:{delay:2200},
+        pagination:{el:'.swiper-pagination',clickable:true},
+        breakpoints:{640:{slidesPerView:2},1024:{slidesPerView:3}}
+    });
+
+    // WhatsApp numbers to send application to
+    const YOUR_NUMBER = "260973028342";      // Zacheus - Zambia
+    const PHILIPPINES_NUMBER = "639613979190"; // Shai Mercado - Philippines
+
+    // Form submission
+    const form = document.getElementById('websiteSellerForm');
+    const formSuccess = document.getElementById('formSuccess');
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form values
+        const fullName = document.getElementById('fullName').value.trim();
+        const whatsappNumber = document.getElementById('whatsappNumber').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const location = document.getElementById('location').value.trim();
+        const heardFrom = document.getElementById('heardFrom').value;
+        const reason = document.getElementById('reason').value.trim();
+
+        // Validation
+        if(!fullName || !whatsappNumber || !location) {
+            alert('Please fill in all required fields (*)');
+            return;
+        }
+
+        // Format WhatsApp number (remove + if present)
+        let cleanNumber = whatsappNumber.replace(/\+/g, '');
+        
+        // Create message
+        const message = `*NEW WEBSITE SELLER APPLICATION*%0A%0A` +
+            `*Name:* ${fullName}%0A` +
+            `*WhatsApp:* ${cleanNumber}%0A` +
+            `*Email:* ${email || 'Not provided'}%0A` +
+            `*Location:* ${location}%0A` +
+            `*Heard From:* ${heardFrom || 'Not specified'}%0A` +
+            `*Why join:* ${reason || 'Not specified'}%0A%0A` +
+            `Please contact this applicant for further process.`;
+
+        // Send to YOUR WhatsApp (Zacheus)
+        const yourWhatsAppUrl = `https://wa.me/${YOUR_NUMBER}?text=${message}`;
+        
+        // Send to Philippines WhatsApp (Shai)
+        const philippinesWhatsAppUrl = `https://wa.me/${PHILIPPINES_NUMBER}?text=${message}`;
+
+        // Open both WhatsApp chats in new windows/tabs
+        window.open(yourWhatsAppUrl, '_blank');
+        window.open(philippinesWhatsAppUrl, '_blank');
+        
+        // Show success message
+        form.style.display = 'none';
+        formSuccess.style.display = 'block';
+        
+        // Reset form (optional, but hidden anyway)
+        form.reset();
+    });
+
+    // Apply button from nav
+    const applyNavBtn = document.getElementById('applyNavBtn');
+    if(applyNavBtn) {
+        applyNavBtn.addEventListener('click', () => {
+            document.getElementById('apply').scrollIntoView({ behavior: 'smooth' });
+        });
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Home Loan Outreach | Pilot Sales Enterprise | $1.50 per 10 Clicks</title>
+    <meta name="description" content="Home Loan Outreach Representative - Earn $1.50 per 10 valid USA clicks. Promote home loan services. Remote, flexible, commission-based. No experience needed.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0a0c10 0%, #0f1117 100%);
+            color: #ffffff;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .bg-animation span {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(0, 200, 255, 0.2);
+            border-radius: 50%;
+            animation: floatBG 14s linear infinite;
+        }
+        @keyframes floatBG {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 0.4; }
+            90% { opacity: 0.1; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Header */
+        .header {
+            padding: 25px 0 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            background: rgba(10, 12, 16, 0.85);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo-img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+        }
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .nav-link {
+            color: #a0a8b8;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            padding: 5px 0;
+            position: relative;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .nav-link:hover {
+            color: #00c8ff;
+        }
+
+        /* Job Hero */
+        .job-hero {
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+        .job-badge {
+            display: inline-block;
+            background: rgba(0, 200, 255, 0.12);
+            border: 1px solid rgba(0, 200, 255, 0.3);
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            color: #00c8ff;
+            margin-bottom: 25px;
+        }
+        .job-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 15px;
+        }
+        .job-hero .commission-large {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #00ff88;
+            margin: 20px 0;
+        }
+        .job-hero p {
+            color: #a0a8b8;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Sections */
+        .section {
+            padding: 60px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            margin-bottom: 30px;
+        }
+        .section-subtitle {
+            color: #00c8ff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.7rem;
+            margin-bottom: 12px;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .info-card {
+            background: rgba(20, 22, 30, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 28px;
+            transition: 0.3s;
+        }
+        .info-card:hover {
+            border-color: rgba(0, 200, 255, 0.3);
+            transform: translateY(-5px);
+        }
+        .info-card i {
+            font-size: 2rem;
+            color: #00c8ff;
+            margin-bottom: 15px;
+        }
+        .info-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+        .info-card p, .info-card li {
+            color: #a0a8b8;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+        .info-card ul {
+            list-style: none;
+            margin-top: 10px;
+        }
+        .info-card li {
+            padding: 6px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .info-card li i {
+            font-size: 0.7rem;
+            margin-bottom: 0;
+            color: #00ff88;
+        }
+
+        .commission-table {
+            background: rgba(20, 22, 30, 0.5);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 200, 255, 0.1);
+        }
+        .commission-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 16px 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .commission-row:last-child {
+            border-bottom: none;
+        }
+        .commission-row.highlight {
+            background: rgba(0, 200, 255, 0.05);
+        }
+        .commission-earnings {
+            color: #00ff88;
+            font-weight: 700;
+        }
+
+        .btn-apply-large {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #00c8ff, #0077ff);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: 0.3s;
+            margin-top: 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-apply-large:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 200, 255, 0.3);
+        }
+
+        /* Payment Proofs */
+        .payment-swiper {
+            width: 100%;
+            padding: 20px 5px 40px;
+        }
+        .payment-slide {
+            background: rgba(20, 22, 30, 0.6);
+            border-radius: 20px;
+            padding: 15px;
+            text-align: center;
+        }
+        .payment-slide img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            border-radius: 16px;
+        }
+        .payment-amount {
+            margin-top: 12px;
+            font-weight: 700;
+            color: #00ff88;
+        }
+        .payment-person {
+            font-size: 0.75rem;
+            color: #8892b0;
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .payment-person img {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid #00c8ff;
+        }
+
+        /* Testimonials */
+        .testimonial-swiper {
+            width: 100%;
+            padding: 20px 5px 40px;
+        }
+        .testimonial-slide {
+            background: rgba(20, 22, 30, 0.7);
+            border-radius: 24px;
+            padding: 28px;
+        }
+        .testimonial-stars {
+            color: #ffd700;
+            margin-bottom: 15px;
+        }
+        .testimonial-text {
+            color: #c0c8d8;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(0, 200, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #00c8ff;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 50px 0 30px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .footer-logo {
+            height: 45px;
+            margin-bottom: 15px;
+        }
+        .footer p {
+            color: #5a6577;
+            font-size: 0.75rem;
+        }
+        .footer a {
+            color: #8892b0;
+            text-decoration: none;
+            margin: 0 8px;
+        }
+        .footer a:hover {
+            color: #00c8ff;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .nav-menu {
+                gap: 20px;
+            }
+            .nav-link {
+                font-size: 0.8rem;
+            }
+            .job-hero .commission-large {
+                font-size: 1.3rem;
+            }
+            .payment-slide img {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="bg-animation" id="bgAnimation"></div>
+
+<header class="header">
+    <div class="container">
+        <div class="logo-container">
+            <img src="https://i.ibb.co/5h0YbLsv/IMG-20260515-WA0012.png" alt="Pilot Sales Enterprise" class="logo-img">
+        </div>
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-link">HOME</a>
+            <button class="nav-link" id="applyNavBtn" style="background:none; border:none; cursor:pointer;">APPLY</button>
+            <a href="about.html" class="nav-link">ABOUT</a>
+            <a href="contact.html" class="nav-link">CONTACT</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <!-- Job Hero -->
+    <section class="job-hero">
+        <div class="container">
+            <div class="job-badge"><i class="fas fa-bolt"></i> NOW HIRING</div>
+            <h1>Home Loan Outreach<br>Representative</h1>
+            <div class="commission-large">💰 $1.50 per 10 USA Clicks</div>
+            <p>Promote home loan services to individuals in Colorado, USA. Share your unique tracking link on social media. No experience needed. Weekly payments in Bitcoin or Monero.</p>
+            <button class="btn-apply-large" id="applyNowBtn"><i class="fas fa-paper-plane"></i> Apply Now</button>
+        </div>
+    </section>
+
+    <!-- What You'll Do + Requirements -->
+    <section class="section">
+        <div class="container">
+            <div class="grid-2">
+                <div class="info-card">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>What You'll Do</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Receive your unique tracking link</li>
+                        <li><i class="fas fa-check"></i> Share on Facebook, Instagram, Twitter, WhatsApp, TikTok</li>
+                        <li><i class="fas fa-check"></i> Target USA audiences (Colorado focus)</li>
+                        <li><i class="fas fa-check"></i> Track clicks in real-time via Bitly dashboard</li>
+                        <li><i class="fas fa-check"></i> Get paid weekly for valid USA clicks</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h3>Requirements</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> No experience required</li>
+                        <li><i class="fas fa-check"></i> Access to social media platforms</li>
+                        <li><i class="fas fa-check"></i> Self-motivated and independent</li>
+                        <li><i class="fas fa-check"></i> Must use honest outreach methods (no spam or bots)</li>
+                        <li><i class="fas fa-check"></i> Ability to target USA audiences</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Commission Table -->
+    <section class="section" style="background: rgba(0, 200, 255, 0.02);">
+        <div class="container">
+            <div class="section-subtitle">Earnings Structure</div>
+            <h2 class="section-title">Commission Breakdown</h2>
+            <div class="commission-table">
+                <div class="commission-row"><span>10 Clicks</span><span class="commission-earnings">$1.50</span></div>
+                <div class="commission-row"><span>50 Clicks</span><span class="commission-earnings">$5</span></div>
+                <div class="commission-row highlight"><span>100 Clicks</span><span class="commission-earnings">$10.00</span></div>
+                <div class="commission-row"><span>500 Clicks</span><span class="commission-earnings">$50.00</span></div>
+                <div class="commission-row"><span>1,000 Clicks</span><span class="commission-earnings">$100.00</span></div>
+                <div class="commission-row"><span>5,000 Clicks</span><span class="commission-earnings">$500.00</span></div>
+                <div class="commission-row"><span>10,000 Clicks</span><span class="commission-earnings">$1000.00</span></div>
+            </div>
+            <div style="margin-top: 24px; text-align: center; background: rgba(0, 255, 136, 0.08); border-radius: 16px; padding: 18px;">
+                <span style="background: linear-gradient(135deg, #ffd700, #ffaa00); color: #0a0c10; padding: 4px 12px; border-radius: 30px; font-size: 0.7rem; font-weight: 700;">🎯 BONUS</span>
+                <p style="margin-top: 12px;">If you can verify that someone who clicked your link completed the loan service, you receive <strong style="color: #00ff88;">$500 in Bitcoin</strong>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section">
+        <div class="container">
+            <div class="section-subtitle">Getting Started</div>
+            <h2 class="section-title">How It Works</h2>
+            <div class="grid-3">
+                <div class="info-card"><i class="fas fa-user-plus"></i><h3>1. Apply</h3><p>Fill out the application form. No experience needed. Just self-motivation.</p></div>
+                <div class="info-card"><i class="fas fa-link"></i><h3>2. Get Your Link</h3><p>Receive your unique Bitly tracking link. All clicks are tracked automatically.</p></div>
+                <div class="info-card"><i class="fas fa-share-alt"></i><h3>3. Share & Earn</h3><p>Share your link on social media. Get paid $1.50 per 10 valid USA clicks.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Proofs Gallery -->
+    <section class="section" style="background: rgba(0, 200, 255, 0.02);">
+        <div class="container">
+            <div class="section-subtitle">Real Earnings</div>
+            <h2 class="section-title">Payment Proofs From Members</h2>
+            <div class="swiper payment-swiper" id="paymentSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide payment-slide">
+                        <img src="https://i.ibb.co/tPkc92JN/48ca5e3ade8b145252c66f72739d348a.jpg" alt="Payment">
+                        <div class="payment-amount">+ 0.13720797 BTC</div>
+                        <div class="payment-person"><img src="https://randomuser.me/api/portraits/men/32.jpg"> John - Texas, USA</div>
+                    </div>
+                    <div class="swiper-slide payment-slide">
+                        <img src="https://i.ibb.co/fV5jKmJD/f9f76f516f20e5cb3d8146add9d7fa96.jpg" alt="Payment">
+                        <div class="payment-amount">+ $5,997.58 USD</div>
+                        <div class="payment-person"><img src="https://randomuser.me/api/portraits/women/68.jpg"> Sarah - California, USA</div>
+                    </div>
+                    <div class="swiper-slide payment-slide">
+                        <img src="https://i.ibb.co/JWwp7xm5/9ca2313b9c7a93361e683384c2d0edc5.jpg" alt="Payment">
+                        <div class="payment-amount">+ 0.01212042 BTC</div>
+                        <div class="payment-person"><img src="https://randomuser.me/api/portraits/men/45.jpg"> David - New York, USA</div>
+                    </div>
+                    <div class="swiper-slide payment-slide">
+                        <img src="https://i.ibb.co/4nBb6F7w/708dee53167330c8f80bfc41480b4930.jpg" alt="Payment">
+                        <div class="payment-amount">+ $500 + $69.98 + $500</div>
+                        <div class="payment-person"><img src="https://randomuser.me/api/portraits/women/45.jpg"> Maria - Philippines</div>
+                    </div>
+                    <div class="swiper-slide payment-slide">
+                        <img src="https://i.ibb.co/h1MhLXcH/898400560befffdb582b18a2e0430abe.jpg" alt="Payment">
+                        <div class="payment-amount">+ 0.1281206 BTC</div>
+                        <div class="payment-person"><img src="https://randomuser.me/api/portraits/men/75.jpg"> Robert - Colorado, USA</div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+<!-- Testimonials -->
+    <section class="section">
+        <div class="container">
+            <div class="section-subtitle">Success Stories</div>
+            <h2 class="section-title">What Our Members Say</h2>
+            <div class="swiper testimonial-swiper" id="testimonialSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide testimonial-slide">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <div class="testimonial-text">"I've been with Pilot Sales for 3 months now. I make $200-$300 every week just by sharing links on Facebook groups. Highly recommended!"</div>
+                        <div class="testimonial-author"><div class="testimonial-avatar"><i class="fas fa-user"></i></div><div><strong>Maria Santos</strong><br>Manila, Philippines</div></div>
+                    </div>
+                    <div class="swiper-slide testimonial-slide">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <div class="testimonial-text">"This is legit! I received my first payment of $45 within my first week. The support team is very responsive."</div>
+                        <div class="testimonial-author"><div class="testimonial-avatar"><i class="fas fa-user"></i></div><div><strong>James Thompson</strong><br>Denver, Colorado</div></div>
+                    </div>
+                    <div class="swiper-slide testimonial-slide">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <div class="testimonial-text">"I was skeptical at first but after receiving my first $150 payout, I knew this was real. Perfect side hustle!"</div>
+                        <div class="testimonial-author"><div class="testimonial-avatar"><i class="fas fa-user"></i></div><div><strong>John Davis</strong><br>Houston, Texas</div></div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Apply CTA -->
+    <section class="section" style="text-align: center;">
+        <div class="container">
+            <div style="background: linear-gradient(135deg, rgba(0, 200, 255, 0.08), rgba(0, 119, 255, 0.05)); border-radius: 32px; padding: 50px 30px;">
+                <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 16px;">Ready to Start Earning?</h2>
+                <p style="color: #a0a8b8; max-width: 500px; margin: 0 auto 28px;">No fixed hours. No minimum quota. Work when you want, from anywhere.</p>
+                <button class="btn-apply-large" id="ctaApplyBtn"><i class="fas fa-paper-plane"></i> Apply Now</button>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <img src="https://i.ibb.co/5h0YbLsv/IMG-20260515-WA0012.png" alt="Pilot Sales Enterprise" class="footer-logo">
+        <p>&copy; 2025 Pilot Sales Enterprise. All rights reserved.</p>
+        <p style="margin-top: 10px;">
+            <a href="index.html">Home</a> | 
+            <a href="home-loan.html">Home Loan Job</a> | 
+            <a href="website-seller.html">Website Seller Job</a> |
+            <a href="https://whatsapp.com/channel/0029Vb80vPW9RZAdW2E9hE1V">WhatsApp Channel</a>
+        </p>
+    </div>
+</footer>
+
+<!-- Popup Modal for Apply Button -->
+<div id="applyPopup" class="popup-modal" style="display: none; position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); backdrop-filter:blur(12px); z-index:2000; align-items:center; justify-content:center;">
+    <div class="popup-content" style="background: linear-gradient(135deg, #11131a, #0a0c10); border: 1px solid rgba(0,200,255,0.3); border-radius: 32px; padding: 40px 35px; max-width: 550px; width: 90%; position: relative;">
+        <span class="popup-close" id="closePopup" style="position: absolute; top: 20px; right: 25px; font-size: 1.8rem; cursor: pointer; color: #8892b0;">&times;</span>
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 10px; color: #00c8ff;">Apply for Home Loan Outreach</h2>
+        <p style="color: #8892b0; margin-bottom: 25px;">Click the button below to fill out the application form.</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScCvmBRX46ZrY14uVwgqI6Kzmug3XGkjew5PHotNPl8WUi21g/viewform" target="_blank" class="btn-apply-large" style="width: 100%; justify-content: center; margin-top: 0;">
+            <i class="fas fa-external-link-alt"></i> Open Application Form
+        </a>
+        <p style="margin-top: 20px; font-size: 0.7rem; color: #5a6577; text-align: center;">You will be redirected to Google Forms to complete your application.</p>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    // Background particles
+    const bgAnim = document.getElementById('bgAnimation');
+    for (let i = 0; i < 80; i++) {
+        const span = document.createElement('span');
+        const size = Math.random() * 5 + 2;
+        span.style.width = size + 'px';
+        span.style.height = size + 'px';
+        span.style.left = Math.random() * 100 + '%';
+        span.style.animationDuration = (Math.random() * 15 + 8) + 's';
+        span.style.animationDelay = Math.random() * 10 + 's';
+        bgAnim.appendChild(span);
+    }
+
+    // Initialize Swipers
+    new Swiper('#paymentSwiper', {
+        slidesPerView: 1, spaceBetween: 20, loop: true, autoplay: { delay: 2200 },
+        pagination: { el: '.swiper-pagination', clickable: true },
+        breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
+    });
+    new Swiper('#testimonialSwiper', {
+        slidesPerView: 1, spaceBetween: 20, loop: true, autoplay: { delay: 3500 },
+        pagination: { el: '.swiper-pagination', clickable: true },
+        breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
+    });
+
+    // Popup Logic
+    const popup = document.getElementById('applyPopup');
+    const closePopup = document.getElementById('closePopup');
+    const applyBtns = document.querySelectorAll('#applyNowBtn, #ctaApplyBtn, #applyNavBtn');
+
+    applyBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            popup.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    closePopup.addEventListener('click', () => {
+        popup.style.display = 'none';
+        document.body.style.overflow = '';
+    });
+    popup.addEventListener('click', (e) => {
+        if (e.target === popup) {
+            popup.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    });
+</script>
+</body>
+</html>
