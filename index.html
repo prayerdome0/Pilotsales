@@ -65,7 +65,7 @@
             z-index: 2;
         }
 
-        /* Header - Logo Centered, Nav Below */
+        /* Header */
         .header {
             padding: 25px 0 15px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -151,7 +151,6 @@
             color: transparent;
         }
         
-        /* Animated Word */
         .animated-word-container {
             margin: 30px 0 20px;
         }
@@ -307,18 +306,19 @@
         .payment-person {
             font-size: 0.75rem;
             color: #8892b0;
-            margin-top: 5px;
+            margin-top: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
+            gap: 8px;
         }
         .payment-person img {
-            width: 28px;
-            height: 28px;
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
             object-fit: cover;
-            border: 1px solid #00c8ff;
+            border: 2px solid #00c8ff;
+            box-shadow: 0 0 10px rgba(0, 200, 255, 0.3);
         }
 
         /* Testimonials */
@@ -505,6 +505,10 @@
             .popup-content h2 {
                 font-size: 1.4rem;
             }
+            .payment-person img {
+                width: 28px;
+                height: 28px;
+            }
         }
     </style>
 </head>
@@ -515,7 +519,7 @@
 <header class="header">
     <div class="container">
         <div class="logo-container">
-            <img src="https://i.ibb.co/5h0YbLsv/IMG-20260515-WA0012.png" alt="Pilot Sales Enterprise" class="logo-img">
+            <img src="https://i.ibb.co/QvMtFTVd/20260516-005119.png" alt="Pilot Sales Enterprise" class="logo-img">
         </div>
         <nav class="nav-menu">
             <a href="index.html" class="nav-link active">HOME</a>
@@ -549,7 +553,7 @@
                 <h2 class="section-title">Available Jobs</h2>
             </div>
             <div class="jobs-grid">
-                <!-- Job 1: Home Loan Outreach - NEW PHOTO -->
+                <!-- Job 1: Home Loan Outreach -->
                 <div class="job-card">
                     <img src="https://images.pexels.com/photos/6646917/pexels-photo-6646917.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Home Loan Outreach" class="job-card-img">
                     <div class="job-card-content">
@@ -590,30 +594,54 @@
             </div>
             <div class="swiper payment-swiper" id="paymentSwiper">
                 <div class="swiper-wrapper">
+                    <!-- Payment Slide 1 -->
                     <div class="swiper-slide payment-slide">
-                        <img src="https://i.ibb.co/tPkc92JN/48ca5e3ade8b145252c66f72739d348a.jpg" alt="Payment">
+                        <img src="https://i.ibb.co/tPkc92JN/48ca5e3ade8b145252c66f72739d348a.jpg" alt="Payment Proof">
                         <div class="payment-amount">+ 0.13720797 BTC</div>
-                        <div class="payment-person"><img src="https://randomuser.me/api/portraits/men/32.jpg"> John - Texas</div>
+                        <div class="payment-person">
+                            <img src="https://i.ibb.co/MyRfGNKx/bcd8d4d8302a5ba624e5832caa3738bc.jpg" alt="Member">
+                            <span>Sarah Johnson - Texas, USA</span>
+                        </div>
                     </div>
+
+                    <!-- Payment Slide 2 -->
                     <div class="swiper-slide payment-slide">
-                        <img src="https://i.ibb.co/fV5jKmJD/f9f76f516f20e5cb3d8146add9d7fa96.jpg" alt="Payment">
+                        <img src="https://i.ibb.co/fV5jKmJD/f9f76f516f20e5cb3d8146add9d7fa96.jpg" alt="Payment Proof">
                         <div class="payment-amount">+ $5,997.58 USD</div>
-                        <div class="payment-person"><img src="https://randomuser.me/api/portraits/women/68.jpg"> Sarah - California</div>
+                        <div class="payment-person">
+                            <img src="https://i.ibb.co/XZNXJ03P/451606a21ab06742766d285ee461567e.jpg" alt="Member">
+                            <span>Michael Chen - California, USA</span>
+                        </div>
                     </div>
+
+                    <!-- Payment Slide 3 -->
                     <div class="swiper-slide payment-slide">
-                        <img src="https://i.ibb.co/JWwp7xm5/9ca2313b9c7a93361e683384c2d0edc5.jpg" alt="Payment">
+                        <img src="https://i.ibb.co/JWwp7xm5/9ca2313b9c7a93361e683384c2d0edc5.jpg" alt="Payment Proof">
                         <div class="payment-amount">+ 0.01212042 BTC</div>
-                        <div class="payment-person"><img src="https://randomuser.me/api/portraits/men/45.jpg"> David - New York</div>
+                        <div class="payment-person">
+                            <img src="https://i.ibb.co/v6pGKG8m/6a9d17646d9c55d128745269e4e37f0c.jpg" alt="Member">
+                            <span>David Williams - New York, USA</span>
+                        </div>
                     </div>
+
+                    <!-- Payment Slide 4 -->
                     <div class="swiper-slide payment-slide">
-                        <img src="https://i.ibb.co/4nBb6F7w/708dee53167330c8f80bfc41480b4930.jpg" alt="Payment">
+                        <img src="https://i.ibb.co/4nBb6F7w/708dee53167330c8f80bfc41480b4930.jpg" alt="Payment Proof">
                         <div class="payment-amount">+ $500 + $69.98 + $500</div>
-                        <div class="payment-person"><img src="https://randomuser.me/api/portraits/women/45.jpg"> Maria - Philippines</div>
+                        <div class="payment-person">
+                            <img src="https://i.ibb.co/bRgD07WX/56e1b37c9c2e5d7b6d7de581ee653883.jpg" alt="Member">
+                            <span>Maria Santos - Manila, Philippines</span>
+                        </div>
                     </div>
+
+                    <!-- Payment Slide 5 -->
                     <div class="swiper-slide payment-slide">
-                        <img src="https://i.ibb.co/h1MhLXcH/898400560befffdb582b18a2e0430abe.jpg" alt="Payment">
+                        <img src="https://i.ibb.co/h1MhLXcH/898400560befffdb582b18a2e0430abe.jpg" alt="Payment Proof">
                         <div class="payment-amount">+ 0.1281206 BTC</div>
-                        <div class="payment-person"><img src="https://randomuser.me/api/portraits/men/75.jpg"> Robert - Colorado</div>
+                        <div class="payment-person">
+                            <img src="https://i.ibb.co/1fG6b3YH/1fc96e1619b913eade6eb6533f72cf83.jpg" alt="Member">
+                            <span>Robert Brown - Colorado, USA</span>
+                        </div>
                     </div>
                 </div>
                 <div class="swiper-pagination"></div>
@@ -702,10 +730,11 @@
         <img src="https://i.ibb.co/5h0YbLsv/IMG-20260515-WA0012.png" alt="Pilot Sales Enterprise" class="footer-logo">
         <p>&copy; 2025 Pilot Sales Enterprise. All rights reserved.</p>
         <p style="margin-top: 10px;">
-            <a href="home-loan.html">Home Loan Job</a> | 
-            <a href="website-seller.html">Website Seller Job</a> | 
-            <a href="https://whatsapp.com/channel/0029Vb80vPW9RZAdW2E9hE1V">WhatsApp Channel</a>
-        </p>
+    <a href="home-loan.html">Home Loan Job</a> | 
+    <a href="website-seller.html">Website Seller Job</a> | 
+    <a href="https://www.facebook.com/share/18YfeYC5cD/" target="_blank">Facebook</a> |
+    <a href="https://www.instagram.com/pilot.sales?igsh=MTM4cDVxZGE4bjN6MQ==" target="_blank">Instagram</a>
+</p>
     </div>
 </footer>
 
