@@ -1,854 +1,362 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Pilot Sales Enterprise | Commission-Based Jobs | Home Loan & Website Seller</title>
-    <meta name="description" content="Join Pilot Sales Enterprise. Two commission-based jobs: Home Loan Outreach ($1.50 per 10 clicks) or Website Seller ($50 per website sold). Remote work from anywhere.">
-    <meta name="keywords" content="commission based work, remote job, home loan outreach, website seller, earn online, work from home">
-    <meta name="author" content="Pilot Sales Enterprise">
-    
-    <meta property="og:title" content="Pilot Sales Enterprise | Commission-Based Jobs">
-    <meta property="og:description" content="Earn $1.50 per 10 clicks or $50 per website sold. Remote work.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pilot Sales Enterprise | Public Role Board</title>
+    <meta name="description" content="Public role board for Pilot Sales Enterprise. Explore commission-based sales tracks for websites, compliant health insurance lead generation, barnacle removal, and solar panel bird proofing.">
+    <meta property="og:title" content="Pilot Sales Enterprise | Public Role Board">
+    <meta property="og:description" content="Commission-based sales tracks, WhatsApp onboarding, and clear application steps.">
     <meta property="og:image" content="https://i.ibb.co/5h0YbLsv/IMG-20260515-WA0012.png">
     <meta property="og:type" content="website">
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #0a0c10 0%, #0f1117 100%);
-            color: #ffffff;
-            line-height: 1.5;
-            scroll-behavior: smooth;
-            overflow-x: hidden;
-        }
-
-        .bg-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            overflow: hidden;
-        }
-        .bg-animation span {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            background: rgba(0, 200, 255, 0.2);
-            border-radius: 50%;
-            animation: floatBG 14s linear infinite;
-        }
-        @keyframes floatBG {
-            0% { transform: translateY(100vh) scale(0); opacity: 0; }
-            10% { opacity: 0.4; }
-            90% { opacity: 0.1; }
-            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Header */
-        .header {
-            padding: 25px 0 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(12px);
-            background: rgba(10, 12, 16, 0.85);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .logo-container {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .logo-img {
-            height: 60px;
-            width: auto;
-            object-fit: contain;
-        }
-        .nav-menu {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-        .nav-link {
-            color: #a0a8b8;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: all 0.3s;
-            padding: 5px 0;
-            position: relative;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-        .nav-link:hover {
-            color: #00c8ff;
-        }
-        .nav-link.active {
-            color: #00c8ff;
-        }
-        .nav-link.active::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(135deg, #00c8ff, #00ff88);
-            border-radius: 2px;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 80px 0 60px;
-            text-align: center;
-        }
-        .hero-badge {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 6px 18px;
-            border-radius: 40px;
-            font-size: 0.7rem;
-            font-weight: 500;
-            color: #a0a8b8;
-            margin-bottom: 30px;
-            letter-spacing: 1px;
-        }
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 5vw, 3.2rem);
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 20px;
-            color: #ffffff;
-        }
-        .hero h1 .highlight {
-            background: linear-gradient(135deg, #00c8ff, #00ff88);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .animated-word-container {
-            margin: 30px 0 20px;
-        }
-        .animated-word {
-            display: inline-block;
-            font-size: 1.8rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #00c8ff, #00ff88);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            padding: 10px 25px;
-            border-radius: 60px;
-            background-color: rgba(0, 200, 255, 0.08);
-            animation: zoomDimStrong 2.5s ease-in-out infinite;
-        }
-        @keyframes zoomDimStrong {
-            0% { transform: scale(1); opacity: 1; letter-spacing: 0px; }
-            35% { transform: scale(1.15); opacity: 1; letter-spacing: 2px; text-shadow: 0 0 10px rgba(0,200,255,0.5); }
-            55% { transform: scale(1.15); opacity: 0.4; letter-spacing: 2px; }
-            75% { transform: scale(0.92); opacity: 0.3; letter-spacing: 0px; }
-            100% { transform: scale(1); opacity: 1; letter-spacing: 0px; }
-        }
-        .hero-subtitle {
-            color: #8892b0;
-            font-size: 1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Section Headers */
-        .section-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        .section-subtitle {
-            color: #00c8ff;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
-            font-weight: 700;
-            background: linear-gradient(135deg, #ffffff, #a0a8b8);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        /* Job Cards */
-        .jobs-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 35px;
-            margin-bottom: 30px;
-        }
-        .job-card {
-            background: rgba(20, 22, 30, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 28px;
-            overflow: hidden;
-            transition: all 0.4s ease;
-        }
-        .job-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(0, 200, 255, 0.4);
-            box-shadow: 0 25px 40px rgba(0, 0, 0, 0.3);
-        }
-        .job-card-img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-        }
-        .job-card-content {
-            padding: 28px;
-        }
-        .job-card-icon {
-            font-size: 2.2rem;
-            margin-bottom: 15px;
-        }
-        .job-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            margin-bottom: 8px;
-        }
-        .job-card .commission {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #00ff88;
-            margin: 12px 0 8px;
-        }
-        .job-card .description {
-            color: #a0a8b8;
-            font-size: 0.85rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-        .btn-apply-card {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: linear-gradient(135deg, #00c8ff, #0077ff);
-            color: white;
-            padding: 12px 28px;
-            border-radius: 40px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.85rem;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-        .btn-apply-card:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 15px rgba(0, 200, 255, 0.3);
-        }
-
-        /* Payment Proofs */
-        .payment-swiper, .testimonial-swiper {
-            width: 100%;
-            padding: 20px 5px 40px;
-        }
-        .payment-slide {
-            background: rgba(20, 22, 30, 0.6);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            text-align: center;
-            padding: 15px;
-            transition: all 0.3s;
-        }
-        .payment-slide:hover {
-            border-color: rgba(0, 200, 255, 0.3);
-            transform: translateY(-5px);
-        }
-        .payment-slide img {
-            width: 100%;
-            height: 260px;
-            object-fit: cover;
-            border-radius: 16px;
-        }
-        .payment-amount {
-            margin-top: 14px;
-            font-weight: 700;
-            color: #00ff88;
-            font-size: 1rem;
-        }
-        .payment-person {
-            font-size: 0.75rem;
-            color: #8892b0;
-            margin-top: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        .payment-person img {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid #00c8ff;
-            box-shadow: 0 0 10px rgba(0, 200, 255, 0.3);
-        }
-
-        /* Testimonials */
-        .testimonial-slide {
-            background: rgba(20, 22, 30, 0.7);
-            border-radius: 24px;
-            padding: 28px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        .testimonial-stars {
-            color: #ffd700;
-            margin-bottom: 15px;
-            font-size: 0.9rem;
-        }
-        .testimonial-text {
-            color: #c0c8d8;
-            font-style: italic;
-            margin-bottom: 20px;
-            line-height: 1.6;
-            font-size: 0.9rem;
-        }
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .testimonial-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(0, 200, 255, 0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            color: #00c8ff;
-        }
-        .testimonial-name {
-            font-weight: 700;
-            font-size: 0.9rem;
-        }
-        .testimonial-location {
-            font-size: 0.7rem;
-            color: #8892b0;
-        }
-
-        /* Popup Modal */
-        .popup-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.92);
-            backdrop-filter: blur(12px);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-        }
-        .popup-modal.active {
-            display: flex;
-        }
-        .popup-content {
-            background: linear-gradient(135deg, #11131a, #0a0c10);
-            border: 1px solid rgba(0, 200, 255, 0.3);
-            border-radius: 32px;
-            padding: 40px 35px;
-            max-width: 550px;
-            width: 90%;
-            position: relative;
-            animation: slideUpBounce 0.4s cubic-bezier(0.34, 1.2, 0.64, 1);
-        }
-        @keyframes slideUpBounce {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        .popup-close {
-            position: absolute;
-            top: 20px;
-            right: 25px;
-            font-size: 1.8rem;
-            cursor: pointer;
-            color: #8892b0;
-            transition: 0.3s;
-        }
-        .popup-close:hover {
-            color: #00c8ff;
-            transform: rotate(90deg);
-        }
-        .popup-content h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            color: #00c8ff;
-        }
-        .popup-content > p {
-            color: #8892b0;
-            margin-bottom: 30px;
-            font-size: 0.9rem;
-        }
-        .popup-jobs {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-        }
-        .popup-job-card {
-            background: rgba(20, 22, 30, 0.8);
-            border: 1px solid rgba(0, 200, 255, 0.15);
-            border-radius: 20px;
-            padding: 20px;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-        .popup-job-card:hover {
-            border-color: #00c8ff;
-            transform: translateX(8px);
-            background: rgba(0, 200, 255, 0.05);
-        }
-        .popup-job-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 5px;
-        }
-        .popup-job-card .popup-commission {
-            color: #00ff88;
-            font-weight: 700;
-            font-size: 0.9rem;
-            margin-bottom: 8px;
-        }
-        .popup-job-card .popup-desc {
-            color: #a0a8b8;
-            font-size: 0.8rem;
-        }
-
-        /* Footer */
-        .footer {
-            padding: 50px 0 30px;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            margin-top: 20px;
-        }
-        .footer-logo {
-            height: 45px;
-            margin-bottom: 15px;
-        }
-        .footer p {
-            color: #5a6577;
-            font-size: 0.75rem;
-        }
-        .footer a {
-            color: #8892b0;
-            text-decoration: none;
-            transition: color 0.3s;
-            margin: 0 8px;
-        }
-        .footer a:hover {
-            color: #00c8ff;
-        }
-
-        @media (max-width: 768px) {
-            .jobs-grid {
-                grid-template-columns: 1fr;
-                gap: 25px;
-            }
-            .nav-menu {
-                gap: 20px;
-            }
-            .nav-link {
-                font-size: 0.8rem;
-            }
-            .animated-word {
-                font-size: 1.1rem;
-                padding: 6px 16px;
-            }
-            .hero {
-                padding: 50px 0 40px;
-            }
-            .payment-slide img {
-                height: 200px;
-            }
-            .popup-content {
-                padding: 30px 20px;
-            }
-            .popup-content h2 {
-                font-size: 1.4rem;
-            }
-            .payment-person img {
-                width: 28px;
-                height: 28px;
-            }
-        }
-    </style>
-</head>
-<body>
-
-<div class="bg-animation" id="bgAnimation"></div>
-
-<header class="header">
-    <div class="container">
-        <div class="logo-container">
-            <img src="https://i.ibb.co/QvMtFTVd/20260516-005119.png" alt="Pilot Sales Enterprise" class="logo-img">
-        </div>
-        <nav class="nav-menu">
-            <a href="index.html" class="nav-link active">HOME</a>
-            <button class="nav-link" id="applyNavBtn" style="background:none; border:none; cursor:pointer;">APPLY</button>
-            <a href="about.html" class="nav-link">ABOUT</a>
-            <a href="contact.html" class="nav-link">CONTACT</a>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="index.html" aria-label="Pilot Sales Enterprise home">
+          <img class="brand-logo" src="https://i.ibb.co/5h0YbLsv/IMG-20260515-WA0012.png" alt="">
+          <span class="brand-text">
+            <strong>Pilot Sales Enterprise</strong>
+            <small>Public role board</small>
+          </span>
+        </a>
+        <nav class="nav" aria-label="Main navigation">
+          <a class="active" href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a class="nav-cta" href="#positions">Apply</a>
         </nav>
-    </div>
-</header>
+      </div>
+    </header>
 
-<main>
-    <!-- Hero Section -->
-    <section class="hero">
+    <main>
+      <section class="hero image-hero">
         <div class="container">
-            <div class="hero-badge">
-                <i class="fas fa-bolt"></i> WE'RE HIRING
+          <div class="hero-copy">
+            <p class="eyebrow">Recruiting Now</p>
+            <h1>Commission-based sales tracks with simple onboarding.</h1>
+            <p class="lead">Pilot Sales Enterprise recruits remote commission sales reps for websites, compliant health insurance lead or appointment generation, barnacle removal, and solar panel bird proofing campaigns. Applicants start by joining WhatsApp, then filling out their information for review.</p>
+            <div class="hero-actions">
+              <a class="button" href="#positions">View Sales Tracks</a>
+              <a class="button secondary" href="#apply">How to Apply</a>
             </div>
-            <h1>Earn <span class="highlight">Commission</span><br>Working Remotely</h1>
-            <div class="animated-word-container">
-                <div class="animated-word" id="animatedWord">Home Loan Outreach</div>
+            <div class="hero-status-row" aria-label="Public recruiting summary">
+              <span class="tag green">Commission based</span>
+              <span class="tag blue">Remote eligible</span>
+              <span class="tag amber">WhatsApp onboarding</span>
             </div>
-            <p class="hero-subtitle">Choose the job that fits you best. Both are remote, flexible, and pay commission.</p>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <!-- Jobs Section -->
-    <section id="jobs" class="section">
+      <section class="section tight" aria-label="Quick facts">
+        <div class="container stats-grid">
+          <article class="fact-card">
+            <span>Sales Tracks</span>
+            <strong>4 categories</strong>
+          </article>
+          <article class="fact-card">
+            <span>Apply</span>
+            <strong>WhatsApp first</strong>
+          </article>
+          <article class="fact-card">
+            <span>Location</span>
+            <strong>Remote eligible</strong>
+          </article>
+          <article class="fact-card">
+            <span>Standards</span>
+            <strong>No spam or bots</strong>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="positions">
         <div class="container">
-            <div class="section-header">
-                <div class="section-subtitle">Our Positions</div>
-                <h2 class="section-title">Available Jobs</h2>
-            </div>
-            <div class="jobs-grid">
-                <!-- Job 1: Home Loan Outreach -->
-                <div class="job-card">
-                    <img src="https://images.pexels.com/photos/6646917/pexels-photo-6646917.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Home Loan Outreach" class="job-card-img">
-                    <div class="job-card-content">
-                        <div class="job-card-icon">🏠</div>
-                        <h3>Home Loan Outreach</h3>
-                        <div class="commission">💰 $1.50 per 10 clicks</div>
-                        <p class="description">Promote home loan services to individuals in Colorado, USA. Share your unique tracking link on social media. No experience needed. Weekly payments in crypto.</p>
-                        <a href="home-loan.html" class="btn-apply-card">
-                            <i class="fas fa-arrow-right"></i> View Job & Apply
-                        </a>
-                    </div>
-                </div>
+          <div class="section-head">
+            <p class="eyebrow">Commission-Based Sales</p>
+            <h2>Sales tracks we offer.</h2>
+            <p>Each track has its own campaign rules, payout terms, and qualification standards. Commissions depend on accepted leads, booked appointments, or closed sales according to the approved campaign instructions.</p>
+          </div>
 
-                <!-- Job 2: Website Seller -->
-                <div class="job-card">
-                    <img src="https://images.pexels.com/photos/177598/pexels-photo-177598.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Website Seller" class="job-card-img">
-                    <div class="job-card-content">
-                        <div class="job-card-icon">🌐</div>
-                        <h3>Website Seller</h3>
-                        <div class="commission">💰 $50 PER WEBSITE SOLD</div>
-                        <p class="description">Find businesses that need a website. Submit leads. We build the website. You get paid $50 for every successful sale. No experience required.</p>
-                        <a href="website-seller.html" class="btn-apply-card">
-                            <i class="fas fa-arrow-right"></i> View Job & Apply
-                        </a>
-                    </div>
+          <div class="sales-track-grid">
+            <article class="role-card">
+              <img src="https://images.pexels.com/photos/7688460/pexels-photo-7688460.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Small business owner reviewing a website">
+              <div class="role-body">
+                <p class="eyebrow">Websites</p>
+                <h3>Website Sales</h3>
+                <p>Find local businesses that need a new website, landing page, menu page, booking page, or online refresh. Reps focus on qualified interest, clean notes, and handoff after the business is ready to move forward.</p>
+                <ul class="track-list">
+                  <li>Best for local business outreach</li>
+                  <li>Commission follows a closed, accepted sale</li>
+                  <li>Requires accurate prospect notes</li>
+                </ul>
+                <div class="role-meta">
+                  <span class="tag green">$50 per closed website sale</span>
+                  <span class="tag">Remote</span>
+                  <span class="tag">Closed-sale based</span>
                 </div>
-            </div>
+                <div class="card-actions">
+                  <a class="button" href="website-seller.html">View Role</a>
+                  <a class="button secondary" href="#apply" data-apply-track="Website Sales">Choose Track</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="role-card">
+              <img src="https://images.pexels.com/photos/7089401/pexels-photo-7089401.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Health insurance paperwork and consultation">
+              <div class="role-body">
+                <p class="eyebrow">Insurance</p>
+                <h3>Health Insurance Lead Generation</h3>
+                <p>Help connect interested people with approved health insurance information, quote requests, or appointment follow-up. Any licensed insurance activity must be handled only by properly authorized people under the campaign rules.</p>
+                <ul class="track-list">
+                  <li>Best for compliant outreach</li>
+                  <li>Lead or appointment standards apply</li>
+                  <li>No policy advice unless authorized</li>
+                </ul>
+                <div class="role-meta">
+                  <span class="tag amber">Compliance required</span>
+                  <span class="tag">Lead or appointment based</span>
+                  <span class="tag">Rolling out</span>
+                </div>
+                <div class="card-actions">
+                  <a class="button secondary" href="#apply" data-apply-track="Health Insurance Lead Generation">Choose Track</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="role-card">
+              <img src="https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Boat hull at a marina">
+              <div class="role-body">
+                <p class="eyebrow">Marine Services</p>
+                <h3>Barnacle Removal Sales</h3>
+                <p>Reach boat owners, marinas, dock managers, and marine service customers who may need hull cleaning or barnacle removal. Reps qualify interest, capture service details, and pass clean notes to the service team.</p>
+                <ul class="track-list">
+                  <li>Best for marine service outreach</li>
+                  <li>Targets qualified service interest</li>
+                  <li>Requires location and boat details</li>
+                </ul>
+                <div class="role-meta">
+                  <span class="tag green">Service lead sales</span>
+                  <span class="tag">Local targeting</span>
+                  <span class="tag">Rolling out</span>
+                </div>
+                <div class="card-actions">
+                  <a class="button secondary" href="#apply" data-apply-track="Barnacle Removal Sales">Choose Track</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="role-card">
+              <img src="https://images.pexels.com/photos/9875441/pexels-photo-9875441.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Solar panels on a roof">
+              <div class="role-body">
+                <p class="eyebrow">Solar Services</p>
+                <h3>Solar Panel Bird Proofing Sales</h3>
+                <p>Find homeowners or property managers with solar panels who may need bird proofing, nesting prevention, or protective mesh installed around panel edges. Reps confirm the problem and route interested prospects for follow-up.</p>
+                <ul class="track-list">
+                  <li>Best for home service outreach</li>
+                  <li>Appointment quality matters</li>
+                  <li>Requires property and panel details</li>
+                </ul>
+                <div class="role-meta">
+                  <span class="tag green">Home service sales</span>
+                  <span class="tag">Appointment based</span>
+                  <span class="tag">Rolling out</span>
+                </div>
+                <div class="card-actions">
+                  <a class="button secondary" href="#apply" data-apply-track="Solar Panel Bird Proofing Sales">Choose Track</a>
+                </div>
+              </div>
+            </article>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <!-- Payment Proofs Gallery -->
-    <section class="section" style="background: rgba(0, 200, 255, 0.02);">
+      <section class="section">
         <div class="container">
-            <div class="section-header">
-                <div class="section-subtitle">Real Earnings</div>
-                <h2 class="section-title">Recent Payment Proofs</h2>
-                <p style="color: #8892b0;">Real members getting paid every day</p>
-            </div>
-            <div class="swiper payment-swiper" id="paymentSwiper">
-                <div class="swiper-wrapper">
-                    <!-- Payment Slide 1 -->
-                    <div class="swiper-slide payment-slide">
-                        <img src="https://i.ibb.co/tPkc92JN/48ca5e3ade8b145252c66f72739d348a.jpg" alt="Payment Proof">
-                        <div class="payment-amount">+ 0.13720797 BTC</div>
-                        <div class="payment-person">
-                            <img src="https://i.ibb.co/MyRfGNKx/bcd8d4d8302a5ba624e5832caa3738bc.jpg" alt="Member">
-                            <span>Sarah Johnson - Texas, USA</span>
-                        </div>
-                    </div>
-
-                    <!-- Payment Slide 2 -->
-                    <div class="swiper-slide payment-slide">
-                        <img src="https://i.ibb.co/fV5jKmJD/f9f76f516f20e5cb3d8146add9d7fa96.jpg" alt="Payment Proof">
-                        <div class="payment-amount">+ $5,997.58 USD</div>
-                        <div class="payment-person">
-                            <img src="https://i.ibb.co/XZNXJ03P/451606a21ab06742766d285ee461567e.jpg" alt="Member">
-                            <span>Michael Chen - California, USA</span>
-                        </div>
-                    </div>
-
-                    <!-- Payment Slide 3 -->
-                    <div class="swiper-slide payment-slide">
-                        <img src="https://i.ibb.co/JWwp7xm5/9ca2313b9c7a93361e683384c2d0edc5.jpg" alt="Payment Proof">
-                        <div class="payment-amount">+ 0.01212042 BTC</div>
-                        <div class="payment-person">
-                            <img src="https://i.ibb.co/v6pGKG8m/6a9d17646d9c55d128745269e4e37f0c.jpg" alt="Member">
-                            <span>David Williams - New York, USA</span>
-                        </div>
-                    </div>
-
-                    <!-- Payment Slide 4 -->
-                    <div class="swiper-slide payment-slide">
-                        <img src="https://i.ibb.co/4nBb6F7w/708dee53167330c8f80bfc41480b4930.jpg" alt="Payment Proof">
-                        <div class="payment-amount">+ $500 + $69.98 + $500</div>
-                        <div class="payment-person">
-                            <img src="https://i.ibb.co/bRgD07WX/56e1b37c9c2e5d7b6d7de581ee653883.jpg" alt="Member">
-                            <span>Maria Santos - Manila, Philippines</span>
-                        </div>
-                    </div>
-
-                    <!-- Payment Slide 5 -->
-                    <div class="swiper-slide payment-slide">
-                        <img src="https://i.ibb.co/h1MhLXcH/898400560befffdb582b18a2e0430abe.jpg" alt="Payment Proof">
-                        <div class="payment-amount">+ 0.1281206 BTC</div>
-                        <div class="payment-person">
-                            <img src="https://i.ibb.co/1fG6b3YH/1fc96e1619b913eade6eb6533f72cf83.jpg" alt="Member">
-                            <span>Robert Brown - Colorado, USA</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
+          <div class="section-head center">
+            <p class="eyebrow">How It Works</p>
+            <h2>A short process, built for clear expectations.</h2>
+          </div>
+          <div class="steps-grid">
+            <article class="step-card">
+              <h3>1. Join WhatsApp</h3>
+              <p>Join the public WhatsApp channel/group first so you can receive role updates and instructions.</p>
+            </article>
+            <article class="step-card">
+              <h3>2. Fill out information</h3>
+              <p>Submit your name, WhatsApp number, location, selected sales track, and any requested application details.</p>
+            </article>
+            <article class="step-card">
+              <h3>3. Wait for instructions</h3>
+              <p>The team reviews your information and shares campaign rules before you begin outreach.</p>
+            </article>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <!-- Testimonials Section -->
-    <section class="section">
+      <section class="section tight">
         <div class="container">
-            <div class="section-header">
-                <div class="section-subtitle">Success Stories</div>
-                <h2 class="section-title">What Our Members Say</h2>
-                <p style="color: #8892b0;">Real reviews from real people</p>
-            </div>
-            <div class="swiper testimonial-swiper" id="testimonialSwiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide testimonial-slide">
-                        <div class="testimonial-stars">★★★★★</div>
-                        <div class="testimonial-text">"I've been with Pilot Sales for 3 months now. I make $200-$300 every week just by sharing links on Facebook groups. Highly recommended!"</div>
-                        <div class="testimonial-author">
-                            <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
-                            <div><div class="testimonial-name">Maria Santos</div><div class="testimonial-location">📍 Manila, Philippines</div></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide testimonial-slide">
-                        <div class="testimonial-stars">★★★★★</div>
-                        <div class="testimonial-text">"This is legit! I received my first payment of $45 within my first week. The support team is very responsive."</div>
-                        <div class="testimonial-author">
-                            <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
-                            <div><div class="testimonial-name">James Thompson</div><div class="testimonial-location">📍 Denver, Colorado</div></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide testimonial-slide">
-                        <div class="testimonial-stars">★★★★★</div>
-                        <div class="testimonial-text">"I was skeptical at first but after receiving my first $150 payout, I knew this was real. Perfect side hustle!"</div>
-                        <div class="testimonial-author">
-                            <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
-                            <div><div class="testimonial-name">John Davis</div><div class="testimonial-location">📍 Houston, Texas</div></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide testimonial-slide">
-                        <div class="testimonial-stars">★★★★★</div>
-                        <div class="testimonial-text">"The website seller job is amazing. I sold 3 websites in my first month and made $150!"</div>
-                        <div class="testimonial-author">
-                            <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
-                            <div><div class="testimonial-name">Michael Brown</div><div class="testimonial-location">📍 Miami, Florida</div></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide testimonial-slide">
-                        <div class="testimonial-stars">★★★★★</div>
-                        <div class="testimonial-text">"Very easy to understand. The tracking system is transparent. I see my earnings in real-time."</div>
-                        <div class="testimonial-author">
-                            <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
-                            <div><div class="testimonial-name">Sarah Wilson</div><div class="testimonial-location">📍 Los Angeles, California</div></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
+          <div class="section-head">
+            <p class="eyebrow">Application Info</p>
+            <h2>What applicants should be ready to submit.</h2>
+            <p>The form is intentionally short. The team only needs enough information to understand who you are, where you are, and which commission sales track you want to start with.</p>
+          </div>
+          <div class="facts-grid">
+            <article class="fact-card">
+              <span>Contact</span>
+              <strong>Name and WhatsApp</strong>
+            </article>
+            <article class="fact-card">
+              <span>Location</span>
+              <strong>City and country</strong>
+            </article>
+            <article class="fact-card">
+              <span>Track</span>
+              <strong>Sales category</strong>
+            </article>
+            <article class="fact-card">
+              <span>Notes</span>
+              <strong>Experience or fit</strong>
+            </article>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <!-- CTA Section -->
-    <section class="section" style="text-align: center;">
+      <section class="section" id="rollout">
         <div class="container">
-            <div style="background: linear-gradient(135deg, rgba(0, 200, 255, 0.08), rgba(0, 119, 255, 0.05)); border-radius: 32px; padding: 50px 30px;">
-                <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 16px;">Ready to Start Earning?</h2>
-                <p style="color: #a0a8b8; max-width: 500px; margin: 0 auto 28px;">No fixed hours. No minimum quota. Work when you want, from anywhere.</p>
-                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                    <button class="btn-apply-card" id="ctaApplyBtn" style="background: linear-gradient(135deg, #00c8ff, #0077ff);">
-                        <i class="fas fa-paper-plane"></i> Apply Now
-                    </button>
-                    <a href="https://whatsapp.com/channel/0029Vb80vPW9RZAdW2E9hE1V" target="_blank" class="btn-apply-card" style="background: rgba(255,255,255,0.1);">
-                        <i class="fab fa-whatsapp"></i> Join Channel
-                    </a>
+          <div class="section-head">
+            <p class="eyebrow">Next Rollout</p>
+            <h2>Positions planned for the next couple months.</h2>
+            <p>These roles are not all open yet. They are listed so applicants can see where the team is headed as training, tracking, and internal systems are finalized.</p>
+          </div>
+
+          <div class="rollout-grid">
+            <article class="timeline-card">
+              <span>Status: Planned</span>
+              <strong>Appointment Setter</strong>
+              <p>Help qualify interested prospects and move them to a scheduled conversation.</p>
+            </article>
+            <article class="timeline-card">
+              <span>Status: Planned</span>
+              <strong>Lead Intake Assistant</strong>
+              <p>Review new submissions, organize contact details, and route leads to the right team member.</p>
+            </article>
+            <article class="timeline-card">
+              <span>Status: Planned</span>
+              <strong>Local Business Outreach Rep</strong>
+              <p>Contact restaurants, barbershops, service businesses, and local operators that need web support.</p>
+            </article>
+            <article class="timeline-card">
+              <span>Status: Recruiting Soon</span>
+              <strong>Sales Follow-Up Rep</strong>
+              <p>Follow up with warm leads, confirm interest, and keep conversations moving professionally.</p>
+            </article>
+            <article class="timeline-card">
+              <span>Status: Training Buildout</span>
+              <strong>Team Coordinator</strong>
+              <p>Support onboarding, answer basic questions, and help new reps understand the rules.</p>
+            </article>
+            <article class="timeline-card">
+              <span>Status: Future Track</span>
+              <strong>Project Intake Assistant</strong>
+              <p>Help collect project details after a sale so website work can start with clean information.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container split-grid">
+          <div class="section-head">
+            <p class="eyebrow">Public Standards</p>
+            <h2>Simple rules before anyone starts.</h2>
+            <p>We want the public site to be clear without publishing private operating details, private customer information, or team metrics.</p>
+          </div>
+          <div class="rules-grid">
+            <article class="rule-card">
+              <span>Allowed</span>
+              <p>Honest outreach, clear messaging, real prospects, and approved tracking links.</p>
+            </article>
+            <article class="rule-card">
+              <span>Rejected</span>
+              <p>Spam, bots, fake traffic, misleading financial claims, copied screenshots, or harassment.</p>
+            </article>
+            <article class="rule-card">
+              <span>Required</span>
+              <p>Applicants must follow role instructions and accept that this is commission-based contractor work.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section tight">
+        <div class="container muted-panel" id="apply">
+          <div class="apply-panel-grid">
+            <div>
+              <p class="eyebrow">Apply</p>
+              <h2>Join WhatsApp first, then send your application information.</h2>
+              <p>Use the channel/group for updates and instructions. After joining, submit your name, WhatsApp number, location, selected sales track, and a short note so the team can review your fit before any outreach starts.</p>
+              <div class="button-row">
+                <a class="button" href="https://whatsapp.com/channel/0029Vb80vPW9RZAdW2E9hE1V" target="_blank" rel="noopener">Join WhatsApp First</a>
+                <a class="button secondary" href="contact.html">Ask a Question</a>
+              </div>
+            </div>
+            <form class="mini-application" data-application-form data-default-track="">
+              <div class="form-success" data-form-success>
+                Application message ready. WhatsApp should open so you can send it.
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="home-name">Full name *</label>
+                  <input id="home-name" name="name" type="text" autocomplete="name" required placeholder="John Doe">
                 </div>
-                <p style="margin-top: 25px; font-size: 0.75rem; color: #5a6577;">Join over 1,200+ active members earning daily</p>
-            </div>
+                <div class="form-group">
+                  <label for="home-whatsapp">WhatsApp number *</label>
+                  <input id="home-whatsapp" name="whatsapp" type="tel" autocomplete="tel" required placeholder="+1 555 123 4567">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="home-location">Location *</label>
+                  <input id="home-location" name="location" type="text" autocomplete="address-level2" required placeholder="City, country">
+                </div>
+                <div class="form-group">
+                  <label for="home-track">Sales track *</label>
+                  <select id="home-track" name="track" required>
+                    <option value="">Select one</option>
+                    <option>Website Sales</option>
+                    <option>Health Insurance Lead Generation</option>
+                    <option>Barnacle Removal Sales</option>
+                    <option>Solar Panel Bird Proofing Sales</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="home-note">Short note</label>
+                <textarea id="home-note" name="note" rows="3" placeholder="Tell us your sales experience or why this track fits."></textarea>
+              </div>
+              <button class="button full" type="submit">Open WhatsApp Application</button>
+              <p class="form-note">Do not send passwords, banking logins, private account credentials, or unrelated documents.</p>
+            </form>
+          </div>
         </div>
-    </section>
-</main>
+      </section>
+    </main>
 
-<footer class="footer">
-    <div class="container">
-        <img src="https://i.ibb.co/5h0YbLsv/IMG-20260515-WA0012.png" alt="Pilot Sales Enterprise" class="footer-logo">
-        <p>&copy; 2025 Pilot Sales Enterprise. All rights reserved.</p>
-        <p style="margin-top: 10px;">
-    <a href="home-loan.html">Home Loan Job</a> | 
-    <a href="website-seller.html">Website Seller Job</a> | 
-    <a href="https://www.facebook.com/share/18YfeYC5cD/" target="_blank">Facebook</a> |
-    <a href="https://www.instagram.com/pilot.sales?igsh=MTM4cDVxZGE4bjN6MQ==" target="_blank">Instagram</a>
-</p>
-    </div>
-</footer>
-
-<!-- Popup Modal for Apply Button -->
-<div id="applyPopup" class="popup-modal">
-    <div class="popup-content">
-        <span class="popup-close" id="closePopup">&times;</span>
-        <h2>Select a Job</h2>
-        <p>Choose which position you want to apply for</p>
-        <div class="popup-jobs">
-            <div class="popup-job-card" id="popupHomeLoan">
-                <h3>🏠 Home Loan Outreach</h3>
-                <div class="popup-commission">💰 $1.50 per 10 USA clicks</div>
-                <div class="popup-desc">Promote home loan services. Share your tracking link. Weekly payments.</div>
-            </div>
-            <div class="popup-job-card" id="popupWebsiteSeller">
-                <h3>🌐 Website Seller</h3>
-                <div class="popup-commission">💰 $50 PER WEBSITE SOLD</div>
-                <div class="popup-desc">Find businesses needing websites. We build them. You get paid $50 per sale.</div>
-            </div>
+    <footer class="footer">
+      <div class="container footer-inner">
+        <p>Copyright 2026 Pilot Sales Enterprise. Commission-based contractor opportunities. No guaranteed earnings.</p>
+        <div class="footer-links">
+          <a href="website-seller.html">Website Seller</a>
+          <a href="https://www.facebook.com/share/18YfeYC5cD/" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.instagram.com/pilot.sales?igsh=MTM4cDVxZGE4bjN6MQ==" target="_blank" rel="noopener">Instagram</a>
         </div>
-    </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script>
-    // Background particles
-    const bgAnim = document.getElementById('bgAnimation');
-    for (let i = 0; i < 80; i++) {
-        const span = document.createElement('span');
-        const size = Math.random() * 5 + 2;
-        span.style.width = size + 'px';
-        span.style.height = size + 'px';
-        span.style.left = Math.random() * 100 + '%';
-        span.style.animationDuration = (Math.random() * 15 + 8) + 's';
-        span.style.animationDelay = Math.random() * 10 + 's';
-        bgAnim.appendChild(span);
-    }
-
-    // Zoom/Dim Word Animation Array
-    const words = [
-        "Home Loan Outreach",
-        "Website Seller",
-        "Commission Based Jobs",
-        "Remote Opportunities",
-        "$1.50 per 10 clicks",
-        "$50 per website sold"
-    ];
-    let wordIndex = 0;
-    const animatedWord = document.getElementById('animatedWord');
-    
-    function changeWord() {
-        animatedWord.style.animation = 'none';
-        setTimeout(() => {
-            wordIndex = (wordIndex + 1) % words.length;
-            animatedWord.textContent = words[wordIndex];
-            animatedWord.style.animation = 'zoomDimStrong 2.5s ease-in-out infinite';
-        }, 100);
-    }
-    setInterval(changeWord, 2800);
-
-    // Initialize Swipers
-    new Swiper('#paymentSwiper', {
-        slidesPerView: 1,
-        spaceBetween: 20,
-        loop: true,
-        autoplay: { delay: 2200, disableOnInteraction: false },
-        pagination: { el: '.swiper-pagination', clickable: true },
-        breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
-    });
-
-    new Swiper('#testimonialSwiper', {
-        slidesPerView: 1,
-        spaceBetween: 20,
-        loop: true,
-        autoplay: { delay: 3500, disableOnInteraction: false },
-        pagination: { el: '.swiper-pagination', clickable: true },
-        breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
-    });
-
-    // Popup Modal Logic
-    const popup = document.getElementById('applyPopup');
-    const closePopup = document.getElementById('closePopup');
-    const applyButtons = document.querySelectorAll('#applyNavBtn, #ctaApplyBtn');
-    const popupHomeLoan = document.getElementById('popupHomeLoan');
-    const popupWebsiteSeller = document.getElementById('popupWebsiteSeller');
-
-    function openPopup(e) {
-        if (e) e.preventDefault();
-        popup.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closePopupModal() {
-        popup.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-
-    applyButtons.forEach(btn => {
-        btn.addEventListener('click', openPopup);
-    });
-
-    closePopup.addEventListener('click', closePopupModal);
-    popup.addEventListener('click', (e) => {
-        if (e.target === popup) closePopupModal();
-    });
-
-    popupHomeLoan.addEventListener('click', () => {
-        window.location.href = 'home-loan.html';
-    });
-
-    popupWebsiteSeller.addEventListener('click', () => {
-        window.location.href = 'website-seller.html';
-    });
-</script>
-</body>
+      </div>
+    </footer>
+    <script src="app.js"></script>
+  </body>
 </html>
