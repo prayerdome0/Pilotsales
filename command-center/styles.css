@@ -234,7 +234,7 @@ svg {
   top: 0;
   z-index: 8;
   display: grid;
-  grid-template-columns: repeat(5, minmax(118px, 1fr)) minmax(230px, 0.9fr);
+  grid-template-columns: repeat(6, minmax(108px, 1fr)) minmax(230px, 0.9fr);
   gap: 8px;
   padding: 10px 28px;
   background: rgba(244, 246, 248, 0.92);
@@ -490,6 +490,205 @@ select:focus-visible {
 .command-status small {
   margin-top: 6px;
   line-height: 1.25;
+}
+
+.tunnel-shell {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.82fr) minmax(0, 1.18fr);
+  gap: 18px;
+  padding: 18px;
+}
+
+.tunnel-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.tunnel-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 10px 12px;
+  align-items: center;
+  min-width: 0;
+  padding: 13px;
+  color: var(--ink);
+  background: var(--panel-strong);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--teal);
+  border-radius: 8px;
+  text-align: left;
+}
+
+.tunnel-card.warning {
+  border-left-color: var(--amber);
+}
+
+.tunnel-card.selected {
+  background: #f7fbfb;
+  border-color: rgba(15, 118, 110, 0.42);
+  box-shadow: 0 10px 24px rgba(28, 42, 51, 0.08);
+}
+
+.tunnel-card .status-pill {
+  grid-row: span 2;
+}
+
+.tunnel-card-main,
+.tunnel-card-metric {
+  display: grid;
+  min-width: 0;
+  gap: 3px;
+}
+
+.tunnel-card-main strong,
+.tunnel-card-metric strong,
+.tunnel-card-main small,
+.tunnel-card-metric small {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tunnel-card-main strong {
+  font-size: 14px;
+}
+
+.tunnel-card-main small,
+.tunnel-card-metric small {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.tunnel-card-metric strong {
+  color: var(--teal);
+  font-size: 13px;
+}
+
+.tunnel-detail {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+  padding: 18px;
+  background: var(--panel-strong);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.tunnel-detail-head {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.tunnel-detail-head h3,
+.tunnel-detail-head p {
+  margin: 0;
+}
+
+.tunnel-detail-head h3 {
+  margin-top: 4px;
+  font-size: 24px;
+  line-height: 1.1;
+}
+
+.tunnel-detail-head p:last-child {
+  margin-top: 8px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.tunnel-owner-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 8px 12px;
+  align-items: center;
+  min-height: 46px;
+  padding: 10px 12px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.tunnel-owner-row span {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.tunnel-owner-row strong {
+  min-width: 0;
+  overflow: hidden;
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tunnel-analytics {
+  display: grid;
+  gap: 12px;
+}
+
+.tunnel-analytic {
+  display: grid;
+  gap: 7px;
+}
+
+.tunnel-analytic > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.tunnel-analytic strong {
+  color: var(--ink);
+}
+
+.tunnel-bar {
+  position: relative;
+  display: block;
+  height: 9px;
+  overflow: hidden;
+  background: #e9eef1;
+  border-radius: 999px;
+}
+
+.tunnel-bar span {
+  display: block;
+  width: var(--bar);
+  height: 100%;
+  background: var(--bar-color);
+  border-radius: inherit;
+}
+
+.tunnel-next {
+  display: grid;
+  gap: 8px;
+}
+
+.tunnel-next ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  line-height: 1.35;
+}
+
+.tunnel-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.tunnel-link {
+  width: 100%;
 }
 
 .action-filter-row {
@@ -1831,6 +2030,7 @@ select:focus-visible {
   .dashboard-grid,
   .bottom-grid,
   .bot-grid,
+  .tunnel-shell,
   .visualizer-layout {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -1913,6 +2113,7 @@ select:focus-visible {
   }
 
   .visualizer-layout,
+  .tunnel-shell,
   .preview-grid {
     padding: 16px;
   }
@@ -1976,9 +2177,15 @@ select:focus-visible {
   .command-status-grid,
   .metric-grid,
   .preview-grid,
+  .tunnel-links,
+  .tunnel-owner-row,
   .resource-rings,
   .detail-facts,
   .server-form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .tunnel-detail-head {
     grid-template-columns: minmax(0, 1fr);
   }
 

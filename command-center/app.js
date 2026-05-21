@@ -356,7 +356,184 @@ const rootActions = [
   }
 ];
 
+const operationTunnels = [
+  {
+    id: "sales-recruiting",
+    name: "Sales Recruiting",
+    lane: "Applicant pipeline",
+    state: "Active",
+    tone: "running",
+    owner: "Riley",
+    metric: "64 applicants",
+    meta: "18 interviews set",
+    summary: "Applicant intake, screening, interviews, and onboarding movement for commission sales reps.",
+    analytics: [
+      ["Applicant intake", 64, 70, "var(--teal)"],
+      ["Screened", 42, 64, "var(--blue)"],
+      ["Interviewing", 25, 42, "var(--amber)"],
+      ["Offers", 9, 25, "var(--green)"]
+    ],
+    next: ["Screen new WhatsApp applicants", "Confirm interview slots", "Route accepted reps into onboarding"],
+    programs: ["status-reporter", "dashboard-auto-recorder"],
+    records: ["applicant-tracker", "google-intake"]
+  },
+  {
+    id: "website-sales",
+    name: "Website Sales",
+    lane: "Website build offers",
+    state: "Active",
+    tone: "running",
+    owner: "Jordan",
+    metric: "$42.1K booked",
+    meta: "37 closed deals",
+    summary: "Lead handling, proposals, follow-ups, and rep performance for website offer campaigns.",
+    analytics: [
+      ["New leads", 46, 60, "var(--teal)"],
+      ["Demos", 28, 46, "var(--blue)"],
+      ["Proposals", 17, 28, "var(--amber)"],
+      ["Closing", 9, 17, "var(--rose)"]
+    ],
+    next: ["Follow up open proposals", "Review rep close rate", "Keep pricing and offer notes current"],
+    programs: ["status-reporter"],
+    records: ["operations-tracker", "google-intake"]
+  },
+  {
+    id: "health-insurance",
+    name: "Health Insurance Leads",
+    lane: "Compliant appointments",
+    state: "Scoped",
+    tone: "warning",
+    owner: "Casey",
+    metric: "Compliance first",
+    meta: "scripts and routing pending",
+    summary: "Qualified lead or appointment generation only after compliance rules and approved scripts are clear.",
+    analytics: [
+      ["Script approved", 35, 100, "var(--amber)"],
+      ["Source review", 50, 100, "var(--blue)"],
+      ["Rep readiness", 30, 100, "var(--teal)"]
+    ],
+    next: ["Confirm approved language", "Define allowed lead sources", "Add compliance checkpoint to tracker"],
+    programs: ["bot-improvement-manager"],
+    records: ["operations-tracker", "change-log"]
+  },
+  {
+    id: "barnacle-removal",
+    name: "Barnacle Removal",
+    lane: "Local service campaign",
+    state: "Building",
+    tone: "warning",
+    owner: "Morgan",
+    metric: "Offer setup",
+    meta: "market list needed",
+    summary: "Territory, customer routing, call notes, and partner capacity for barnacle removal demand.",
+    analytics: [
+      ["Market list", 45, 100, "var(--teal)"],
+      ["Partner capacity", 30, 100, "var(--amber)"],
+      ["Follow-up queue", 60, 100, "var(--blue)"]
+    ],
+    next: ["Confirm service areas", "Load partner capacity", "Add local follow-up tags"],
+    programs: ["dashboard-auto-recorder"],
+    records: ["operations-tracker"]
+  },
+  {
+    id: "solar-bird-proofing",
+    name: "Solar Bird Proofing",
+    lane: "Home-service leads",
+    state: "Building",
+    tone: "running",
+    owner: "Avery",
+    metric: "4 markets",
+    meta: "Phoenix, Dallas, Tampa, Atlanta",
+    summary: "Solar-panel bird proofing demand, market coverage, rep scripts, and partner handoff status.",
+    analytics: [
+      ["Market coverage", 4, 6, "var(--teal)"],
+      ["Lead quality", 72, 100, "var(--green)"],
+      ["Partner handoff", 58, 100, "var(--blue)"]
+    ],
+    next: ["Review city-level demand", "Tighten partner handoff checklist", "Track booked consultations"],
+    programs: ["status-reporter"],
+    records: ["operations-tracker", "google-intake"]
+  },
+  {
+    id: "youtube-media",
+    name: "YouTube Media",
+    lane: "Shorts and publishing",
+    state: "Gated",
+    tone: "warning",
+    owner: "Ada",
+    metric: "3 bots linked",
+    meta: "owner approval required",
+    summary: "Shorts prep, package review, publishing readiness, and public-release approvals.",
+    analytics: [
+      ["Package prep", 85, 100, "var(--green)"],
+      ["Review queue", 70, 100, "var(--teal)"],
+      ["Publishing gate", 20, 100, "var(--amber)"]
+    ],
+    next: ["Finish owner approval", "Review first private upload", "Keep release log current"],
+    programs: ["youtube-shorts-prep", "youtube-bot-watchdog", "youtube-publisher"],
+    records: ["operations-tracker", "change-log"]
+  },
+  {
+    id: "surplus-funds",
+    name: "Surplus Funds Research",
+    lane: "Official-source checks",
+    state: "Research",
+    tone: "warning",
+    owner: "Boyle",
+    metric: "Source sweeps",
+    meta: "permitted-use gate",
+    summary: "County source discovery and evidence notes before any lead handling or outreach.",
+    analytics: [
+      ["Source discovery", 68, 100, "var(--teal)"],
+      ["Amount parsing", 54, 100, "var(--blue)"],
+      ["Use approval", 25, 100, "var(--amber)"]
+    ],
+    next: ["Record permitted-use decision", "Keep evidence notes with source links", "Block outreach until approved"],
+    programs: ["real-estate-surplus-monitor"],
+    records: ["operations-tracker", "change-log"]
+  },
+  {
+    id: "sports-research",
+    name: "Sports Research Monitor",
+    lane: "Read-only scan",
+    state: "Gated",
+    tone: "warning",
+    owner: "Erdos",
+    metric: "Read-only",
+    meta: "scope approval required",
+    summary: "Monitoring and alert routing only after source, jurisdiction, and compliance scope are approved.",
+    analytics: [
+      ["Source scope", 45, 100, "var(--blue)"],
+      ["Compliance gate", 20, 100, "var(--amber)"],
+      ["Alert route", 35, 100, "var(--teal)"]
+    ],
+    next: ["Approve allowed sources", "Confirm jurisdiction boundaries", "Keep action-taking disabled"],
+    programs: ["sports-arbitrage-monitor"],
+    records: ["operations-tracker", "change-log"]
+  },
+  {
+    id: "bot-ops",
+    name: "VPS Bot Operations",
+    lane: "Dashboard and automation",
+    state: "Active",
+    tone: "running",
+    owner: "Status",
+    metric: "8 bots",
+    meta: "5 live VPS instances",
+    summary: "Bot health, fleet state, dashboard snapshots, records, and improvement queue ownership.",
+    analytics: [
+      ["Bots enabled", 8, 8, "var(--green)"],
+      ["Live VPS", 4, 5, "var(--teal)"],
+      ["Warning lanes", 4, 8, "var(--amber)"]
+    ],
+    next: ["Watch warning lanes", "Keep dashboard source versioned", "Review improvement queue"],
+    programs: ["dashboard-auto-recorder", "status-reporter", "bot-improvement-manager"],
+    records: ["operations-tracker", "change-log"]
+  }
+];
+
 let activeActionFilter = "all";
+let selectedOperationId = operationTunnels[0].id;
 
 const regionLayout = {
   "New York": { x: 18, y: 37 },
@@ -379,6 +556,9 @@ let logs = [
 const elements = {
   commandSummary: document.querySelector("#commandSummary"),
   commandStatusGrid: document.querySelector("#commandStatusGrid"),
+  operationSummary: document.querySelector("#operationSummary"),
+  operationTunnelGrid: document.querySelector("#operationTunnelGrid"),
+  operationTunnelDetail: document.querySelector("#operationTunnelDetail"),
   rootActionSummary: document.querySelector("#rootActionSummary"),
   rootActionGrid: document.querySelector("#rootActionGrid"),
   flowStrip: document.querySelector("#flowStrip"),
@@ -490,6 +670,10 @@ function actionStatusLabel(status) {
   return status === "now" ? "Now" : status === "next" ? "Next" : "Gated";
 }
 
+function selectedOperation() {
+  return operationTunnels.find((operation) => operation.id === selectedOperationId) || operationTunnels[0];
+}
+
 function renderCommandOverview() {
   const liveServers = servers.filter((server) => server.status !== "stopped").length;
   const enabledBots = bots.filter((bot) => bot.enabled).length;
@@ -498,13 +682,19 @@ function renderCommandOverview() {
   const gatedActions = rootActions.filter((action) => action.status === "gated").length;
 
   elements.commandSummary.textContent =
-    `${enabledBots} VPS programs are enabled, ${liveServers} servers are online, and ${nowActions} root actions need owner movement before the next review.`;
+    `Start with one of ${operationTunnels.length} operation tunnels. Each tunnel keeps its own analytics, records, bots, and owner actions off the front page until you open it.`;
 
   const statusItems = [
     {
-      label: "Bot Control",
+      label: "Operations",
+      value: String(operationTunnels.length),
+      meta: "available tunnels",
+      tone: "running"
+    },
+    {
+      label: "Bot Ops",
       value: `${enabledBots}/${bots.length}`,
-      meta: "programs enabled",
+      meta: "bots enabled",
       tone: warningPrograms ? "warning" : "running"
     },
     {
@@ -515,15 +705,9 @@ function renderCommandOverview() {
     },
     {
       label: "Attention",
-      value: String(warningPrograms),
-      meta: "programs gated or partial",
+      value: String(nowActions + gatedActions),
+      meta: "owner actions",
       tone: warningPrograms ? "warning" : "running"
-    },
-    {
-      label: "Approval Gates",
-      value: String(gatedActions),
-      meta: "manual decisions required",
-      tone: gatedActions ? "warning" : "running"
     }
   ];
 
@@ -538,6 +722,88 @@ function renderCommandOverview() {
       `
     )
     .join("");
+}
+
+function renderOperationTunnels() {
+  const operation = selectedOperation();
+  elements.operationSummary.textContent = `${operationTunnels.length} tunnels - ${operation.name}`;
+
+  elements.operationTunnelGrid.innerHTML = operationTunnels
+    .map(
+      (item) => `
+        <button class="tunnel-card ${item.tone}${item.id === operation.id ? " selected" : ""}" type="button" data-operation-id="${item.id}" aria-pressed="${item.id === operation.id}">
+          <span class="status-pill ${item.tone}">${item.state}</span>
+          <span class="tunnel-card-main">
+            <strong>${item.name}</strong>
+            <small>${item.lane}</small>
+          </span>
+          <span class="tunnel-card-metric">
+            <strong>${item.metric}</strong>
+            <small>${item.meta}</small>
+          </span>
+        </button>
+      `
+    )
+    .join("");
+
+  const analytics = operation.analytics
+    .map(([label, value, total, color]) => {
+      const percent = Math.max(4, Math.min(100, Math.round((value / total) * 100)));
+      return `
+        <div class="tunnel-analytic">
+          <div>
+            <span>${label}</span>
+            <strong>${value}/${total}</strong>
+          </div>
+          <span class="tunnel-bar" style="--bar: ${percent}%; --bar-color: ${color}"><span></span></span>
+        </div>
+      `;
+    })
+    .join("");
+
+  const programButtons = operation.programs
+    .map((programId) => allPrograms().find((program) => program.id === programId))
+    .filter(Boolean)
+    .map(
+      (program) =>
+        `<button class="secondary-button tunnel-link" type="button" data-program-id="${program.id}">${program.name}</button>`
+    )
+    .join("");
+
+  const recordButtons = operation.records
+    .map((recordId) => previewRecords.find((record) => record.id === recordId))
+    .filter(Boolean)
+    .map(
+      (record) =>
+        `<button class="secondary-button tunnel-link" type="button" data-preview-id="${record.id}">${record.title}</button>`
+    )
+    .join("");
+
+  elements.operationTunnelDetail.innerHTML = `
+    <div class="tunnel-detail-head">
+      <span class="status-pill ${operation.tone}">${operation.state}</span>
+      <div>
+        <p class="eyebrow">${operation.lane}</p>
+        <h3>${operation.name}</h3>
+        <p>${operation.summary}</p>
+      </div>
+    </div>
+    <div class="tunnel-owner-row">
+      <span>Owner</span>
+      <strong>${operation.owner}</strong>
+      <span>Primary signal</span>
+      <strong>${operation.metric}</strong>
+    </div>
+    <div class="tunnel-analytics">${analytics}</div>
+    <div class="tunnel-next">
+      <p class="eyebrow">Next Moves</p>
+      <ul>${operation.next.map((item) => `<li>${item}</li>`).join("")}</ul>
+    </div>
+    <div class="tunnel-links">
+      ${programButtons}
+      ${recordButtons}
+    </div>
+  `;
 }
 
 function renderRootActions() {
@@ -736,14 +1002,13 @@ function selectedProgram() {
 }
 
 function renderFlow() {
-  const program = selectedProgram();
-  const status = programStatus(program);
+  const operation = selectedOperation();
 
   elements.flowContext.innerHTML = `
-    <span class="status-pill ${status}">${status}</span>
+    <span class="status-pill ${operation.tone}">${operation.state}</span>
     <span>
-      <strong>${program.name}</strong>
-      <small>${program.gate}</small>
+      <strong>${operation.name}</strong>
+      <small>${operation.summary}</small>
     </span>
   `;
 }
@@ -752,6 +1017,18 @@ function setActiveFlowTarget(target) {
   document.querySelectorAll("[data-flow-target]").forEach((step) => {
     step.classList.toggle("active", step.dataset.flowTarget === target);
   });
+}
+
+function selectOperation(id, scrollToTunnel = false) {
+  if (!operationTunnels.some((operation) => operation.id === id)) return;
+  selectedOperationId = id;
+  renderOperationTunnels();
+  renderFlow();
+  setActiveFlowTarget("#operationTunnels");
+
+  if (scrollToTunnel) {
+    document.querySelector("#operationTunnels").scrollIntoView({ behavior: "smooth", block: "start" });
+  }
 }
 
 function selectProgram(id, scrollToVisualizer = false) {
@@ -1009,6 +1286,7 @@ function updateTimestamp() {
 
 function renderAll() {
   renderCommandOverview();
+  renderOperationTunnels();
   renderRootActions();
   renderMetrics();
   renderServers();
@@ -1200,6 +1478,24 @@ elements.botMap.addEventListener("click", (event) => {
   const node = event.target.closest("[data-program-id]");
   if (!node) return;
   selectProgram(node.dataset.programId);
+});
+
+elements.operationTunnelGrid.addEventListener("click", (event) => {
+  const card = event.target.closest("[data-operation-id]");
+  if (!card) return;
+  selectOperation(card.dataset.operationId);
+});
+
+elements.operationTunnelDetail.addEventListener("click", (event) => {
+  const previewButton = event.target.closest("[data-preview-id]");
+  if (previewButton) {
+    openPreview(previewButton.dataset.previewId);
+    return;
+  }
+
+  const programButton = event.target.closest("[data-program-id]");
+  if (!programButton) return;
+  selectProgram(programButton.dataset.programId, true);
 });
 
 elements.rootActionGrid.addEventListener("click", (event) => {

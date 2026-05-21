@@ -65,6 +65,10 @@
             <svg><use href="#icon-grid"></use></svg>
             <span>Command</span>
           </a>
+          <a class="nav-item" href="#operationTunnels">
+            <svg><use href="#icon-chart"></use></svg>
+            <span>Tunnels</span>
+          </a>
           <a class="nav-item" href="#rootActions">
             <svg><use href="#icon-shield"></use></svg>
             <span>Actions</span>
@@ -103,7 +107,7 @@
           <div>
             <p class="eyebrow">Operations Command Center</p>
             <h1>PSE Command Center</h1>
-            <p class="topbar-summary">Priorities, bot health, VPS fleet state, and in-browser records in one place.</p>
+            <p class="topbar-summary">A lighter front page for opening the right PSE operation, then drilling into its charts, records, bots, and owner actions.</p>
           </div>
           <div class="topbar-actions">
             <button class="secondary-button topbar-link" id="visualizerButton" type="button">
@@ -123,7 +127,11 @@
         <nav class="flow-strip" id="flowStrip" aria-label="Command flow">
           <button class="flow-step active" type="button" data-flow-target="#overview">
             <span>Command</span>
-            <strong>Operating picture</strong>
+            <strong>At a glance</strong>
+          </button>
+          <button class="flow-step" type="button" data-flow-target="#operationTunnels">
+            <span>Tunnels</span>
+            <strong>Operations</strong>
           </button>
           <button class="flow-step" type="button" data-flow-target="#instances">
             <span>Dashboard</span>
@@ -148,10 +156,24 @@
           <section class="command-overview panel" aria-label="Command overview">
             <div class="command-copy">
               <p class="eyebrow">Overview</p>
-              <h2>Operating Picture</h2>
+              <h2>At A Glance</h2>
               <p id="commandSummary">Loading command state...</p>
             </div>
             <div class="command-status-grid" id="commandStatusGrid"></div>
+          </section>
+
+          <section class="operation-tunnels panel" id="operationTunnels" aria-label="PSE operation tunnels">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Operations</p>
+                <h2>Tunnels</h2>
+              </div>
+              <span id="operationSummary" class="timestamp">0 operations</span>
+            </div>
+            <div class="tunnel-shell">
+              <div class="tunnel-grid" id="operationTunnelGrid"></div>
+              <aside class="tunnel-detail" id="operationTunnelDetail" aria-live="polite"></aside>
+            </div>
           </section>
 
           <section class="root-actions panel" id="rootActions" aria-label="Root action board">
