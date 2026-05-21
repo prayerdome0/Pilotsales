@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <title>PSE Operations Command Center</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <svg class="icon-sprite" aria-hidden="true">
+      <symbol id="icon-server" viewBox="0 0 24 24">
+        <path d="M4 5.75A1.75 1.75 0 0 1 5.75 4h12.5A1.75 1.75 0 0 1 20 5.75v4.5A1.75 1.75 0 0 1 18.25 12H5.75A1.75 1.75 0 0 1 4 10.25v-4.5Zm1.5 0v4.5c0 .14.11.25.25.25h12.5c.14 0 .25-.11.25-.25v-4.5a.25.25 0 0 0-.25-.25H5.75a.25.25 0 0 0-.25.25Zm.25 6.75h12.5A1.75 1.75 0 0 1 20 14.25v4A1.75 1.75 0 0 1 18.25 20H5.75A1.75 1.75 0 0 1 4 18.25v-4a1.75 1.75 0 0 1 1.75-1.75Zm0 1.5a.25.25 0 0 0-.25.25v4c0 .14.11.25.25.25h12.5c.14 0 .25-.11.25-.25v-4a.25.25 0 0 0-.25-.25H5.75ZM7 8a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm0 8.25a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z"/>
+      </symbol>
+      <symbol id="icon-grid" viewBox="0 0 24 24">
+        <path d="M4 5.75A1.75 1.75 0 0 1 5.75 4h4.5A1.75 1.75 0 0 1 12 5.75v4.5A1.75 1.75 0 0 1 10.25 12h-4.5A1.75 1.75 0 0 1 4 10.25v-4.5Zm1.75-.25a.25.25 0 0 0-.25.25v4.5c0 .14.11.25.25.25h4.5c.14 0 .25-.11.25-.25v-4.5a.25.25 0 0 0-.25-.25h-4.5ZM13 5.75A1.75 1.75 0 0 1 14.75 4h3.5A1.75 1.75 0 0 1 20 5.75v4.5A1.75 1.75 0 0 1 18.25 12h-3.5A1.75 1.75 0 0 1 13 10.25v-4.5Zm1.75-.25a.25.25 0 0 0-.25.25v4.5c0 .14.11.25.25.25h3.5c.14 0 .25-.11.25-.25v-4.5a.25.25 0 0 0-.25-.25h-3.5ZM4 14.75A1.75 1.75 0 0 1 5.75 13h4.5A1.75 1.75 0 0 1 12 14.75v3.5A1.75 1.75 0 0 1 10.25 20h-4.5A1.75 1.75 0 0 1 4 18.25v-3.5Zm1.75-.25a.25.25 0 0 0-.25.25v3.5c0 .14.11.25.25.25h4.5c.14 0 .25-.11.25-.25v-3.5a.25.25 0 0 0-.25-.25h-4.5ZM13 14.75A1.75 1.75 0 0 1 14.75 13h3.5A1.75 1.75 0 0 1 20 14.75v3.5A1.75 1.75 0 0 1 18.25 20h-3.5A1.75 1.75 0 0 1 13 18.25v-3.5Zm1.75-.25a.25.25 0 0 0-.25.25v3.5c0 .14.11.25.25.25h3.5c.14 0 .25-.11.25-.25v-3.5a.25.25 0 0 0-.25-.25h-3.5Z"/>
+      </symbol>
+      <symbol id="icon-chart" viewBox="0 0 24 24">
+        <path d="M4.75 4c.41 0 .75.34.75.75v13.5c0 .14.11.25.25.25h13.5a.75.75 0 0 1 0 1.5H5.75A1.75 1.75 0 0 1 4 18.25V4.75c0-.41.34-.75.75-.75Zm13.83 4.12c.27.31.23.79-.08 1.06l-4.64 3.98a1.75 1.75 0 0 1-2.27.02l-2.2-1.84a.25.25 0 0 0-.32 0l-1.59 1.36a.75.75 0 1 1-.98-1.14l1.59-1.36a1.75 1.75 0 0 1 2.26-.02l2.2 1.84c.1.08.24.08.33 0l4.64-3.98c.31-.27.79-.24 1.06.08Z"/>
+      </symbol>
+      <symbol id="icon-shield" viewBox="0 0 24 24">
+        <path d="M11.47 3.11a1.75 1.75 0 0 1 1.06 0l6 1.92A1.75 1.75 0 0 1 19.75 6.7v4.12c0 4.15-2.42 7.92-6.2 9.65l-.82.38a1.75 1.75 0 0 1-1.46 0l-.82-.38a10.6 10.6 0 0 1-6.2-9.65V6.7c0-.76.49-1.43 1.22-1.67l6-1.92Zm.6 1.43a.25.25 0 0 0-.14 0l-6 1.92a.25.25 0 0 0-.18.24v4.12c0 3.57 2.08 6.81 5.33 8.31l.82.38c.06.03.14.03.2 0l.82-.38a9.1 9.1 0 0 0 5.33-8.31V6.7a.25.25 0 0 0-.18-.24l-6-1.92Zm3.46 4.93c.29.29.29.77 0 1.06l-4 4a.75.75 0 0 1-1.06 0l-2-2a.75.75 0 1 1 1.06-1.06L11 12.94l3.47-3.47c.29-.29.77-.29 1.06 0Z"/>
+      </symbol>
+      <symbol id="icon-wallet" viewBox="0 0 24 24">
+        <path d="M5.75 5A2.75 2.75 0 0 0 3 7.75v8.5A2.75 2.75 0 0 0 5.75 19h12.5A2.75 2.75 0 0 0 21 16.25v-6.5A2.75 2.75 0 0 0 18.25 7H5.75a.75.75 0 0 1 0-1.5h11.5a.75.75 0 0 0 0-1.5H5.75Zm0 3.5h12.5c.69 0 1.25.56 1.25 1.25v6.5c0 .69-.56 1.25-1.25 1.25H5.75c-.69 0-1.25-.56-1.25-1.25V8.38c.38.08.77.12 1.25.12ZM16.5 13a1.25 1.25 0 1 1 2.5 0 1.25 1.25 0 0 1-2.5 0Z"/>
+      </symbol>
+      <symbol id="icon-refresh" viewBox="0 0 24 24">
+        <path d="M18.08 6.32A8.5 8.5 0 0 0 4 12.75a.75.75 0 0 1-1.5 0 10 10 0 0 1 16.41-7.67V3.75a.75.75 0 0 1 1.5 0v3.5c0 .41-.34.75-.75.75h-3.5a.75.75 0 0 1 0-1.5h1.48l.44-.18ZM20.75 10.5c.41 0 .75.34.75.75A10 10 0 0 1 5.09 18.92v1.33a.75.75 0 0 1-1.5 0v-3.5c0-.41.34-.75.75-.75h3.5a.75.75 0 0 1 0 1.5H6.36l-.44.18A8.5 8.5 0 0 0 20 11.25c0-.41.34-.75.75-.75Z"/>
+      </symbol>
+      <symbol id="icon-plus" viewBox="0 0 24 24">
+        <path d="M12 4c.41 0 .75.34.75.75v6.5h6.5a.75.75 0 0 1 0 1.5h-6.5v6.5a.75.75 0 0 1-1.5 0v-6.5h-6.5a.75.75 0 0 1 0-1.5h6.5v-6.5c0-.41.34-.75.75-.75Z"/>
+      </symbol>
+      <symbol id="icon-search" viewBox="0 0 24 24">
+        <path d="M10.5 4a6.5 6.5 0 0 1 5.16 10.45l4.45 4.44a.75.75 0 1 1-1.06 1.06l-4.44-4.45A6.5 6.5 0 1 1 10.5 4Zm0 1.5a5 5 0 1 0 0 10 5 5 0 0 0 0-10Z"/>
+      </symbol>
+      <symbol id="icon-terminal" viewBox="0 0 24 24">
+        <path d="M5.75 5.5c-.69 0-1.25.56-1.25 1.25v10.5c0 .69.56 1.25 1.25 1.25h12.5c.69 0 1.25-.56 1.25-1.25V6.75c0-.69-.56-1.25-1.25-1.25H5.75ZM3 6.75A2.75 2.75 0 0 1 5.75 4h12.5A2.75 2.75 0 0 1 21 6.75v10.5A2.75 2.75 0 0 1 18.25 20H5.75A2.75 2.75 0 0 1 3 17.25V6.75Zm4.97 3.22c.29-.29.77-.29 1.06 0l2 2c.29.29.29.77 0 1.06l-2 2a.75.75 0 0 1-1.06-1.06L9.44 12l-1.47-1.47a.75.75 0 0 1 0-1.06Zm4.28 4.53h3.5a.75.75 0 0 1 0 1.5h-3.5a.75.75 0 0 1 0-1.5Z"/>
+      </symbol>
+      <symbol id="icon-power" viewBox="0 0 24 24">
+        <path d="M12 3.25c.41 0 .75.34.75.75v8a.75.75 0 0 1-1.5 0V4c0-.41.34-.75.75-.75ZM7.66 6.8a.75.75 0 0 1-.16 1.05 6.49 6.49 0 1 0 9 0 .75.75 0 0 1 .89-1.21 7.99 7.99 0 1 1-10.91 2.1.75.75 0 0 1 1.18-1.94Z"/>
+      </symbol>
+      <symbol id="icon-copy" viewBox="0 0 24 24">
+        <path d="M8.75 4A2.75 2.75 0 0 0 6 6.75V8H5.75A2.75 2.75 0 0 0 3 10.75v7.5A2.75 2.75 0 0 0 5.75 21h7.5A2.75 2.75 0 0 0 16 18.25V18h1.25A2.75 2.75 0 0 0 20 15.25v-8.5A2.75 2.75 0 0 0 17.25 4h-8.5Zm6.75 12.5v-5.75c0-.69-.56-1.25-1.25-1.25H7.5V6.75c0-.69.56-1.25 1.25-1.25h8.5c.69 0 1.25.56 1.25 1.25v8.5c0 .69-.56 1.25-1.25 1.25H15.5Zm-9.75-7h8.5c.69 0 1.25.56 1.25 1.25v7.5c0 .69-.56 1.25-1.25 1.25h-8.5c-.69 0-1.25-.56-1.25-1.25v-7.5c0-.69.56-1.25 1.25-1.25Z"/>
+      </symbol>
+      <symbol id="icon-more" viewBox="0 0 24 24">
+        <path d="M6.5 10.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5Zm5.5 0a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5Zm5.5 0a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5Z"/>
+      </symbol>
+      <symbol id="icon-close" viewBox="0 0 24 24">
+        <path d="M6.47 6.47c.29-.29.77-.29 1.06 0L12 10.94l4.47-4.47a.75.75 0 1 1 1.06 1.06L13.06 12l4.47 4.47a.75.75 0 1 1-1.06 1.06L12 13.06l-4.47 4.47a.75.75 0 1 1-1.06-1.06L10.94 12 6.47 7.53a.75.75 0 0 1 0-1.06Z"/>
+      </symbol>
+      <symbol id="icon-cloud" viewBox="0 0 24 24">
+        <path d="M9.6 6.7a5.25 5.25 0 0 1 9.82 2.16A4.75 4.75 0 0 1 18.75 18h-12a4.75 4.75 0 0 1-.97-9.4A4.75 4.75 0 0 1 9.6 6.7Zm4.4-.2a3.75 3.75 0 0 0-3.3 1.97.75.75 0 0 1-.68.39 3.25 3.25 0 0 0-3.05 4.37.75.75 0 0 1-.64 1.01A3.25 3.25 0 0 0 6.75 16.5h12a3.25 3.25 0 0 0-.2-6.49.75.75 0 0 1-.72-.66A3.75 3.75 0 0 0 14 6.5Z"/>
+      </symbol>
+    </svg>
+
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Primary">
+        <a class="brand" href="#overview" aria-label="PSE Operations Command Center">
+          <span class="brand-mark"><svg><use href="#icon-cloud"></use></svg></span>
+          <span>PSE Ops</span>
+        </a>
+
+        <nav class="nav-list">
+          <a class="nav-item active" href="#overview">
+            <svg><use href="#icon-grid"></use></svg>
+            <span>Command</span>
+          </a>
+          <a class="nav-item" href="#rootActions">
+            <svg><use href="#icon-shield"></use></svg>
+            <span>Actions</span>
+          </a>
+          <a class="nav-item" href="#instances">
+            <svg><use href="#icon-server"></use></svg>
+            <span>Fleet</span>
+          </a>
+          <a class="nav-item" href="#programVisualizer">
+            <svg><use href="#icon-chart"></use></svg>
+            <span>Visualizer</span>
+          </a>
+          <a class="nav-item" href="#previewLibrary">
+            <svg><use href="#icon-shield"></use></svg>
+            <span>Records</span>
+          </a>
+          <a class="nav-item" href="#botPanel">
+            <svg><use href="#icon-wallet"></use></svg>
+            <span>Bots</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-foot">
+          <div class="account-chip">
+            <span class="avatar">AT</span>
+            <span>
+              <strong>Atlas Team</strong>
+              <small>Production</small>
+            </span>
+          </div>
+        </div>
+      </aside>
+
+      <div class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Operations Command Center</p>
+            <h1>PSE Command Center</h1>
+            <p class="topbar-summary">Priorities, bot health, VPS fleet state, and in-browser records in one place.</p>
+          </div>
+          <div class="topbar-actions">
+            <button class="secondary-button topbar-link" id="visualizerButton" type="button">
+              <svg><use href="#icon-chart"></use></svg>
+              <span>Visualizer</span>
+            </button>
+            <button class="icon-button" id="refreshButton" type="button" aria-label="Refresh metrics" title="Refresh metrics">
+              <svg><use href="#icon-refresh"></use></svg>
+            </button>
+            <button class="primary-button" id="newServerButton" type="button">
+              <svg><use href="#icon-plus"></use></svg>
+              <span>Add VPS</span>
+            </button>
+          </div>
+        </header>
+
+        <nav class="flow-strip" id="flowStrip" aria-label="Command flow">
+          <button class="flow-step active" type="button" data-flow-target="#overview">
+            <span>Command</span>
+            <strong>Operating picture</strong>
+          </button>
+          <button class="flow-step" type="button" data-flow-target="#instances">
+            <span>Dashboard</span>
+            <strong>Fleet state</strong>
+          </button>
+          <button class="flow-step" type="button" data-flow-target="#programVisualizer">
+            <span>Visualizer</span>
+            <strong>Program map</strong>
+          </button>
+          <button class="flow-step" type="button" data-flow-target="#previewLibrary">
+            <span>Records</span>
+            <strong>Preview library</strong>
+          </button>
+          <button class="flow-step" type="button" data-flow-target="#botPanel">
+            <span>Bot Panel</span>
+            <strong>Worker controls</strong>
+          </button>
+          <div class="flow-context" id="flowContext" aria-live="polite"></div>
+        </nav>
+
+        <main class="dashboard" id="overview">
+          <section class="command-overview panel" aria-label="Command overview">
+            <div class="command-copy">
+              <p class="eyebrow">Overview</p>
+              <h2>Operating Picture</h2>
+              <p id="commandSummary">Loading command state...</p>
+            </div>
+            <div class="command-status-grid" id="commandStatusGrid"></div>
+          </section>
+
+          <section class="root-actions panel" id="rootActions" aria-label="Root action board">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Root Actions</p>
+                <h2>Command Board</h2>
+              </div>
+              <span id="rootActionSummary" class="timestamp">0 actions</span>
+            </div>
+            <div class="action-filter-row">
+              <div class="segmented compact" role="tablist" aria-label="Root action filter">
+                <button class="segment active" type="button" data-action-filter="all">All</button>
+                <button class="segment" type="button" data-action-filter="now">Now</button>
+                <button class="segment" type="button" data-action-filter="next">Next</button>
+                <button class="segment" type="button" data-action-filter="gated">Gated</button>
+              </div>
+            </div>
+            <div class="root-action-grid" id="rootActionGrid"></div>
+          </section>
+
+          <section class="metric-grid" aria-label="Fleet metrics">
+            <article class="metric-card">
+              <span class="metric-icon success"><svg><use href="#icon-server"></use></svg></span>
+              <div>
+                <p>Active VPS</p>
+                <strong id="activeCount">0</strong>
+                <small id="activeDelta">0 regions online</small>
+              </div>
+            </article>
+            <article class="metric-card">
+              <span class="metric-icon teal"><svg><use href="#icon-chart"></use></svg></span>
+              <div>
+                <p>CPU Load</p>
+                <strong id="cpuAverage">0%</strong>
+                <small>15 min average</small>
+              </div>
+            </article>
+            <article class="metric-card">
+              <span class="metric-icon amber"><svg><use href="#icon-wallet"></use></svg></span>
+              <div>
+                <p>Projected Spend</p>
+                <strong id="spendTotal">$0</strong>
+                <small>Current month</small>
+              </div>
+            </article>
+            <article class="metric-card">
+              <span class="metric-icon rose"><svg><use href="#icon-shield"></use></svg></span>
+              <div>
+                <p>Security Events</p>
+                <strong id="securityCount">0</strong>
+                <small>Past 24 hours</small>
+              </div>
+            </article>
+          </section>
+
+          <section class="control-panel" aria-label="Dashboard controls">
+            <div class="segmented" role="tablist" aria-label="Status filter">
+              <button class="segment active" type="button" data-status="all">All</button>
+              <button class="segment" type="button" data-status="running">Running</button>
+              <button class="segment" type="button" data-status="warning">Warning</button>
+              <button class="segment" type="button" data-status="stopped">Stopped</button>
+            </div>
+            <label class="field search-field">
+              <svg><use href="#icon-search"></use></svg>
+              <input id="searchInput" type="search" placeholder="Search VPS, IP, region">
+            </label>
+            <label class="field select-field">
+              <select id="regionSelect" aria-label="Region">
+                <option value="all">All regions</option>
+                <option value="New York">New York</option>
+                <option value="London">London</option>
+                <option value="Frankfurt">Frankfurt</option>
+                <option value="Singapore">Singapore</option>
+                <option value="Sydney">Sydney</option>
+              </select>
+            </label>
+          </section>
+
+          <section class="dashboard-grid" id="instances">
+            <div class="server-section panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Instances</p>
+                  <h2>Virtual Servers</h2>
+                </div>
+                <span id="updatedAt" class="timestamp">Updated now</span>
+              </div>
+
+              <div class="server-list" id="serverList" aria-live="polite"></div>
+            </div>
+
+            <aside class="detail-panel panel" aria-label="Selected server details">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Selected VPS</p>
+                  <h2 id="detailName">Select a server</h2>
+                </div>
+                <span id="detailStatus" class="status-pill neutral">Idle</span>
+              </div>
+
+              <div class="resource-rings">
+                <div class="ring" style="--value: 0" id="cpuRing">
+                  <span>CPU</span>
+                  <strong id="detailCpu">0%</strong>
+                </div>
+                <div class="ring memory" style="--value: 0" id="memoryRing">
+                  <span>Memory</span>
+                  <strong id="detailMemory">0%</strong>
+                </div>
+                <div class="ring disk" style="--value: 0" id="diskRing">
+                  <span>Disk</span>
+                  <strong id="detailDisk">0%</strong>
+                </div>
+              </div>
+
+              <div class="detail-facts">
+                <div>
+                  <span>Public IP</span>
+                  <button class="copy-button" id="copyIpButton" type="button" title="Copy IP" aria-label="Copy IP">
+                    <strong id="detailIp">-</strong>
+                    <svg><use href="#icon-copy"></use></svg>
+                  </button>
+                </div>
+                <div>
+                  <span>Region</span>
+                  <strong id="detailRegion">-</strong>
+                </div>
+                <div>
+                  <span>Plan</span>
+                  <strong id="detailPlan">-</strong>
+                </div>
+                <div>
+                  <span>Uptime</span>
+                  <strong id="detailUptime">-</strong>
+                </div>
+              </div>
+
+              <div class="action-row">
+                <button class="secondary-button" id="consoleButton" type="button">
+                  <svg><use href="#icon-terminal"></use></svg>
+                  <span>Console</span>
+                </button>
+                <button class="secondary-button" id="powerButton" type="button">
+                  <svg><use href="#icon-power"></use></svg>
+                  <span>Power</span>
+                </button>
+              </div>
+
+              <div class="mini-chart">
+                <div class="panel-heading compact">
+                  <div>
+                    <p class="eyebrow">Network</p>
+                    <h3>Traffic</h3>
+                  </div>
+                  <span id="trafficValue">0 GB</span>
+                </div>
+                <canvas id="trafficChart" width="640" height="220" aria-label="Traffic chart"></canvas>
+              </div>
+            </aside>
+          </section>
+
+          <section class="visualizer-panel panel" id="programVisualizer" aria-label="VPS program visualizer">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Visualizer</p>
+                <h2>Program Flow</h2>
+              </div>
+              <span id="visualizerSummary" class="timestamp">0 programs mapped</span>
+            </div>
+            <div class="visualizer-layout">
+              <div class="bot-map-frame" aria-label="Bot dependency map">
+                <div class="bot-map" id="botMap"></div>
+              </div>
+              <aside class="visualizer-detail" id="visualizerDetail" aria-live="polite"></aside>
+            </div>
+          </section>
+
+          <section class="preview-library panel" id="previewLibrary" aria-label="In-browser record previews">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Records</p>
+                <h2>In-Browser Previews</h2>
+              </div>
+              <span class="timestamp">Downloads stay optional</span>
+            </div>
+            <div class="preview-grid" id="previewGrid"></div>
+          </section>
+
+          <section class="bot-panel panel" id="botPanel" aria-label="Bot controls">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Automation</p>
+                <h2>Bots & Agents</h2>
+              </div>
+              <span id="botSummary" class="timestamp">0 online</span>
+            </div>
+            <div class="bot-grid" id="botGrid" aria-live="polite"></div>
+          </section>
+
+          <section class="bottom-grid">
+            <div class="panel map-panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Network</p>
+                  <h2>Region Health</h2>
+                </div>
+                <span class="status-pill running">Global</span>
+              </div>
+              <div class="region-map" id="regionMap" aria-label="Region health map"></div>
+            </div>
+
+            <div class="panel log-panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Activity</p>
+                  <h2>Operations Log</h2>
+                </div>
+                <button class="icon-button small" id="clearLogButton" type="button" aria-label="Clear log" title="Clear log">
+                  <svg><use href="#icon-close"></use></svg>
+                </button>
+              </div>
+              <ol class="activity-log" id="activityLog"></ol>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <div class="modal-backdrop" id="serverModal" hidden>
+      <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-heading">
+          <div>
+            <p class="eyebrow">Provision</p>
+            <h2 id="modalTitle">Add VPS</h2>
+          </div>
+          <button class="icon-button small" id="closeModalButton" type="button" aria-label="Close" title="Close">
+            <svg><use href="#icon-close"></use></svg>
+          </button>
+        </div>
+        <form id="serverForm" class="server-form">
+          <label>
+            <span>Name</span>
+            <input name="name" required maxlength="28" placeholder="api-gateway-04">
+          </label>
+          <label>
+            <span>Region</span>
+            <select name="region">
+              <option>New York</option>
+              <option>London</option>
+              <option>Frankfurt</option>
+              <option>Singapore</option>
+              <option>Sydney</option>
+            </select>
+          </label>
+          <label>
+            <span>Plan</span>
+            <select name="plan">
+              <option>2 vCPU / 4 GB</option>
+              <option>4 vCPU / 8 GB</option>
+              <option>8 vCPU / 16 GB</option>
+              <option>16 vCPU / 32 GB</option>
+            </select>
+          </label>
+          <label>
+            <span>Image</span>
+            <select name="image">
+              <option>Ubuntu 24.04 LTS</option>
+              <option>Debian 12</option>
+              <option>AlmaLinux 9</option>
+              <option>Windows Server 2022</option>
+            </select>
+          </label>
+          <div class="form-actions">
+            <button class="secondary-button" id="cancelModalButton" type="button">Cancel</button>
+            <button class="primary-button" type="submit">
+              <svg><use href="#icon-plus"></use></svg>
+              <span>Create VPS</span>
+            </button>
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <div class="modal-backdrop" id="previewModal" hidden>
+      <section class="modal preview-modal" role="dialog" aria-modal="true" aria-labelledby="previewTitle">
+        <div class="modal-heading">
+          <div>
+            <p class="eyebrow" id="previewEyebrow">Preview</p>
+            <h2 id="previewTitle">Record preview</h2>
+          </div>
+          <button class="icon-button small" id="closePreviewButton" type="button" aria-label="Close preview" title="Close preview">
+            <svg><use href="#icon-close"></use></svg>
+          </button>
+        </div>
+        <div class="preview-content" id="previewContent"></div>
+      </section>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
