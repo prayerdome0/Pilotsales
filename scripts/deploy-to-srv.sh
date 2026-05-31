@@ -8,6 +8,14 @@ REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 PUBLIC_TARGET="/srv/codex/repos/pilot-sales-enterprise"
 DASHBOARD_TARGET="/srv/codex/repos/pse-dashboard"
 DASHBOARD_SOURCE="${PSE_DASHBOARD_SOURCE:-$REPO_ROOT/deploy/pse-dashboard}"
+HEALTH_CHECK="${PSE_DEPLOY_HEALTH_CHECK:-/srv/codex/services/pse-maintenance/scripts/pse-vps-health-check.sh}"
+
+ROUTE_CHECKS=(
+  "public site|https://dashboard.74.208.216.118.sslip.io/pilot-sales-enterprise/|200"
+  "public nested dashboard|https://dashboard.74.208.216.118.sslip.io/pilot-sales-enterprise/pse-dashboard/|200"
+  "private dashboard auth gate|https://dashboard.74.208.216.118.sslip.io/pse-dashboard/|302"
+  "sensitive dashboard guard|https://dashboard.74.208.216.118.sslip.io/pse-dashboard/trust-copies/test.pdf|404"
+)
 
 RSYNC_FLAGS=(-rvc --itemize-changes)
 if [[ "$APPLY" != "--apply" ]]; then
@@ -59,6 +67,62 @@ deploy_dashboard() {
   rsync "${RSYNC_FLAGS[@]}" "$DASHBOARD_SOURCE/styles.css" "$DASHBOARD_TARGET/styles.css"
 }
 
+http_status() {
+  local url="$1"
+  curl -k -sS -o /dev/null -w '%{http_code}' --max-time 12 "$url"
+}
+
+run_health_check() {
+  if [[ ! -x "$HEALTH_CHECK" ]]; then
+    echo "Missing executable health check: $HEALTH_CHECK" >&2
+    return 1
+  fi
+
+  if [[ "$EUID" -eq 0 ]]; then
+    "$HEALTH_CHECK"
+  else
+    sudo "$HEALTH_CHECK"
+  fi
+}
+
+post_apply_checks() {
+  local failures=0
+  local spec label url expected actual
+
+  echo
+  echo "==> Post-deploy route checks"
+  for spec in "${ROUTE_CHECKS[@]}"; do
+    IFS='|' read -r label url expected <<<"$spec"
+    if ! actual="$(http_status "$url")"; then
+      echo "FAIL $label: curl failed for $url" >&2
+      failures=$((failures + 1))
+      continue
+    fi
+
+    if [[ "$actual" != "$expected" ]]; then
+      echo "FAIL $label: expected HTTP $expected, got $actual ($url)" >&2
+      failures=$((failures + 1))
+    else
+      echo "OK $label: HTTP $actual"
+    fi
+  done
+
+  echo
+  echo "==> Post-deploy VPS health check"
+  if ! run_health_check; then
+    failures=$((failures + 1))
+  fi
+
+  if (( failures > 0 )); then
+    echo
+    echo "Post-deploy checks failed with $failures issue(s)." >&2
+    exit 1
+  fi
+
+  echo
+  echo "Post-deploy checks passed."
+}
+
 case "$MODE" in
   public)
     deploy_public
@@ -83,4 +147,6 @@ esac
 if [[ "$APPLY" != "--apply" ]]; then
   echo
   echo "Dry run only. Re-run with --apply to change files."
+else
+  post_apply_checks
 fi
