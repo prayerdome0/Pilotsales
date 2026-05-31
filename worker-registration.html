@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worker Registration | Pilot Sales Enterprise</title>
+    <meta name="description" content="Register for the Pilot Sales Enterprise website sales team and receive an employee number for team tracking.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="index.html" aria-label="Pilot Sales Enterprise home">
+          <img class="brand-logo" src="assets/pse-logo.png" alt="">
+          <span class="brand-text">
+            <strong>Pilot Sales Enterprise</strong>
+            <small>Worker registration</small>
+          </span>
+        </a>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a class="active" href="worker-registration.html">Register</a>
+          <a href="contact.html">Contact</a>
+          <a class="nav-cta" href="sales-applicant-intake.html">Apply</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <p class="eyebrow">Team Intake</p>
+          <h1>Worker registration form</h1>
+          <p class="lead">Submit your name, email, and WhatsApp number. After the form is accepted, the system assigns your employee number for team tracking.</p>
+          <div class="hero-status-row" aria-label="Registration summary">
+            <span class="tag green">Automatic employee number</span>
+            <span class="tag blue">Website sales team</span>
+            <span class="tag amber">WhatsApp contact</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="form-card registration-card">
+            <div class="form-success" data-worker-message aria-live="polite"></div>
+            <form data-worker-registration-form>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="worker-name">Full name *</label>
+                  <input id="worker-name" name="fullName" type="text" autocomplete="name" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                  <label for="worker-email">Email address *</label>
+                  <input id="worker-email" name="email" type="email" autocomplete="email" required placeholder="name@example.com">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="worker-whatsapp">WhatsApp phone number *</label>
+                <input id="worker-whatsapp" name="whatsapp" type="tel" autocomplete="tel" required placeholder="+1 555 123 4567">
+              </div>
+              <label class="checkbox-group" for="worker-consent">
+                <input id="worker-consent" name="consent" type="checkbox" required>
+                <span>I agree to be contacted by the team through email and WhatsApp.</span>
+              </label>
+              <button class="button full" type="submit">Submit Registration</button>
+              <p class="form-note">Your employee number is created only after the form is submitted successfully.</p>
+            </form>
+
+            <div class="employee-result" data-employee-result hidden>
+              <span>Assigned employee number</span>
+              <strong data-employee-number>EMP-000</strong>
+              <p>Use this number when messaging the team or submitting sales lead forms.</p>
+              <a class="button secondary" href="https://whatsapp.com/channel/0029Vb80vPW9RZAdW2E9hE1V" target="_blank" rel="noopener">Join WhatsApp Channel</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section tight">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow">Next Steps</p>
+            <h2>After registration, the team can match you to the right workflow.</h2>
+          </div>
+          <div class="steps-grid">
+            <article class="step-card">
+              <h3>1. Register</h3>
+              <p>Submit your contact details and receive your employee number.</p>
+            </article>
+            <article class="step-card">
+              <h3>2. Join WhatsApp</h3>
+              <p>Use WhatsApp for team updates, instructions, and sales channel announcements.</p>
+            </article>
+            <article class="step-card">
+              <h3>3. Follow Instructions</h3>
+              <p>Wait for approved scripts, lead forms, and campaign rules before making outreach calls.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <p>Copyright 2026 Pilot Sales Enterprise. Commission-based contractor opportunities. No guaranteed earnings.</p>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="website-seller.html">Website Seller</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </footer>
+    <script src="app.js"></script>
+  </body>
+</html>

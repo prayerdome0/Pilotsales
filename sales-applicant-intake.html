@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PSE Sales Applicant Intake | Pilot Sales Enterprise</title>
+    <meta name="description" content="Apply for PSE sales work. PSE reviews applicants and internally assigns the best-fit sales field.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="index.html" aria-label="Pilot Sales Enterprise home">
+          <img class="brand-logo" src="assets/pse-logo.png" alt="">
+          <span class="brand-text">
+            <strong>Pilot Sales Enterprise</strong>
+            <small>Sales Applicant Intake</small>
+          </span>
+        </a>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="worker-registration.html">Register</a>
+          <a href="contact.html">Contact</a>
+          <a class="nav-cta active" href="sales-applicant-intake.html">Apply</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <p class="eyebrow">Applicant Intake</p>
+          <h1>PSE sales applicant pool.</h1>
+          <p class="lead">Submit one general sales application. PSE reviews your skills, schedule, location, and compliance details, then internally assigns the best-fit field. You do not need to choose a sales lane.</p>
+          <div class="hero-status-row" aria-label="Application summary">
+            <span class="tag green">PSE assigns field</span>
+            <span class="tag blue">WhatsApp follow-up</span>
+            <span class="tag amber">Commission-based work</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="form-card registration-card">
+            <div class="form-success" data-sales-applicant-message aria-live="polite"></div>
+            <form data-sales-applicant-intake-form>
+              <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
+                <label for="sa-pse-website">Website</label>
+                <input id="sa-pse-website" name="pseWebsite" type="text" tabindex="-1" autocomplete="off">
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="sa-name">Full name *</label>
+                  <input id="sa-name" name="fullName" type="text" autocomplete="name" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                  <label for="sa-whatsapp">WhatsApp phone number *</label>
+                  <input id="sa-whatsapp" name="whatsapp" type="tel" autocomplete="tel" required placeholder="+1 555 123 4567">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="sa-email">Email address *</label>
+                  <input id="sa-email" name="email" type="email" autocomplete="email" required placeholder="name@example.com">
+                </div>
+                <div class="form-group">
+                  <label for="sa-location">City, state, or market *</label>
+                  <input id="sa-location" name="location" type="text" autocomplete="address-level2" required placeholder="Pomona, CA">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="sa-time-zone">Time zone</label>
+                  <input id="sa-time-zone" name="timeZone" type="text" placeholder="Pacific, Eastern, GMT+2">
+                </div>
+                <div class="form-group">
+                  <label for="sa-language">Preferred language(s)</label>
+                  <input id="sa-language" name="preferredLanguage" type="text" autocomplete="language" placeholder="English, Spanish, Arabic, etc.">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="sa-start-date">Earliest start date</label>
+                  <input id="sa-start-date" name="startDate" type="date">
+                </div>
+                <div class="form-group">
+                  <label for="sa-availability">Availability *</label>
+                  <select id="sa-availability" name="availability" required>
+                    <option value="">Select one</option>
+                    <option>Full-time availability</option>
+                    <option>Part-time availability</option>
+                    <option>Evenings or weekends</option>
+                    <option>Flexible but needs scheduling</option>
+                    <option>Exploring, not ready yet</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="sa-readiness">Current readiness *</label>
+                  <select id="sa-readiness" name="readiness" required>
+                    <option value="">Select one</option>
+                    <option>Ready to start now</option>
+                    <option>Ready after training</option>
+                    <option>Need more information first</option>
+                    <option>Just exploring</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="sa-transportation">Transportation / mobility</label>
+                  <input id="sa-transportation" name="transportation" type="text" placeholder="Car available, local only, remote only, etc.">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="sa-equipment">Internet / equipment</label>
+                  <input id="sa-equipment" name="internetEquipment" type="text" placeholder="Reliable phone, laptop, headset, Wi-Fi, CRM experience, etc.">
+                </div>
+                <div class="form-group">
+                  <label for="sa-social">Social profile or portfolio</label>
+                  <input id="sa-social" name="socialProfile" type="text" placeholder="Instagram, LinkedIn, website, portfolio link, etc.">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="sa-door">Door-to-door comfort</label>
+                  <select id="sa-door" name="doorToDoorComfort">
+                    <option value="">Select one</option>
+                    <option>Comfortable knocking doors</option>
+                    <option>Open to it after training</option>
+                    <option>Prefer not to knock doors</option>
+                    <option>Not sure yet</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="sa-phone">Phone / DM sales comfort</label>
+                  <select id="sa-phone" name="phoneDmComfort">
+                    <option value="">Select one</option>
+                    <option>Comfortable with calls and DMs</option>
+                    <option>Comfortable mostly with DMs</option>
+                    <option>Comfortable mostly with calls</option>
+                    <option>Need training first</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="sa-b2b">Business-owner sales comfort</label>
+                  <select id="sa-b2b" name="b2bComfort">
+                    <option value="">Select one</option>
+                    <option>Comfortable selling to business owners</option>
+                    <option>Open to business-owner sales</option>
+                    <option>Prefer consumer/homeowner sales</option>
+                    <option>Not sure yet</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="sa-homeowner">Homeowner sales comfort</label>
+                  <select id="sa-homeowner" name="homeownerComfort">
+                    <option value="">Select one</option>
+                    <option>Comfortable selling to homeowners</option>
+                    <option>Open to homeowner sales</option>
+                    <option>Prefer business-owner sales</option>
+                    <option>Not sure yet</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="sa-experience">Sales experience</label>
+                <textarea id="sa-experience" name="salesExperience" rows="4" placeholder="Share what you have sold before, how you find leads, and what kind of sales work you are strongest at."></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="sa-licenses">Licenses, certifications, or special skills</label>
+                <textarea id="sa-licenses" name="licensesCertifications" rows="3" placeholder="Insurance license, real estate license, HIS registration, contractor experience, design skills, merchant sales, languages, etc."></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="sa-proof">Proof links or public references</label>
+                <textarea id="sa-proof" name="proofLinks" rows="3" placeholder="Optional public links only: license lookup, portfolio, work page, social proof, or sales examples. No private documents."></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="sa-why">Why do you want to work with PSE?</label>
+                <textarea id="sa-why" name="whyPse" rows="4" placeholder="What are you looking for, and what would make this worth your time?"></textarea>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="sa-contact-time">Best time to contact you</label>
+                  <input id="sa-contact-time" name="bestContactTime" type="text" placeholder="Weekdays after 3 PM">
+                </div>
+                <div class="form-group">
+                  <label for="sa-source">How did you hear about PSE?</label>
+                  <input id="sa-source" name="sourceChannel" type="text" placeholder="Instagram, WhatsApp, friend, referral, etc.">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="sa-notes">Anything else PSE should know?</label>
+                <input id="sa-notes" name="notes" type="text" placeholder="Optional">
+              </div>
+
+              <label class="checkbox-group" for="sa-consent">
+                <input id="sa-consent" name="consent" type="checkbox" required>
+                <span>I agree that PSE may review my application and contact me through WhatsApp or email. I understand this is a commission-based opportunity and PSE will decide which field may fit.</span>
+              </label>
+
+              <button class="button full" type="submit">Submit Application</button>
+              <p class="form-note">Do not submit passwords, bank details, Social Security numbers, private account credentials, or unrelated documents. PSE assigns applicants internally after review.</p>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="section tight">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow">Internal Assignment</p>
+            <h2>PSE chooses the field after review.</h2>
+          </div>
+          <div class="steps-grid">
+            <article class="step-card">
+              <h3>1. Submit once</h3>
+              <p>Applicants give general sales, availability, contact, mobility, and license details.</p>
+            </article>
+            <article class="step-card">
+              <h3>2. PSE reviews</h3>
+              <p>The team reviews fit, risks, follow-up needs, and readiness before assigning a field.</p>
+            </article>
+            <article class="step-card">
+              <h3>3. Field assigned</h3>
+              <p>PSE may route applicants to life insurance, website sales, epoxy, solar bird proofing, pest control, or another field.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <p>Copyright 2026 Pilot Sales Enterprise. Commission-based contractor opportunities. No guaranteed earnings.</p>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="worker-registration.html">Worker Registration</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </footer>
+    <script src="app.js"></script>
+  </body>
+</html>

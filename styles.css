@@ -740,6 +740,66 @@ p {
   background: rgba(84, 209, 122, 0.1);
 }
 
+.form-success.error {
+  color: #ffe1de;
+  border-color: rgba(237, 119, 107, 0.42);
+  background: rgba(237, 119, 107, 0.1);
+}
+
+.registration-card {
+  display: grid;
+  gap: 22px;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 18px;
+  color: #d9e0e6;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.checkbox-group input {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  accent-color: var(--teal);
+  flex: 0 0 auto;
+}
+
+.employee-result {
+  display: grid;
+  gap: 10px;
+  padding: 20px;
+  border: 1px solid rgba(77, 141, 255, 0.34);
+  border-radius: var(--radius);
+  background: rgba(77, 141, 255, 0.1);
+}
+
+.employee-result[hidden] {
+  display: none;
+}
+
+.employee-result span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.employee-result strong {
+  color: var(--ink);
+  font-size: clamp(34px, 6vw, 56px);
+  line-height: 1;
+}
+
+.employee-result p {
+  margin-bottom: 4px;
+}
+
 .contact-card a {
   color: var(--teal);
   font-weight: 800;

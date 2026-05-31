@@ -171,14 +171,58 @@ const colors = {
 
 const operations = [
   {
+    id: "command-dashboard",
+    name: "PSE Command Dashboard",
+    category: "Control",
+    status: "Live",
+    tone: "active",
+    owner: "PSE",
+    metric: "14 lanes mapped",
+    meta: "brand pull-up view",
+    freshness: "Today",
+    summary: "Simple branded command view for seeing every operation, opening its tunnel, and checking the next gate without digging through folders.",
+    tunnel: [
+      ["Collect", "Pull lane notes, reports, and active dashboard signals into one view.", "active"],
+      ["Map", "Group every operation by status, owner, scope, blockers, and outputs.", "active"],
+      ["Watch", "Keep gates visible before work moves into outreach, publishing, or paid traffic.", "watch"],
+      ["Decide", "Use the open tunnel to choose the next move for the selected lane.", "active"]
+    ],
+    scope: [
+      ["Brand", "Pilot Sales Enterprise logo, colors, and command-center language"],
+      ["Coverage", "Sales, recruiting, media, bots, referrals, research, documents, and service lanes"],
+      ["Source", "PSE dashboard files plus operations-hub records"]
+    ],
+    analytics: [
+      ["Mapped lanes", 14, 14, "#16865a"],
+      ["Live or active", 5, 14, "#2596a6"],
+      ["Gated lanes", 6, 14, "#b7791f"],
+      ["Support lanes", 3, 14, "#2563eb"]
+    ],
+    charts: ["All Operation Tunnels", "Priority Follow-Ups", "Live Activity"],
+    next: ["Choose a production location", "Keep this source versioned", "Update tunnel status after each lane changes"]
+  },
+  {
     id: "website-sales",
     name: "Website Sales",
+    category: "Revenue",
     status: "Active",
     tone: "active",
     owner: "Jordan",
     metric: "$42.1K booked",
     meta: "37 closed deals",
+    freshness: "Live sample",
     summary: "Website offer pipeline, rep performance, proposals, and close-rate movement.",
+    tunnel: [
+      ["Lead", "Capture website prospects and market demand.", "active"],
+      ["Qualify", "Move prospects into demos, pricing, and proposal follow-ups.", "active"],
+      ["Close", "Track offers, decision-maker activity, and rep performance.", "active"],
+      ["Retain", "Record upsells, referrals, and account expansion chances.", "watch"]
+    ],
+    scope: [
+      ["Offer", "Website and sales service packages"],
+      ["Team", "Rep close rate, proposal quality, and follow-up speed"],
+      ["Output", "Booked revenue, closed deals, and account expansion notes"]
+    ],
     analytics: [
       ["New leads", 46, 60, "#2596a6"],
       ["Demos", 28, 46, "#2563eb"],
@@ -191,12 +235,25 @@ const operations = [
   {
     id: "sales-recruiting",
     name: "Sales Recruiting",
+    category: "People",
     status: "Active",
     tone: "active",
     owner: "Riley",
     metric: "64 applicants",
     meta: "18 interviews set",
+    freshness: "Live sample",
     summary: "Applicant intake, screening, interviews, offers, and onboarding readiness.",
+    tunnel: [
+      ["Attract", "Collect applicants from owned and recruiting channels.", "active"],
+      ["Screen", "Check fit, availability, contact quality, and sales-readiness.", "active"],
+      ["Interview", "Hold slots, confirm attendance, and route qualified candidates.", "active"],
+      ["Onboard", "Move accepted reps into training and operating expectations.", "watch"]
+    ],
+    scope: [
+      ["Pipeline", "Applicant counts, screens, interviews, offers, and onboarding"],
+      ["Quality", "Contact accuracy, responsiveness, and role fit"],
+      ["Output", "Ready sales bench and confirmed interview calendar"]
+    ],
     analytics: [
       ["Applicants", 64, 70, "#2596a6"],
       ["Screened", 42, 64, "#2563eb"],
@@ -207,14 +264,58 @@ const operations = [
     next: ["Confirm interview slots", "Screen new applicants", "Move accepted reps into onboarding"]
   },
   {
+    id: "medical-supply-delivery",
+    name: "Medical Supply Delivery",
+    category: "Service",
+    status: "Launching",
+    tone: "watch",
+    owner: "Pilot",
+    metric: "Eastvale radius",
+    meta: "50-mile courier lane",
+    freshness: "Today",
+    summary: "Transport-only contractor route lane for professional pickup and delivery of approved client-owned healthcare supplies around Eastvale.",
+    tunnel: [
+      ["Certify", "Finish HIPAA, Bloodborne Pathogens, OSHA 10, and HazCom training.", "watch"],
+      ["Package", "Use the contractor profile, route tracker, and rate-card packet.", "active"],
+      ["Apply", "Target medical courier and independent contractor route companies first.", "active"],
+      ["Operate", "Accept only approved non-regulated loads until written procedures expand scope.", "hold"]
+    ],
+    scope: [
+      ["Market", "Eastvale, California with car and truck coverage inside a 50-mile radius"],
+      ["Accepted", "Healthcare office supplies, DME accessories, records, and approved supply loads"],
+      ["Do Not Accept", "Controlled substances, prescriptions, oxygen, specimens, infectious waste, or cold-chain meds at launch"]
+    ],
+    analytics: [
+      ["Training", 35, 100, "#b7791f"],
+      ["Route targets", 10, 10, "#16865a"],
+      ["Profile packet", 80, 100, "#2596a6"],
+      ["Compliance gate", 40, 100, "#d04f3f"]
+    ],
+    charts: ["Priority Follow-Ups", "Live Activity"],
+    next: ["Complete the first certifications", "Apply to the first courier targets", "Keep regulated-load exclusions visible"]
+  },
+  {
     id: "health-insurance",
     name: "Health Insurance Leads",
+    category: "Revenue",
     status: "Scoped",
     tone: "watch",
     owner: "Casey",
     metric: "Compliance first",
     meta: "scripts pending",
+    freshness: "Draft",
     summary: "Lead or appointment generation after approved language, source rules, and routing are documented.",
+    tunnel: [
+      ["Define", "Clarify allowed offer language and appointment-routing rules.", "watch"],
+      ["Approve", "Confirm sources, disclaimers, and compliance owner signoff.", "hold"],
+      ["Launch", "Route approved leads or appointments to the right sales lane.", "watch"],
+      ["Audit", "Keep copy, source, and follow-up records reviewable.", "watch"]
+    ],
+    scope: [
+      ["Offer", "Lead or appointment generation only after compliance signoff"],
+      ["Controls", "Approved language, approved sources, and routing rules"],
+      ["Output", "Qualified handoffs with audit notes"]
+    ],
     analytics: [
       ["Script approval", 35, 100, "#b7791f"],
       ["Source review", 50, 100, "#2563eb"],
@@ -226,12 +327,25 @@ const operations = [
   {
     id: "barnacle-removal",
     name: "Barnacle Removal",
+    category: "Service",
     status: "Building",
     tone: "watch",
     owner: "Morgan",
     metric: "Offer setup",
     meta: "markets needed",
+    freshness: "Today",
     summary: "Local service lead flow, territory selection, partner capacity, and follow-up status.",
+    tunnel: [
+      ["Research", "Choose marina-heavy launch markets and partner candidates.", "active"],
+      ["Qualify", "Collect vessel details, photos, location, growth severity, and timing.", "watch"],
+      ["Match", "Route work to insured marine partners before any direct service promise.", "watch"],
+      ["Book", "Track inspection, cleaning appointment, and recurring-account potential.", "active"]
+    ],
+    scope: [
+      ["Model", "PSE handles sales, qualification, scheduling, and partner coordination"],
+      ["Guardrail", "Do not promise in-water work before marina, environmental, and partner checks"],
+      ["Output", "Booked inspections, partner handoffs, and recurring service opportunities"]
+    ],
     analytics: [
       ["Market list", 45, 100, "#2596a6"],
       ["Partner capacity", 30, 100, "#b7791f"],
@@ -243,12 +357,25 @@ const operations = [
   {
     id: "solar-bird-proofing",
     name: "Solar Bird Proofing",
+    category: "Service",
     status: "Active",
     tone: "active",
     owner: "Avery",
     metric: "4 markets",
     meta: "home-service leads",
+    freshness: "Live sample",
     summary: "Solar-panel bird proofing demand, city coverage, consultation pipeline, and partner handoff.",
+    tunnel: [
+      ["Demand", "Watch city-level homeowner demand and lead quality.", "active"],
+      ["Consult", "Book inspections and consultation calls.", "active"],
+      ["Handoff", "Send qualified jobs to partner installers or service teams.", "active"],
+      ["Follow", "Track completion, reviews, referrals, and market expansion.", "watch"]
+    ],
+    scope: [
+      ["Market", "Home-service lead lane across four tracked markets"],
+      ["Workflow", "Demand check, consultation, partner handoff, follow-up"],
+      ["Output", "Booked consultations and partner-ready jobs"]
+    ],
     analytics: [
       ["Market coverage", 4, 6, "#2596a6"],
       ["Lead quality", 72, 100, "#16865a"],
@@ -259,13 +386,26 @@ const operations = [
   },
   {
     id: "youtube-media",
-    name: "YouTube Media",
+    name: "YouTube Shorts Media",
+    category: "Media",
     status: "Gated",
     tone: "watch",
     owner: "Ada",
     metric: "Review queue",
     meta: "publishing approval needed",
+    freshness: "Operations hub",
     summary: "Shorts prep, review queue, publishing readiness, and release approvals.",
+    tunnel: [
+      ["Package", "Prep local Shorts assets, sidecars, titles, descriptions, hashtags, and rights notes.", "active"],
+      ["Review", "Manual approval checks audience setting, rights clearance, and target channel.", "watch"],
+      ["Authorize", "Publisher waits for official Google OAuth client secrets and channel-owner token.", "hold"],
+      ["Release", "Timed public posting stays capped and recorded after authorization.", "watch"]
+    ],
+    scope: [
+      ["Bots", "Prep worker, watchdog, publisher, and video ledger"],
+      ["Gate", "No account access or publishing without official authorization"],
+      ["Output", "Ready packages, ledger exports, and release records"]
+    ],
     analytics: [
       ["Package prep", 85, 100, "#16865a"],
       ["Review queue", 70, 100, "#2596a6"],
@@ -275,14 +415,89 @@ const operations = [
     next: ["Finish owner approval", "Review first private upload", "Log release decisions"]
   },
   {
+    id: "vps-bot-ops",
+    name: "VPS Bot Operations",
+    category: "Automation",
+    status: "Active",
+    tone: "active",
+    owner: "Status",
+    metric: "9 bots",
+    meta: "enabled and monitored",
+    freshness: "Operations hub",
+    summary: "Bot health, dashboard snapshots, records browser, exports, and continuous improvement queue for the VPS control panel.",
+    tunnel: [
+      ["Monitor", "Check configured bots, logs, records, and status exports.", "active"],
+      ["Record", "Write JSON, Markdown, CSV, and dashboard summaries for each bot lane.", "active"],
+      ["Improve", "Use the improvement manager queue to refresh stale safe records.", "active"],
+      ["Gate", "Keep human approval gates visible for publishing, betting, and surplus outreach.", "watch"]
+    ],
+    scope: [
+      ["Panel", "Bot control route, service, app directory, records, and runtime logs"],
+      ["Bots", "YouTube, sports, dashboard recorder, surplus, status reporter, and improvement manager"],
+      ["Output", "Health status, records browser, exports, and improvement queue"]
+    ],
+    analytics: [
+      ["Bots enabled", 9, 9, "#16865a"],
+      ["Live status", 9, 9, "#2596a6"],
+      ["Human gates", 3, 3, "#b7791f"],
+      ["Record lanes", 9, 9, "#2563eb"]
+    ],
+    charts: ["Live Activity", "Priority Follow-Ups"],
+    next: ["Watch warning lanes", "Review improvement queue", "Keep dashboard source versioned"]
+  },
+  {
+    id: "sports-arbitrage",
+    name: "Sports Arbitrage Monitor",
+    category: "Automation",
+    status: "Read-only",
+    tone: "hold",
+    owner: "Compliance",
+    metric: "0 live alerts",
+    meta: "configuration required",
+    freshness: "Operations hub",
+    summary: "Read-only public-view monitor for source coverage and readiness checks. It does not place bets, bypass access controls, or send active wagering alerts.",
+    tunnel: [
+      ["Observe", "Check public sportsbook visibility without login, scraping bypass, or geolocation bypass.", "active"],
+      ["Normalize", "Only emit odds rows when event, market, outcome, line, and price are parseable.", "watch"],
+      ["Approve", "Wait for approved source, jurisdiction, operators, markets, margin, and alert channel.", "hold"],
+      ["Alert", "Future alerts must be operational signals, not financial advice.", "hold"]
+    ],
+    scope: [
+      ["Mode", "Read-only public-view monitoring"],
+      ["Gate", "No active betting readiness until required configuration is approved"],
+      ["Output", "Source coverage CSVs, public odds rows, and opportunity sheets when valid"]
+    ],
+    analytics: [
+      ["Pages checked", 73, 73, "#2596a6"],
+      ["Reachable pages", 44, 73, "#2563eb"],
+      ["Parseable sources", 0, 2, "#d04f3f"],
+      ["Compliance gate", 25, 100, "#b7791f"]
+    ],
+    charts: ["Live Activity", "Priority Follow-Ups"],
+    next: ["Approve a compliant odds source", "Add a second parseable source", "Define an approved alert channel"]
+  },
+  {
     id: "surplus-funds",
     name: "Surplus Funds Research",
+    category: "Research",
     status: "Research",
     tone: "watch",
     owner: "Boyle",
     metric: "Source sweeps",
     meta: "use gate open",
+    freshness: "Operations hub",
     summary: "Official-source discovery and evidence notes before any lead handling or outreach.",
+    tunnel: [
+      ["Find", "Identify official surplus sources and evidence records.", "active"],
+      ["Confirm", "Check holding office, permitted use, freshness, and source governance.", "watch"],
+      ["Rank", "Improve amount parsing and source-quality scoring before lead handling.", "watch"],
+      ["Outreach", "Stay blocked until permitted use and office confirmation are complete.", "hold"]
+    ],
+    scope: [
+      ["Source", "Official public records and holding-office confirmation"],
+      ["Gate", "No lead handling or outreach until permitted use is documented"],
+      ["Output", "Research candidates, source evidence, and freshness notes"]
+    ],
     analytics: [
       ["Source discovery", 68, 100, "#2596a6"],
       ["Amount parsing", 54, 100, "#2563eb"],
@@ -292,21 +507,97 @@ const operations = [
     next: ["Record permitted use", "Keep source evidence", "Block outreach until approved"]
   },
   {
-    id: "bot-ops",
-    name: "VPS Bot Operations",
-    status: "Active",
-    tone: "active",
-    owner: "Status",
-    metric: "8 bots",
-    meta: "dashboard monitored",
-    summary: "Bot health, dashboard snapshots, records, and improvement queue ownership.",
+    id: "trezor-referrals",
+    name: "Trezor Referrals",
+    category: "Affiliate",
+    status: "Blocked",
+    tone: "hold",
+    owner: "PSE",
+    metric: "Link needed",
+    meta: "copy bank ready",
+    freshness: "Operations hub",
+    summary: "Referral or affiliate lane with compliant copy, tracker, and landing-page guardrails ready once the official link or affiliate account is confirmed.",
+    tunnel: [
+      ["Confirm", "Get the actual referral link or affiliate dashboard account.", "hold"],
+      ["Disclose", "Use disclosure-first copy and official link destinations.", "active"],
+      ["Publish", "Use only approved owned channels and avoid coupon-style public spam.", "watch"],
+      ["Track", "Record links, channels, voucher status, and follow-up dates.", "watch"]
+    ],
+    scope: [
+      ["Files", "Setup runbook, copy bank, referral tracker, and landing-page notes"],
+      ["Gate", "No publication until the official link and channel rules are confirmed"],
+      ["Output", "Compliant referral posts and weekly tracking"]
+    ],
     analytics: [
-      ["Bots enabled", 8, 8, "#16865a"],
-      ["Live VPS", 4, 5, "#2596a6"],
-      ["Warning lanes", 4, 8, "#b7791f"]
+      ["Setup packet", 80, 100, "#2596a6"],
+      ["Copy bank", 100, 100, "#16865a"],
+      ["Referral link", 0, 1, "#d04f3f"],
+      ["Channel approval", 35, 100, "#b7791f"]
     ],
     charts: ["Live Activity", "Priority Follow-Ups"],
-    next: ["Watch warning lanes", "Review improvement queue", "Keep dashboard source versioned"]
+    next: ["Find the official referral or affiliate link", "Confirm owned channels", "Use the tracker before publishing"]
+  },
+  {
+    id: "channel-updates",
+    name: "Channel Updates",
+    category: "Marketing",
+    status: "Ready",
+    tone: "support",
+    owner: "PSE",
+    metric: "Assets staged",
+    meta: "owned channels first",
+    freshness: "Operations hub",
+    summary: "Announcement calendars, channel copy, WhatsApp promotion assets, and cross-posting checklists for owned-channel publishing.",
+    tunnel: [
+      ["Prepare", "Use announcement copy, social posts, and channel assets.", "active"],
+      ["Approve", "Confirm account access, billing, and permissions before paid traffic.", "watch"],
+      ["Publish", "Start owned-channel posts before Meta paid tests.", "active"],
+      ["Measure", "Track engagement, replies, and next publishing slots.", "watch"]
+    ],
+    scope: [
+      ["Assets", "WhatsApp banner, social card, social calendar, email draft, and ad setup notes"],
+      ["Gate", "Website CMS, social account, Meta Business, and payment access"],
+      ["Output", "Owned-channel posts and paid-test readiness"]
+    ],
+    analytics: [
+      ["Owned assets", 90, 100, "#16865a"],
+      ["Paid setup", 35, 100, "#b7791f"],
+      ["Calendar", 70, 100, "#2596a6"],
+      ["Account access", 30, 100, "#d04f3f"]
+    ],
+    charts: ["Live Activity", "Priority Follow-Ups"],
+    next: ["Publish owned-channel assets first", "Confirm Meta billing and permissions", "Log post performance"]
+  },
+  {
+    id: "documents-handoffs",
+    name: "Documents and Handoffs",
+    category: "Support",
+    status: "Support",
+    tone: "support",
+    owner: "Docs",
+    metric: "Templates lane",
+    meta: "packets and records",
+    freshness: "Operations hub",
+    summary: "Reusable operating documents, checklists, handoff packets, route profiles, trackers, and safety notes that support the live lanes.",
+    tunnel: [
+      ["Template", "Create reusable operating docs and checklists.", "active"],
+      ["Attach", "Connect docs to the operation that uses them.", "watch"],
+      ["Version", "Keep source snapshots, backups, and exports traceable.", "watch"],
+      ["Hand Off", "Package instructions so a lane can be resumed quickly.", "active"]
+    ],
+    scope: [
+      ["Content", "Runbooks, contractor profiles, trackers, packets, and checklists"],
+      ["Control", "Keep source and backup locations clear"],
+      ["Output", "Reusable handoff packets for each operation"]
+    ],
+    analytics: [
+      ["Templates", 45, 100, "#2596a6"],
+      ["Lane links", 55, 100, "#2563eb"],
+      ["Backups", 80, 100, "#16865a"],
+      ["Open packets", 65, 100, "#b7791f"]
+    ],
+    charts: ["Live Activity", "Priority Follow-Ups"],
+    next: ["Add reusable templates", "Tie each packet to a tunnel", "Keep backup notes current"]
   }
 ];
 
@@ -366,8 +657,28 @@ function marketLabel(market) {
   return `${market.charAt(0).toUpperCase()}${market.slice(1)}`;
 }
 
-function selectedOperation() {
-  return operations.find((operation) => operation.id === state.operation) || operations[0];
+function selectedOperation(source = operations) {
+  return source.find((operation) => operation.id === state.operation) || source[0] || operations[0];
+}
+
+function operationMatchesQuery(operation) {
+  if (!state.query) return true;
+  const searchableText = [
+    operation.name,
+    operation.category,
+    operation.status,
+    operation.owner,
+    operation.metric,
+    operation.meta,
+    operation.summary,
+    ...(operation.next || []),
+    ...(operation.scope || []).flat(),
+    ...(operation.tunnel || []).flat(),
+  ]
+    .join(" ")
+    .toLowerCase();
+
+  return searchableText.includes(state.query);
 }
 
 function getViewData() {
@@ -671,20 +982,31 @@ function renderFollowUps(followUps) {
 }
 
 function renderOperationHub() {
-  const operation = selectedOperation();
-  elements.operationSummary.textContent = `${operations.length} tunnels - ${operation.name}`;
+  const visibleOperations = operations.filter(operationMatchesQuery);
+  const operation = selectedOperation(visibleOperations.length ? visibleOperations : operations);
+  const activeCount = operations.filter((item) => item.tone === "active").length;
+  const watchCount = operations.length - activeCount;
 
-  elements.operationGrid.innerHTML = operations
-    .map(
-      (item) => `
+  if (visibleOperations.length && operation.id !== state.operation) {
+    state.operation = operation.id;
+  }
+
+  elements.operationSummary.textContent = `${visibleOperations.length}/${operations.length} tunnels - ${activeCount} active - ${watchCount} watch/gated`;
+
+  elements.operationGrid.innerHTML = visibleOperations.length
+    ? visibleOperations
+        .map(
+          (item) => `
         <button class="operation-card ${item.tone}${item.id === operation.id ? " selected" : ""}" type="button" data-operation="${item.id}" aria-pressed="${item.id === operation.id}">
-          <span>${item.status}</span>
+          <span>${item.category} / ${item.status}</span>
           <strong>${item.name}</strong>
           <small>${item.metric} - ${item.meta}</small>
+          <em>${item.owner}</em>
         </button>
       `,
-    )
-    .join("");
+        )
+        .join("")
+    : `<div class="operation-empty">No tunnel matches the current search.</div>`;
 
   const analytics = operation.analytics
     .map(([label, value, total, color]) => {
@@ -701,24 +1023,59 @@ function renderOperationHub() {
     })
     .join("");
 
+  const tunnel = operation.tunnel
+    .map(
+      ([label, detail, tone]) => `
+        <div class="tunnel-stage ${tone || ""}">
+          <span class="tunnel-node"></span>
+          <strong>${label}</strong>
+          <p>${detail}</p>
+        </div>
+      `,
+    )
+    .join("");
+
+  const scope = operation.scope
+    .map(
+      ([label, detail]) => `
+        <div class="scope-item">
+          <span>${label}</span>
+          <strong>${detail}</strong>
+        </div>
+      `,
+    )
+    .join("");
+
   elements.operationDetail.innerHTML = `
     <div class="operation-detail-head">
       <span class="operation-status ${operation.tone}">${operation.status}</span>
       <div>
-        <p class="eyebrow">${operation.owner}</p>
+        <p class="eyebrow">${operation.category} / ${operation.owner}</p>
         <h3>${operation.name}</h3>
         <p>${operation.summary}</p>
       </div>
     </div>
+    <div class="operation-facts">
+      <span><strong>Owner</strong>${operation.owner}</span>
+      <span><strong>Signal</strong>${operation.metric}</span>
+      <span><strong>Updated</strong>${operation.freshness}</span>
+    </div>
+    <div class="operation-tunnel" aria-label="${operation.name} tunnel">${tunnel}</div>
+    <div class="operation-scope">${scope}</div>
     <div class="operation-analytics">${analytics}</div>
     <div class="operation-chart-list">
-      <span>Relevant charts</span>
+      <span>Connected views</span>
       <strong>${operation.charts.join(" / ")}</strong>
     </div>
-    <ul class="operation-next">
-      ${operation.next.map((item) => `<li>${item}</li>`).join("")}
-    </ul>
+    <div class="operation-next-wrap">
+      <span>Next moves</span>
+      <ul class="operation-next">
+        ${operation.next.map((item) => `<li>${item}</li>`).join("")}
+      </ul>
+    </div>
   `;
+
+  return operation;
 }
 
 function setGoalBar(bar, value, colorClass = "") {
@@ -756,9 +1113,11 @@ function applyView() {
 
 function render() {
   const data = getViewData();
-  const operation = selectedOperation();
   const goal = data.goals.revenue;
   const pace = data.revenue / goal;
+
+  applyView();
+  const operation = renderOperationHub();
 
   elements.revenueValue.textContent = money(data.revenue);
   elements.dealsValue.textContent = String(data.deals);
@@ -781,8 +1140,6 @@ function render() {
     state.recruitingFocus ? "enabled" : "filtered from follow-ups"
   }.`;
 
-  applyView();
-  renderOperationHub();
   renderGoals(data);
   drawLineChart(elements.pulseChart, data.momentum);
   drawDonutChart(elements.mixChart, data.pipeline);
