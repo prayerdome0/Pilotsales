@@ -13,10 +13,6 @@ const servers = [
     traffic: 814,
     spend: 48,
     uptime: "37d 12h",
-    service: "pse-public-site.service",
-    route: "/pilot-sales-enterprise/",
-    backup: "7 restore points",
-    attention: "Healthy",
     series: [36, 42, 39, 44, 51, 49, 56, 53, 58, 61, 57, 63]
   },
   {
@@ -33,10 +29,6 @@ const servers = [
     traffic: 1296,
     spend: 96,
     uptime: "91d 4h",
-    service: "postgresql.service",
-    route: "Private network",
-    backup: "Verified 14:02",
-    attention: "CPU and memory high",
     series: [58, 62, 68, 71, 66, 73, 79, 74, 82, 78, 84, 81]
   },
   {
@@ -53,10 +45,6 @@ const servers = [
     traffic: 428,
     spend: 26,
     uptime: "16d 20h",
-    service: "pse-worker.service",
-    route: "Internal worker",
-    backup: "Nightly archive",
-    attention: "Healthy",
     series: [28, 33, 29, 35, 31, 37, 41, 36, 39, 43, 40, 46]
   },
   {
@@ -73,10 +61,6 @@ const servers = [
     traffic: 1740,
     spend: 64,
     uptime: "52d 7h",
-    service: "pse-media-cache.service",
-    route: "/bot-control/records",
-    backup: "Checksum passed",
-    attention: "Disk trending up",
     series: [42, 48, 51, 49, 55, 57, 62, 59, 65, 69, 64, 70]
   },
   {
@@ -93,15 +77,9 @@ const servers = [
     traffic: 64,
     spend: 18,
     uptime: "0h",
-    service: "staging-preview.service",
-    route: "Disabled",
-    backup: "Paused",
-    attention: "Stopped by design",
     series: [6, 4, 5, 3, 4, 2, 3, 4, 3, 2, 3, 2]
   }
 ];
-
-const STORAGE_KEY = "pse-command-center-state-v1";
 
 const bots = [
   {
@@ -112,8 +90,6 @@ const bots = [
     health: "ready_for_manual_review",
     gate: "Manual review before publishing",
     record: "latest-inbox-scan.json",
-    blocker: "One package needs human release approval.",
-    next: "Open the review queue and approve only rights-cleared packages.",
     enabled: true,
     agents: [
       { id: "inbox-scanner", name: "Inbox Scanner", role: "Finds new video packages", enabled: true },
@@ -129,8 +105,6 @@ const bots = [
     health: "ok",
     gate: "No account or publishing access",
     record: "watchdog-audit.jsonl",
-    blocker: "No active blocker.",
-    next: "Keep stale-scan corrections flowing into the prep worker.",
     enabled: true,
     agents: [
       { id: "prep-health", name: "Prep Health", role: "Checks prep worker state", enabled: true },
@@ -146,8 +120,6 @@ const bots = [
     health: "authorization_pending",
     gate: "Channel-owner approval required",
     record: "latest-status.json",
-    blocker: "Missing official Google OAuth token.",
-    next: "Complete channel-owner OAuth, then review the first private upload.",
     enabled: true,
     agents: [
       { id: "oauth-gate", name: "OAuth Gate", role: "Waits for account approval", enabled: false },
@@ -163,8 +135,6 @@ const bots = [
     health: "waiting_for_required_configuration",
     gate: "Jurisdiction, source, and compliance approval",
     record: "latest-arbitrage-scan.csv",
-    blocker: "No approved source, jurisdiction, operator, or alert policy.",
-    next: "Keep scans read-only until the scope approvals are recorded.",
     enabled: true,
     agents: [
       { id: "odds-source", name: "Odds Source Agent", role: "Checks approved sources", enabled: true },
@@ -180,8 +150,6 @@ const bots = [
     health: "covered",
     gate: "Move canonical dashboard source under Git",
     record: "latest-dashboard-summary.json",
-    blocker: "Canonical dashboard source still needs a clear Git home.",
-    next: "Keep recording snapshots and version the command-center source.",
     enabled: true,
     agents: [
       { id: "snapshotter", name: "Snapshotter", role: "Captures dashboard state", enabled: true },
@@ -197,8 +165,6 @@ const bots = [
     health: "research_only",
     gate: "Permitted-use and holding-office confirmation",
     record: "latest-source-sweep.json",
-    blocker: "Lead handling is blocked until source use is confirmed.",
-    next: "Record permitted-use evidence before any outreach lane opens.",
     enabled: true,
     agents: [
       { id: "source-discovery", name: "Source Discovery", role: "Finds county sources", enabled: true },
@@ -214,8 +180,6 @@ const bots = [
     health: "healthy",
     gate: "Watch nonzero problem counts",
     record: "latest-status-update.json",
-    blocker: "No active blocker.",
-    next: "Keep five-minute summaries checking routes, services, and bot status.",
     enabled: true,
     agents: [
       { id: "service-checker", name: "Service Checker", role: "Reads bot state", enabled: true },
@@ -231,8 +195,6 @@ const bots = [
     health: "attention_needed",
     gate: "Human approval for blocked actions",
     record: "latest-improvement-plan.md",
-    blocker: "Queue has work that should not self-approve.",
-    next: "Review the improvement plan and clear safe stale-record updates.",
     enabled: true,
     agents: [
       { id: "fleet-reader", name: "Fleet Reader", role: "Checks all configured bots", enabled: true },
@@ -250,53 +212,8 @@ const visualizerHub = {
   health: "active",
   gate: "Basic auth and sensitive-route guard",
   record: "pse-bot-control.service",
-  blocker: "No active blocker.",
-  next: "Keep the route guarded and confirm records stay out of public paths.",
   enabled: true
 };
-
-const controlPlane = [
-  {
-    label: "Public route",
-    value: "http://74.208.216.118/bot-control/",
-    meta: "Guarded dashboard entry"
-  },
-  {
-    label: "Local service",
-    value: "pse-bot-control.service",
-    meta: "Supervisor process"
-  },
-  {
-    label: "Local bind",
-    value: "127.0.0.1:8792",
-    meta: "Behind VPS route"
-  },
-  {
-    label: "App directory",
-    value: "/srv/pse-ops/bot-control",
-    meta: "Production app home"
-  },
-  {
-    label: "Records",
-    value: "/srv/pse-ops/bot-control/records",
-    meta: "Bot exports and summaries"
-  },
-  {
-    label: "Runtime logs",
-    value: "/srv/pse-ops/bot-control/runtime/logs",
-    meta: "Worker log folder"
-  },
-  {
-    label: "Admin file",
-    value: "/root/pse-bot-control-admin.txt",
-    meta: "Credential path only"
-  },
-  {
-    label: "Access guard",
-    value: "Basic auth + sensitive-route guard",
-    meta: "Do not expose raw private paths"
-  }
-];
 
 const visualizerPositions = {
   "control-panel": { x: 50, y: 50 },
@@ -616,12 +533,7 @@ const operationTunnels = [
 ];
 
 let activeActionFilter = "all";
-let activeIncidentFilter = "open";
-let incidentQueueExpanded = false;
-let controlPlaneExpanded = false;
-let focusMode = false;
 let selectedOperationId = operationTunnels[0].id;
-const reviewedIncidents = new Set();
 
 const regionLayout = {
   "New York": { x: 18, y: 37 },
@@ -644,12 +556,6 @@ let logs = [
 const elements = {
   commandSummary: document.querySelector("#commandSummary"),
   commandStatusGrid: document.querySelector("#commandStatusGrid"),
-  readinessSummary: document.querySelector("#readinessSummary"),
-  readinessGrid: document.querySelector("#readinessGrid"),
-  incidentSummary: document.querySelector("#incidentSummary"),
-  incidentList: document.querySelector("#incidentList"),
-  controlPlaneSummary: document.querySelector("#controlPlaneSummary"),
-  controlPlaneGrid: document.querySelector("#controlPlaneGrid"),
   operationSummary: document.querySelector("#operationSummary"),
   operationTunnelGrid: document.querySelector("#operationTunnelGrid"),
   operationTunnelDetail: document.querySelector("#operationTunnelDetail"),
@@ -676,10 +582,6 @@ const elements = {
   detailRegion: document.querySelector("#detailRegion"),
   detailPlan: document.querySelector("#detailPlan"),
   detailUptime: document.querySelector("#detailUptime"),
-  detailService: document.querySelector("#detailService"),
-  detailRoute: document.querySelector("#detailRoute"),
-  detailBackup: document.querySelector("#detailBackup"),
-  detailAttention: document.querySelector("#detailAttention"),
   trafficValue: document.querySelector("#trafficValue"),
   trafficChart: document.querySelector("#trafficChart"),
   activityLog: document.querySelector("#activityLog"),
@@ -710,140 +612,6 @@ function formatCurrency(value) {
     currency: "USD",
     maximumFractionDigits: 0
   }).format(value);
-}
-
-function readStoredState() {
-  try {
-    const raw = window.localStorage?.getItem(STORAGE_KEY);
-    return raw ? JSON.parse(raw) : null;
-  } catch {
-    return null;
-  }
-}
-
-function writeStoredState() {
-  try {
-    const payload = {
-      activeActionFilter,
-      activeIncidentFilter,
-      incidentQueueExpanded,
-      controlPlaneExpanded,
-      focusMode,
-      activeStatus,
-      selectedId,
-      selectedOperationId,
-      selectedProgramId,
-      reviewedIncidents: [...reviewedIncidents],
-      servers: servers.map((server) => ({
-        id: server.id,
-        status: server.status,
-        cpu: server.cpu,
-        memory: server.memory,
-        disk: server.disk,
-        traffic: server.traffic,
-        uptime: server.uptime,
-        backup: server.backup,
-        attention: server.attention,
-        series: server.series
-      })),
-      bots: bots.map((bot) => ({
-        id: bot.id,
-        enabled: bot.enabled,
-        agents: bot.agents.map((agent) => ({ id: agent.id, enabled: agent.enabled }))
-      }))
-    };
-
-    window.localStorage?.setItem(STORAGE_KEY, JSON.stringify(payload));
-  } catch {
-    // Storage is optional; the dashboard still works as a plain static page.
-  }
-}
-
-function setSegmentState(selector, dataKey, activeValue) {
-  document.querySelectorAll(selector).forEach((button) => {
-    button.classList.toggle("active", button.dataset[dataKey] === activeValue);
-  });
-}
-
-function renderFocusMode() {
-  document.body?.classList.toggle("focus-mode", focusMode);
-  const button = document.querySelector("#focusModeButton");
-  if (!button) return;
-  button.classList.toggle("active", focusMode);
-  button.setAttribute?.("aria-pressed", String(focusMode));
-  const label = button.querySelector?.("span");
-  if (label) label.textContent = focusMode ? "Full View" : "Focus";
-}
-
-function setFocusMode(enabled, persist = true) {
-  focusMode = Boolean(enabled);
-  renderFocusMode();
-  if (persist) writeStoredState();
-}
-
-function revealDeepPanels() {
-  if (focusMode) setFocusMode(false);
-}
-
-function applyStoredState() {
-  const saved = readStoredState();
-  if (!saved || typeof saved !== "object") return;
-
-  activeActionFilter = saved.activeActionFilter || activeActionFilter;
-  activeIncidentFilter = saved.activeIncidentFilter || activeIncidentFilter;
-  incidentQueueExpanded = Boolean(saved.incidentQueueExpanded);
-  controlPlaneExpanded = Boolean(saved.controlPlaneExpanded);
-  focusMode = Boolean(saved.focusMode);
-  activeStatus = saved.activeStatus || activeStatus;
-  selectedOperationId = saved.selectedOperationId || selectedOperationId;
-  selectedProgramId = saved.selectedProgramId || selectedProgramId;
-  selectedId = saved.selectedId || selectedId;
-
-  if (Array.isArray(saved.reviewedIncidents)) {
-    reviewedIncidents.clear();
-    saved.reviewedIncidents.forEach((id) => reviewedIncidents.add(id));
-  }
-
-  if (Array.isArray(saved.servers)) {
-    saved.servers.forEach((savedServer) => {
-      const server = servers.find((item) => item.id === savedServer.id);
-      if (!server) return;
-      ["status", "uptime", "backup", "attention"].forEach((key) => {
-        if (typeof savedServer[key] === "string") server[key] = savedServer[key];
-      });
-      ["cpu", "memory", "disk", "traffic"].forEach((key) => {
-        if (Number.isFinite(savedServer[key])) server[key] = savedServer[key];
-      });
-      if (Array.isArray(savedServer.series)) server.series = savedServer.series;
-    });
-  }
-
-  if (Array.isArray(saved.bots)) {
-    saved.bots.forEach((savedBot) => {
-      const bot = findBot(savedBot.id);
-      if (!bot) return;
-      bot.enabled = Boolean(savedBot.enabled);
-      if (Array.isArray(savedBot.agents)) {
-        savedBot.agents.forEach((savedAgent) => {
-          const agent = bot.agents.find((item) => item.id === savedAgent.id);
-          if (agent) agent.enabled = Boolean(savedAgent.enabled);
-        });
-      }
-    });
-  }
-
-  if (!servers.some((server) => server.id === selectedId)) selectedId = servers[0]?.id || "";
-  if (!operationTunnels.some((operation) => operation.id === selectedOperationId)) {
-    selectedOperationId = operationTunnels[0].id;
-  }
-  if (!allPrograms().some((program) => program.id === selectedProgramId)) {
-    selectedProgramId = "control-panel";
-  }
-
-  setSegmentState("[data-status]", "status", activeStatus);
-  setSegmentState("[data-action-filter]", "actionFilter", activeActionFilter);
-  setSegmentState("[data-incident-filter]", "incidentFilter", activeIncidentFilter);
-  renderFocusMode();
 }
 
 function filteredServers() {
@@ -893,7 +661,7 @@ function botStatus(bot) {
 
 function programStatus(program) {
   if (!program.enabled) return "stopped";
-  if (/authorization|awaiting|blocked|pending|waiting|attention|research/i.test(program.health)) return "warning";
+  if (/awaiting|waiting|attention|research/i.test(program.health)) return "warning";
   if (program.agents?.some((agent) => !agent.enabled)) return "warning";
   return "running";
 }
@@ -954,294 +722,6 @@ function renderCommandOverview() {
       `
     )
     .join("");
-}
-
-function buildReadinessItems() {
-  const liveServers = servers.filter((server) => server.status !== "stopped");
-  const warningServers = servers.filter((server) => server.status === "warning");
-  const warningPrograms = bots.filter((bot) => programStatus(bot) === "warning");
-  const gatedActions = rootActions.filter((action) => action.status === "gated");
-  const nowActions = rootActions.filter((action) => action.status === "now");
-  const firstWarningProgram = warningPrograms[0];
-  const backedUpServers = servers.filter((server) => /verified|restore|archive|checksum/i.test(server.backup)).length;
-
-  return [
-    {
-      label: "Fleet",
-      value: `${liveServers.length}/${servers.length}`,
-      meta: "VPS active",
-      tone: warningServers.length ? "warning" : "running",
-      detail: warningServers.length
-        ? `${warningServers.map((server) => server.name).join(", ")} needs attention.`
-        : "All active VPS rows are reporting normally.",
-      action: "Open fleet",
-      scrollTarget: "#instances"
-    },
-    {
-      label: "Bot Health",
-      value: String(warningPrograms.length),
-      meta: "warning lanes",
-      tone: warningPrograms.length ? "warning" : "running",
-      detail: firstWarningProgram
-        ? `${firstWarningProgram.name}: ${firstWarningProgram.next}`
-        : "All enabled bots are running with their agents online.",
-      action: firstWarningProgram ? "Open bot" : "Open bots",
-      programId: firstWarningProgram?.id,
-      scrollTarget: firstWarningProgram ? null : "#botPanel"
-    },
-    {
-      label: "Records",
-      value: String(previewRecords.length),
-      meta: `${backedUpServers}/${servers.length} backups live`,
-      tone: backedUpServers === servers.length ? "running" : "warning",
-      detail: "Preview the trackers and change log in-browser before exporting records.",
-      action: "Open change log",
-      previewId: "change-log"
-    },
-    {
-      label: "Approvals",
-      value: String(nowActions.length + gatedActions.length),
-      meta: "owner actions",
-      tone: gatedActions.length ? "warning" : "running",
-      detail: gatedActions[0]?.detail || nowActions[0]?.detail || "No owner approval gates are waiting.",
-      action: "Open actions",
-      scrollTarget: "#rootActions"
-    }
-  ];
-}
-
-function readinessButtonAttributes(item) {
-  if (item.programId) return `data-program-id="${item.programId}"`;
-  if (item.previewId) return `data-preview-id="${item.previewId}"`;
-  return `data-scroll-target="${item.scrollTarget}"`;
-}
-
-function renderVpsReadiness() {
-  const items = buildReadinessItems();
-  const watchCount = items.filter((item) => item.tone === "warning").length;
-
-  elements.readinessSummary.textContent = `${items.length} checks - ${watchCount} watch`;
-  elements.readinessGrid.innerHTML = items
-    .map(
-      (item) => `
-        <article class="readiness-card ${item.tone}">
-          <div class="readiness-card-top">
-            <span>${item.label}</span>
-            ${statusPill(item.tone)}
-          </div>
-          <strong>${item.value}</strong>
-          <small>${item.meta}</small>
-          <p>${item.detail}</p>
-          <button class="secondary-button readiness-open" type="button" ${readinessButtonAttributes(item)}>
-            ${item.action}
-          </button>
-        </article>
-      `
-    )
-    .join("");
-}
-
-function buildIncidentItems() {
-  const backupPattern = /verified|restore|archive|checksum/i;
-  const serverIncidents = servers
-    .filter((server) => server.status === "warning")
-    .map((server) => ({
-      id: `server-${server.id}`,
-      kind: "fleet",
-      label: "Fleet",
-      severity: server.cpu >= 80 || server.memory >= 80 ? "High" : "Watch",
-      title: `${server.name} needs resource review`,
-      owner: server.region,
-      detail: `${server.attention}. CPU ${server.cpu}%, memory ${server.memory}%, disk ${server.disk}%.`,
-      next: `Check ${server.service} and confirm ${server.route}.`,
-      action: "Open VPS",
-      serverId: server.id
-    }));
-
-  const backupIncidents = servers
-    .filter((server) => !backupPattern.test(server.backup))
-    .map((server) => ({
-      id: `backup-${server.id}`,
-      kind: "fleet",
-      label: "Backup",
-      severity: server.status === "stopped" ? "Watch" : "High",
-      title: `${server.name} backup needs attention`,
-      owner: server.region,
-      detail: `${server.backup} is not a verified restore, archive, or checksum state.`,
-      next: "Schedule or verify the backup before this VPS becomes production-critical.",
-      action: "Open VPS",
-      serverId: server.id
-    }));
-
-  const botIncidents = bots
-    .filter((bot) => programStatus(bot) === "warning")
-    .map((bot) => ({
-      id: `bot-${bot.id}`,
-      kind: "bots",
-      label: "Bot",
-      severity: /authorization|waiting|required|research/i.test(`${bot.health} ${bot.gate}`) ? "Gate" : "High",
-      title: `${bot.name} is blocked`,
-      owner: bot.lane,
-      detail: bot.blocker || bot.gate,
-      next: bot.next || "Open the program and review its latest status.",
-      action: "Open bot",
-      programId: bot.id
-    }));
-
-  const gateIncidents = rootActions
-    .filter((action) => action.status === "now" || action.status === "gated")
-    .map((action) => ({
-      id: `gate-${action.id}`,
-      kind: "gates",
-      label: actionStatusLabel(action.status),
-      severity: action.status === "now" ? "High" : "Gate",
-      title: action.title,
-      owner: action.owner,
-      detail: action.detail,
-      next: action.lane,
-      action: action.preview ? "Open preview" : "Open program",
-      programId: action.target,
-      previewId: action.preview
-    }));
-
-  const severityRank = { High: 0, Gate: 1, Watch: 2 };
-
-  return [...serverIncidents, ...backupIncidents, ...botIncidents, ...gateIncidents].sort((a, b) => {
-    const severity = severityRank[a.severity] - severityRank[b.severity];
-    return severity || a.title.localeCompare(b.title);
-  });
-}
-
-function incidentMatchesFilter(item) {
-  if (reviewedIncidents.has(item.id)) return false;
-  if (activeIncidentFilter === "open") return true;
-  return item.kind === activeIncidentFilter;
-}
-
-function incidentOpenAttributes(item) {
-  if (item.serverId) return `data-incident-server="${item.serverId}"`;
-  if (item.programId) return `data-program-id="${item.programId}"`;
-  if (item.previewId) return `data-preview-id="${item.previewId}"`;
-  return `data-scroll-target="#rootActions"`;
-}
-
-function renderIncidentQueue() {
-  const incidents = buildIncidentItems();
-  const openIncidents = incidents.filter((item) => !reviewedIncidents.has(item.id));
-  const visibleIncidents = incidents.filter(incidentMatchesFilter);
-  const highCount = openIncidents.filter((item) => item.severity === "High").length;
-  const visibleLimit = incidentQueueExpanded ? visibleIncidents.length : 4;
-  const displayedIncidents = visibleIncidents.slice(0, visibleLimit);
-  const hiddenCount = Math.max(0, visibleIncidents.length - displayedIncidents.length);
-
-  elements.incidentSummary.textContent = hiddenCount
-    ? `${openIncidents.length} open - ${highCount} high - showing ${displayedIncidents.length}`
-    : `${openIncidents.length} open - ${highCount} high`;
-  document.querySelector("#toggleIncidentLimitButton").textContent = incidentQueueExpanded ? "Show less" : "Show all";
-  document.querySelector("#toggleIncidentLimitButton").hidden = visibleIncidents.length <= 4;
-
-  if (!visibleIncidents.length) {
-    elements.incidentList.innerHTML = `<div class="empty-state compact">No matching open attention items.</div>`;
-    return;
-  }
-
-  elements.incidentList.innerHTML = displayedIncidents
-    .map(
-      (item) => `
-        <article class="incident-card ${item.severity.toLowerCase()}">
-          <div class="incident-card-top">
-            <span>${item.label}</span>
-            <span class="incident-severity">${item.severity}</span>
-          </div>
-          <h3>${item.title}</h3>
-          <p>${item.detail}</p>
-          <div class="incident-meta">
-            <span>Owner</span>
-            <strong>${item.owner}</strong>
-          </div>
-          <div class="incident-next">
-            <span>Next</span>
-            <strong>${item.next}</strong>
-          </div>
-          <div class="incident-actions">
-            <button class="secondary-button" type="button" ${incidentOpenAttributes(item)}>${item.action}</button>
-            <button class="secondary-button" type="button" data-incident-review="${item.id}">Reviewed</button>
-          </div>
-        </article>
-      `
-    )
-    .join("") +
-    (hiddenCount
-      ? `<div class="queue-more compact">Showing the highest-priority ${displayedIncidents.length}. ${hiddenCount} more hidden.</div>`
-      : "");
-}
-
-function renderControlPlane() {
-  const route = controlPlane.find((item) => item.label === "Public route")?.value || "Route unavailable";
-  const service = controlPlane.find((item) => item.label === "Local service")?.value || "Service unavailable";
-  const displayedRefs = controlPlaneExpanded ? controlPlane : controlPlane.slice(0, 4);
-  const hiddenRefs = Math.max(0, controlPlane.length - displayedRefs.length);
-
-  elements.controlPlaneSummary.textContent = hiddenRefs
-    ? `${service} - ${displayedRefs.length}/${controlPlane.length} refs`
-    : `${service} - ${route.replace(/^https?:\/\//, "")}`;
-  document.querySelector("#toggleControlPlaneButton").textContent = controlPlaneExpanded ? "Show fewer refs" : "Show all refs";
-  elements.controlPlaneGrid.innerHTML = displayedRefs
-    .map(
-      (item) => `
-        <article class="control-fact">
-          <span>${item.label}</span>
-          <strong>${item.value}</strong>
-          <small>${item.meta}</small>
-          <button class="icon-button small control-copy" type="button" data-copy-value="${item.value}" aria-label="Copy ${item.label}" title="Copy ${item.label}">
-            ${icon("icon-copy")}
-          </button>
-        </article>
-      `
-    )
-    .join("") +
-    (hiddenRefs ? `<div class="queue-more control-more">Showing essential refs. ${hiddenRefs} more hidden.</div>` : "");
-}
-
-function buildOpsBrief() {
-  const activeServers = servers.filter((server) => server.status !== "stopped");
-  const warningServers = servers.filter((server) => server.status === "warning");
-  const warningPrograms = bots.filter((bot) => programStatus(bot) === "warning");
-  const openIncidents = buildIncidentItems().filter((item) => !reviewedIncidents.has(item.id));
-  const topIncidents = openIncidents
-    .slice(0, 5)
-    .map((item, index) => `${index + 1}. [${item.severity}] ${item.title} - ${item.next}`);
-  const route = controlPlane.find((item) => item.label === "Public route")?.value || "Route unavailable";
-  const service = controlPlane.find((item) => item.label === "Local service")?.value || "Service unavailable";
-  const operation = selectedOperation();
-  const server = selectedServer();
-  const program = selectedProgram();
-
-  return [
-    "PSE VPS Ops Brief",
-    `Generated: ${new Date().toLocaleString()}`,
-    `Control plane: ${service} at ${route}`,
-    `Fleet: ${activeServers.length}/${servers.length} VPS active; ${warningServers.length} warning.`,
-    `Bots: ${bots.filter((bot) => bot.enabled).length}/${bots.length} enabled; ${warningPrograms.length} warning.`,
-    `Open attention items: ${openIncidents.length}`,
-    "",
-    "Top fixes:",
-    topIncidents.length ? topIncidents.join("\n") : "No open attention items.",
-    "",
-    `Selected operation: ${operation.name} - ${operation.summary}`,
-    server ? `Selected VPS: ${server.name} (${server.status}) - ${server.attention}` : "Selected VPS: none",
-    `Selected program: ${program.name} (${programStatus(program)}) - ${program.next || program.gate}`
-  ].join("\n");
-}
-
-async function copyOpsBrief() {
-  const brief = buildOpsBrief();
-  try {
-    await navigator.clipboard.writeText(brief);
-    addLog("Ops brief copied", "Current VPS summary copied to clipboard");
-  } catch {
-    addLog("Ops brief ready", brief.split("\n").slice(0, 3).join(" / "));
-  }
 }
 
 function renderOperationTunnels() {
@@ -1439,10 +919,6 @@ function renderDetail() {
     elements.detailRegion.textContent = "-";
     elements.detailPlan.textContent = "-";
     elements.detailUptime.textContent = "-";
-    elements.detailService.textContent = "-";
-    elements.detailRoute.textContent = "-";
-    elements.detailBackup.textContent = "-";
-    elements.detailAttention.textContent = "-";
     elements.trafficValue.textContent = "0 GB";
     setRing(elements.cpuRing, 0);
     setRing(elements.memoryRing, 0);
@@ -1461,10 +937,6 @@ function renderDetail() {
   elements.detailRegion.textContent = server.region;
   elements.detailPlan.textContent = server.plan;
   elements.detailUptime.textContent = server.uptime;
-  elements.detailService.textContent = server.service;
-  elements.detailRoute.textContent = server.route;
-  elements.detailBackup.textContent = server.backup;
-  elements.detailAttention.textContent = server.attention;
   elements.trafficValue.textContent = `${server.traffic.toLocaleString()} GB`;
 
   setRing(elements.cpuRing, server.cpu);
@@ -1553,10 +1025,8 @@ function selectOperation(id, scrollToTunnel = false) {
   renderOperationTunnels();
   renderFlow();
   setActiveFlowTarget("#operationTunnels");
-  writeStoredState();
 
   if (scrollToTunnel) {
-    revealDeepPanels();
     document.querySelector("#operationTunnels").scrollIntoView({ behavior: "smooth", block: "start" });
   }
 }
@@ -1566,10 +1036,8 @@ function selectProgram(id, scrollToVisualizer = false) {
   renderVisualizer();
   renderBots();
   renderFlow();
-  writeStoredState();
 
   if (scrollToVisualizer) {
-    revealDeepPanels();
     setActiveFlowTarget("#programVisualizer");
     document.querySelector("#programVisualizer").scrollIntoView({ behavior: "smooth", block: "start" });
   }
@@ -1606,14 +1074,6 @@ function renderVisualizerDetail() {
       <div>
         <dt>Record</dt>
         <dd>${program.record}</dd>
-      </div>
-      <div>
-        <dt>Blocker</dt>
-        <dd>${program.blocker || program.gate}</dd>
-      </div>
-      <div>
-        <dt>Next action</dt>
-        <dd>${program.next || "Keep current and watch the next status report."}</dd>
       </div>
     </dl>
     <div class="program-agents">
@@ -1825,11 +1285,7 @@ function updateTimestamp() {
 }
 
 function renderAll() {
-  renderFocusMode();
   renderCommandOverview();
-  renderVpsReadiness();
-  renderIncidentQueue();
-  renderControlPlane();
   renderOperationTunnels();
   renderRootActions();
   renderMetrics();
@@ -1847,7 +1303,6 @@ function selectServer(id) {
   selectedId = id;
   renderServers();
   renderDetail();
-  writeStoredState();
 }
 
 function addLog(title, detail) {
@@ -1885,10 +1340,7 @@ function setBotEnabled(bot, enabled) {
   renderBots();
   renderVisualizer();
   renderCommandOverview();
-  renderVpsReadiness();
-  renderIncidentQueue();
   renderFlow();
-  writeStoredState();
   addLog("Bot power changed", `${bot.name} switched ${enabled ? "on" : "off"}`);
 }
 
@@ -1904,10 +1356,7 @@ function setAgentEnabled(bot, agent, enabled) {
   renderBots();
   renderVisualizer();
   renderCommandOverview();
-  renderVpsReadiness();
-  renderIncidentQueue();
   renderFlow();
-  writeStoredState();
   addLog("Agent power changed", `${agent.name} switched ${enabled ? "on" : "off"} for ${bot.name}`);
 }
 
@@ -1929,7 +1378,6 @@ function randomizeMetrics() {
 
   updateTimestamp();
   renderAll();
-  writeStoredState();
   addLog("Metrics refreshed", "Fleet telemetry updated across all regions");
 }
 
@@ -1962,10 +1410,6 @@ function createServer(formData) {
     traffic: 0,
     spend: plan.startsWith("2") ? 26 : plan.startsWith("4") ? 48 : plan.startsWith("8") ? 96 : 188,
     uptime: "1m",
-    service: "new-vps-bootstrap.service",
-    route: "Pending",
-    backup: "Not scheduled",
-    attention: "Finish bootstrap checks",
     series: [3, 5, 7, 9, 11, 13, 12, 14, 15, 13, 16, 14]
   };
 
@@ -1974,7 +1418,6 @@ function createServer(formData) {
   closeModal();
   updateTimestamp();
   renderAll();
-  writeStoredState();
   addLog("VPS created", `${name} provisioned in ${region}`);
 }
 
@@ -1985,7 +1428,6 @@ document.querySelectorAll("[data-status]").forEach((button) => {
     activeStatus = button.dataset.status;
     renderServers();
     renderDetail();
-    writeStoredState();
   });
 });
 
@@ -1995,17 +1437,6 @@ document.querySelectorAll("[data-action-filter]").forEach((button) => {
     button.classList.add("active");
     activeActionFilter = button.dataset.actionFilter;
     renderRootActions();
-    writeStoredState();
-  });
-});
-
-document.querySelectorAll("[data-incident-filter]").forEach((button) => {
-  button.addEventListener("click", () => {
-    document.querySelectorAll("[data-incident-filter]").forEach((segment) => segment.classList.remove("active"));
-    button.classList.add("active");
-    activeIncidentFilter = button.dataset.incidentFilter;
-    renderIncidentQueue();
-    writeStoredState();
   });
 });
 
@@ -2079,74 +1510,9 @@ elements.rootActionGrid.addEventListener("click", (event) => {
   selectProgram(programButton.dataset.programId, true);
 });
 
-elements.readinessGrid.addEventListener("click", (event) => {
-  const previewButton = event.target.closest("[data-preview-id]");
-  if (previewButton) {
-    openPreview(previewButton.dataset.previewId);
-    return;
-  }
-
-  const programButton = event.target.closest("[data-program-id]");
-  if (programButton) {
-    selectProgram(programButton.dataset.programId, true);
-    return;
-  }
-
-  const scrollButton = event.target.closest("[data-scroll-target]");
-  if (!scrollButton) return;
-  const target = scrollButton.dataset.scrollTarget;
-  revealDeepPanels();
-  if (document.querySelector(`[data-flow-target="${target}"]`)) {
-    setActiveFlowTarget(target);
-  }
-  document.querySelector(target)?.scrollIntoView({ behavior: "smooth", block: "start" });
-});
-
-elements.incidentList.addEventListener("click", (event) => {
-  const reviewButton = event.target.closest("[data-incident-review]");
-  if (reviewButton) {
-    reviewedIncidents.add(reviewButton.dataset.incidentReview);
-    renderIncidentQueue();
-    writeStoredState();
-    addLog("Queue item reviewed", "Attention item hidden from the open queue");
-    return;
-  }
-
-  const serverButton = event.target.closest("[data-incident-server]");
-  if (serverButton) {
-    selectServer(serverButton.dataset.incidentServer);
-    revealDeepPanels();
-    setActiveFlowTarget("#instances");
-    document.querySelector("#instances").scrollIntoView({ behavior: "smooth", block: "start" });
-    return;
-  }
-
-  const previewButton = event.target.closest("[data-preview-id]");
-  if (previewButton) {
-    openPreview(previewButton.dataset.previewId);
-    return;
-  }
-
-  const programButton = event.target.closest("[data-program-id]");
-  if (programButton) {
-    selectProgram(programButton.dataset.programId, true);
-    return;
-  }
-
-  const scrollButton = event.target.closest("[data-scroll-target]");
-  if (!scrollButton) return;
-  const target = scrollButton.dataset.scrollTarget;
-  revealDeepPanels();
-  if (document.querySelector(`[data-flow-target="${target}"]`)) {
-    setActiveFlowTarget(target);
-  }
-  document.querySelector(target)?.scrollIntoView({ behavior: "smooth", block: "start" });
-});
-
 elements.flowStrip.addEventListener("click", (event) => {
   const step = event.target.closest("[data-flow-target]");
   if (!step) return;
-  if (!["#overview"].includes(step.dataset.flowTarget)) revealDeepPanels();
   setActiveFlowTarget(step.dataset.flowTarget);
   document.querySelector(step.dataset.flowTarget)?.scrollIntoView({ behavior: "smooth", block: "start" });
 });
@@ -2155,18 +1521,6 @@ elements.previewGrid.addEventListener("click", (event) => {
   const button = event.target.closest("[data-preview-id]");
   if (!button) return;
   openPreview(button.dataset.previewId);
-});
-
-elements.controlPlaneGrid.addEventListener("click", async (event) => {
-  const button = event.target.closest("[data-copy-value]");
-  if (!button) return;
-
-  try {
-    await navigator.clipboard.writeText(button.dataset.copyValue);
-    addLog("Control plane copied", `${button.dataset.copyValue} copied`);
-  } catch {
-    addLog("Control plane selected", button.dataset.copyValue);
-  }
 });
 
 elements.searchInput.addEventListener("input", () => {
@@ -2180,34 +1534,12 @@ elements.regionSelect.addEventListener("change", () => {
 
 document.querySelector("#refreshButton").addEventListener("click", randomizeMetrics);
 document.querySelector("#newServerButton").addEventListener("click", openModal);
-document.querySelector("#copyBriefButton").addEventListener("click", copyOpsBrief);
-document.querySelector("#focusModeButton").addEventListener("click", () => {
-  setFocusMode(!focusMode);
-});
 document.querySelector("#visualizerButton").addEventListener("click", () => {
-  revealDeepPanels();
-  setActiveFlowTarget("#programVisualizer");
   document.querySelector("#programVisualizer").scrollIntoView({ behavior: "smooth", block: "start" });
 });
 document.querySelector("#closeModalButton").addEventListener("click", closeModal);
 document.querySelector("#cancelModalButton").addEventListener("click", closeModal);
 document.querySelector("#closePreviewButton").addEventListener("click", closePreview);
-document.querySelector("#resetReviewedButton").addEventListener("click", () => {
-  reviewedIncidents.clear();
-  renderIncidentQueue();
-  writeStoredState();
-  addLog("Reviewed queue reset", "All attention items are visible again");
-});
-document.querySelector("#toggleIncidentLimitButton").addEventListener("click", () => {
-  incidentQueueExpanded = !incidentQueueExpanded;
-  renderIncidentQueue();
-  writeStoredState();
-});
-document.querySelector("#toggleControlPlaneButton").addEventListener("click", () => {
-  controlPlaneExpanded = !controlPlaneExpanded;
-  renderControlPlane();
-  writeStoredState();
-});
 
 document.querySelector("#clearLogButton").addEventListener("click", () => {
   logs = [];
@@ -2227,7 +1559,6 @@ document.querySelector("#powerButton").addEventListener("click", () => {
   server.uptime = server.status === "stopped" ? "0h" : "1m";
   updateTimestamp();
   renderAll();
-  writeStoredState();
   addLog("Power state changed", `${server.name} is now ${server.status}`);
 });
 
@@ -2265,6 +1596,5 @@ window.addEventListener("resize", () => {
   drawChart(server ? server.series : [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
 });
 
-applyStoredState();
 updateTimestamp();
 renderAll();

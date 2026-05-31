@@ -25,7 +25,7 @@
           <a href="worker-registration.html">Register</a>
           <a href="about.html">About</a>
           <a href="contact.html">Contact</a>
-          <a class="nav-cta active" href="#apply">Apply</a>
+          <a class="nav-cta active" href="sales-applicant-intake.html">Apply</a>
         </nav>
       </div>
     </header>
@@ -36,14 +36,14 @@
           <div>
             <p class="eyebrow">Open Position</p>
             <h1>Website Seller</h1>
-            <p class="lead">Find small businesses that need a new website or a cleaner online presence. To apply, join the WhatsApp channel/group first, then fill out your information so the team can review your fit before outreach begins.</p>
+            <p class="lead">Find small businesses that need a new website or a cleaner online presence. To apply, submit one general PSE sales application so the team can review your fit before outreach begins. PSE assigns the final sales field internally.</p>
             <div class="tag-row">
               <span class="tag green">$50 per closed website sale</span>
               <span class="tag">Remote</span>
               <span class="tag">Closed-sale based</span>
             </div>
             <div class="hero-actions">
-              <a class="button" href="#apply">Apply for This Role</a>
+              <a class="button" href="sales-applicant-intake.html">Apply Once</a>
               <a class="button secondary" href="worker-registration.html">Register for Employee Number</a>
               <a class="button secondary" href="#examples">View Prospect Types</a>
             </div>
@@ -147,17 +147,21 @@
         <div class="container">
           <div class="section-head center">
             <p class="eyebrow">Apply</p>
-            <h2>Apply for Website Seller</h2>
-            <p>Join the WhatsApp channel/group first, then submit your details below. The application will open in WhatsApp so the team can review it.</p>
+            <h2>Submit a quick sales application</h2>
+            <p>This quick form saves into the main PSE applicant queue. PSE reviews your fit and assigns the final sales field internally.</p>
           </div>
 
           <div class="form-card">
             <div class="form-success" data-form-success>
-              Application ready. WhatsApp should open with your message. Send it to complete your application.
+              Application received. PSE will assign the sales field internally.
             </div>
-            <form data-application-form data-default-track="Website Sales">
+            <form data-application-form>
+              <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
+                <label for="website-pse-website">Website</label>
+                <input id="website-pse-website" name="pseWebsite" type="text" tabindex="-1" autocomplete="off">
+              </div>
               <div class="button-row" style="margin-top: 0; margin-bottom: 18px;">
-                <a class="button secondary" href="https://whatsapp.com/channel/0029Vb80vPW9RZAdW2E9hE1V" target="_blank" rel="noopener">Join WhatsApp First</a>
+                <a class="button secondary" href="https://whatsapp.com/channel/0029Vb80vPW9RZAdW2E9hE1V" target="_blank" rel="noopener">Join WhatsApp Updates</a>
                 <a class="button secondary" href="worker-registration.html">Get Employee Number</a>
               </div>
               <div class="form-row">
@@ -172,8 +176,8 @@
               </div>
               <div class="form-row">
                 <div class="form-group">
-                  <label for="email">Email</label>
-                  <input id="email" name="email" type="email" autocomplete="email" placeholder="name@example.com">
+                  <label for="email">Email *</label>
+                  <input id="email" name="email" type="email" autocomplete="email" required placeholder="name@example.com">
                 </div>
                 <div class="form-group">
                   <label for="location">Location *</label>
@@ -195,7 +199,11 @@
                 <label for="note">Why do you want this role?</label>
                 <textarea id="note" name="note" rows="4" placeholder="Short answer is fine."></textarea>
               </div>
-              <button class="button full" type="submit">Open WhatsApp Application</button>
+              <label class="checkbox-group" for="website-consent">
+                <input id="website-consent" name="consent" type="checkbox" required>
+                <span>I agree that PSE may review my application and contact me through WhatsApp or email. I understand PSE assigns the sales field internally.</span>
+              </label>
+              <button class="button full" type="submit">Submit Quick Application</button>
               <p class="form-note">Required fields are marked with *. Do not send private passwords, banking logins, or unrelated personal documents.</p>
             </form>
           </div>

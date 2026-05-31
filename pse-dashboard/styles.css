@@ -437,98 +437,66 @@ select {
 }
 
 .operation-card {
-  position: relative;
-  display: grid;
-  grid-template-columns: 58px minmax(0, 1fr);
-  align-items: center;
-  gap: 12px;
-  min-width: 0;
-  min-height: 104px;
-  padding: 12px;
-  color: var(--ink);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background:
-    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.9), transparent 36%),
-    linear-gradient(135deg, var(--operation-soft, #e7f8fb), #ffffff 68%);
-  text-align: left;
-  box-shadow: 0 8px 22px rgba(23, 32, 51, 0.05);
-  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
-}
-
-.operation-card::before {
-  content: "";
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 4px;
-  border-radius: 8px 0 0 8px;
-  background: var(--operation-color, var(--teal));
-}
-
-.operation-card:hover {
-  border-color: color-mix(in srgb, var(--operation-color, var(--teal)) 58%, var(--line));
-  box-shadow: 0 14px 34px rgba(23, 32, 51, 0.12);
-  transform: translateY(-1px);
-}
-
-.operation-card.selected {
-  border-color: color-mix(in srgb, var(--operation-color, var(--teal)) 64%, #ffffff);
-  background:
-    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.92), transparent 34%),
-    linear-gradient(135deg, var(--operation-soft, #e7f8fb), #ffffff 54%);
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--operation-color, var(--teal)) 20%, transparent),
-    0 12px 28px rgba(23, 32, 51, 0.1);
-}
-
-.operation-icon {
-  display: grid;
-  place-items: center;
-  width: 58px;
-  height: 58px;
-  border: 1px solid color-mix(in srgb, var(--operation-color, var(--teal)) 30%, #ffffff);
-  border-radius: 8px;
-  color: var(--operation-color, var(--teal));
-  background: rgba(255, 255, 255, 0.82);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.72);
-}
-
-.operation-icon svg {
-  width: 31px;
-  height: 31px;
-}
-
-.operation-copy {
   display: grid;
   gap: 6px;
   min-width: 0;
+  min-height: 112px;
+  padding: 14px;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--teal);
+  border-radius: 8px;
+  background: #f8fafc;
+  text-align: left;
 }
 
-.operation-chip {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  justify-self: start;
-  max-width: 100%;
-  min-height: 25px;
-  padding: 0 8px;
-  border-radius: 999px;
-  color: color-mix(in srgb, var(--operation-color, var(--teal)) 72%, #101827);
-  background: rgba(255, 255, 255, 0.82);
-  font-size: 0.66rem;
+.operation-card.watch {
+  border-left-color: var(--amber);
+}
+
+.operation-card.hold {
+  border-left-color: var(--coral);
+}
+
+.operation-card.support {
+  border-left-color: var(--blue);
+}
+
+.operation-card.selected {
+  border-color: rgba(37, 150, 166, 0.5);
+  background: #f0fbfc;
+  box-shadow: inset 0 0 0 1px rgba(37, 150, 166, 0.15);
+}
+
+.operation-card span {
+  color: var(--cyan);
+  font-size: 0.72rem;
   font-weight: 900;
   text-transform: uppercase;
-  white-space: nowrap;
+}
+
+.operation-card.watch span {
+  color: #835100;
+}
+
+.operation-card.hold span {
+  color: #a2342a;
+}
+
+.operation-card.support span {
+  color: #1f4fa8;
 }
 
 .operation-card strong,
-.operation-card small {
+.operation-card small,
+.operation-card em {
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .operation-card strong {
-  font-size: 1rem;
+  font-size: 0.94rem;
   line-height: 1.2;
 }
 
@@ -536,6 +504,13 @@ select {
   color: var(--muted);
   font-weight: 800;
   line-height: 1.35;
+}
+
+.operation-card em {
+  color: #536173;
+  font-size: 0.76rem;
+  font-style: normal;
+  font-weight: 900;
 }
 
 .operation-empty {
@@ -558,50 +533,19 @@ select {
   padding: 16px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background:
-    linear-gradient(135deg, var(--operation-soft, #e7f8fb), transparent 34%),
-    var(--panel);
+  background: var(--panel);
 }
 
 .operation-detail-head {
   display: grid;
-  grid-template-columns: 96px minmax(0, 1fr);
-  gap: 16px;
-  align-items: center;
-  padding: 14px;
-  border: 1px solid #dfe7ef;
-  border-radius: 8px;
-  background:
-    radial-gradient(circle at 15% 10%, rgba(255, 255, 255, 0.92), transparent 36%),
-    linear-gradient(135deg, var(--operation-soft, #e7f8fb), #ffffff 62%);
-}
-
-.operation-hero {
-  position: relative;
-  display: grid;
-  place-items: center;
-  width: 96px;
-  height: 96px;
-  border: 1px solid color-mix(in srgb, var(--operation-color, var(--teal)) 32%, #ffffff);
-  border-radius: 8px;
-  color: var(--operation-color, var(--teal));
-  background: rgba(255, 255, 255, 0.78);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.75);
-}
-
-.operation-hero svg {
-  width: 48px;
-  height: 48px;
-}
-
-.operation-detail-copy {
-  min-width: 0;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
 }
 
 .operation-status {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   min-height: 28px;
   padding: 0 10px;
   border-radius: 999px;
@@ -611,17 +555,6 @@ select {
   font-weight: 900;
   text-transform: uppercase;
   white-space: nowrap;
-}
-
-.operation-hero .operation-status {
-  position: absolute;
-  right: 7px;
-  bottom: 7px;
-  left: 7px;
-  min-height: 23px;
-  padding: 0 6px;
-  font-size: 0.62rem;
-  background: rgba(255, 255, 255, 0.9);
 }
 
 .operation-status.watch {
@@ -1491,7 +1424,8 @@ tbody tr:hover {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .operation-heading {
+  .operation-heading,
+  .operation-detail-head {
     align-items: flex-start;
     grid-template-columns: minmax(0, 1fr);
   }
@@ -1500,58 +1434,8 @@ tbody tr:hover {
     flex-direction: column;
   }
 
-  .operation-detail-head {
-    grid-template-columns: 72px minmax(0, 1fr);
-    gap: 12px;
-    padding: 12px;
-  }
-
-  .operation-hero {
-    width: 72px;
-    height: 72px;
-  }
-
-  .operation-hero svg {
-    width: 34px;
-    height: 34px;
-  }
-
-  .operation-hero .operation-status {
-    right: 5px;
-    bottom: 5px;
-    left: 5px;
-    min-height: 19px;
-    font-size: 0.54rem;
-  }
-
   .operation-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .operation-card {
     grid-template-columns: 1fr;
-    justify-items: center;
-    min-height: 128px;
-    padding: 12px 10px;
-    text-align: center;
-  }
-
-  .operation-icon {
-    width: 50px;
-    height: 50px;
-  }
-
-  .operation-icon svg {
-    width: 28px;
-    height: 28px;
-  }
-
-  .operation-copy {
-    justify-items: center;
-  }
-
-  .operation-chip {
-    font-size: 0.58rem;
   }
 
   .operation-facts,
