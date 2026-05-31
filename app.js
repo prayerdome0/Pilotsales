@@ -1,5 +1,6 @@
 const applicationForms = document.querySelectorAll("[data-application-form]");
 const trackLinks = document.querySelectorAll("[data-apply-track]");
+const workerRegistrationForms = document.querySelectorAll("[data-worker-registration-form]");
 
 trackLinks.forEach((link) => {
   link.addEventListener("click", () => {
@@ -58,5 +59,83 @@ applicationForms.forEach((form) => {
       success.style.display = "block";
     }
     form.reset();
+  });
+});
+
+function setWorkerMessage(form, message, isError = false) {
+  const container = form.closest(".form-card") || document;
+  const messageBox = container.querySelector("[data-worker-message]");
+  if (!messageBox) {
+    return;
+  }
+
+  messageBox.textContent = message;
+  messageBox.style.display = "block";
+  messageBox.classList.toggle("error", isError);
+}
+
+workerRegistrationForms.forEach((form) => {
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const data = new FormData(form);
+    const payload = {
+      fullName: String(data.get("fullName") || "").trim(),
+      email: String(data.get("email") || "").trim(),
+      whatsapp: String(data.get("whatsapp") || "").trim(),
+      consent: data.get("consent") === "on",
+    };
+
+    if (!payload.fullName || !payload.email || !payload.whatsapp || !payload.consent) {
+      setWorkerMessage(form, "Please complete every required field before submitting.", true);
+      return;
+    }
+
+    const submitButton = form.querySelector('button[type="submit"]');
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = "Submitting...";
+    }
+
+    try {
+      const response = await fetch("api/worker-registration", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(result.message || "Registration could not be saved.");
+      }
+
+      const container = form.closest(".form-card") || document;
+      const employeeResult = container.querySelector("[data-employee-result]");
+      const employeeNumber = container.querySelector("[data-employee-number]");
+
+      if (employeeNumber) {
+        employeeNumber.textContent = result.employeeNumber;
+      }
+
+      if (employeeResult) {
+        employeeResult.hidden = false;
+      }
+
+      setWorkerMessage(form, "Registration received. Your employee number has been assigned.");
+      form.reset();
+    } catch (error) {
+      setWorkerMessage(
+        form,
+        error.message || "Registration service is temporarily unavailable. Please try again shortly.",
+        true
+      );
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = "Submit Registration";
+      }
+    }
   });
 });

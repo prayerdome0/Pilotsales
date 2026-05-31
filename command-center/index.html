@@ -114,6 +114,14 @@
               <svg><use href="#icon-chart"></use></svg>
               <span>Visualizer</span>
             </button>
+            <button class="secondary-button topbar-link" id="copyBriefButton" type="button">
+              <svg><use href="#icon-copy"></use></svg>
+              <span>Copy Brief</span>
+            </button>
+            <button class="secondary-button topbar-link" id="focusModeButton" type="button" aria-pressed="false">
+              <svg><use href="#icon-shield"></use></svg>
+              <span>Focus</span>
+            </button>
             <button class="icon-button" id="refreshButton" type="button" aria-label="Refresh metrics" title="Refresh metrics">
               <svg><use href="#icon-refresh"></use></svg>
             </button>
@@ -160,6 +168,52 @@
               <p id="commandSummary">Loading command state...</p>
             </div>
             <div class="command-status-grid" id="commandStatusGrid"></div>
+          </section>
+
+          <section class="vps-readiness panel" id="vpsReadiness" aria-label="VPS readiness board">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">VPS Readiness</p>
+                <h2>Ops Snapshot</h2>
+              </div>
+              <span id="readinessSummary" class="timestamp">0 checks</span>
+            </div>
+            <div class="readiness-grid" id="readinessGrid"></div>
+          </section>
+
+          <section class="incident-queue panel" id="incidentQueue" aria-label="VPS attention queue">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Attention Queue</p>
+                <h2>Next Fixes</h2>
+              </div>
+              <span id="incidentSummary" class="timestamp">0 open</span>
+            </div>
+            <div class="incident-toolbar">
+              <div class="segmented compact" role="tablist" aria-label="Attention queue filter">
+                <button class="segment active" type="button" data-incident-filter="open">Open</button>
+                <button class="segment" type="button" data-incident-filter="fleet">Fleet</button>
+                <button class="segment" type="button" data-incident-filter="bots">Bots</button>
+                <button class="segment" type="button" data-incident-filter="gates">Gates</button>
+              </div>
+              <button class="secondary-button toolbar-button" id="resetReviewedButton" type="button">Reset reviewed</button>
+              <button class="secondary-button toolbar-button" id="toggleIncidentLimitButton" type="button">Show all</button>
+            </div>
+            <div class="incident-list" id="incidentList"></div>
+          </section>
+
+          <section class="control-plane panel" id="controlPlane" aria-label="VPS control plane reference">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Control Plane</p>
+                <h2>VPS Access Map</h2>
+              </div>
+              <div class="panel-actions">
+                <span id="controlPlaneSummary" class="timestamp">Service map</span>
+                <button class="secondary-button toolbar-button" id="toggleControlPlaneButton" type="button">Show all refs</button>
+              </div>
+            </div>
+            <div class="control-plane-grid" id="controlPlaneGrid"></div>
           </section>
 
           <section class="operation-tunnels panel" id="operationTunnels" aria-label="PSE operation tunnels">
@@ -309,6 +363,22 @@
                 <div>
                   <span>Uptime</span>
                   <strong id="detailUptime">-</strong>
+                </div>
+                <div>
+                  <span>Service</span>
+                  <strong id="detailService">-</strong>
+                </div>
+                <div>
+                  <span>Route</span>
+                  <strong id="detailRoute">-</strong>
+                </div>
+                <div>
+                  <span>Backup</span>
+                  <strong id="detailBackup">-</strong>
+                </div>
+                <div>
+                  <span>Attention</span>
+                  <strong id="detailAttention">-</strong>
                 </div>
               </div>
 

@@ -1,162 +1,159 @@
 const ranges = {
   today: {
-    label: "Today",
+    label: "Truth Check",
     metrics: {
-      revenue: 42100,
-      deals: 37,
-      conversion: 28.4,
-      applicants: 64,
-      revenueTrend: "+12% vs goal",
-      dealsTrend: "+8 today",
-      conversionTrend: "+3.2 pts",
-      applicantsTrend: "18 interviews set",
+      revenue: 14,
+      deals: 5,
+      conversion: 0,
+      applicants: 9,
+      revenueTrend: "Static tunnel index",
+      dealsTrend: "Marked active only",
+      conversionTrend: "No verified live feed",
+      applicantsTrend: "Needs human approval",
     },
-    goals: { revenue: 45000, deals: 40, applicants: 70 },
+    goals: { revenue: 14, deals: 14, applicants: 14 },
     momentum: {
-      labels: ["8 AM", "10 AM", "12 PM", "2 PM", "4 PM", "6 PM"],
-      revenue: [7.8, 14.5, 22.4, 31.8, 38.2, 42.1],
-      target: [8, 15, 23, 32, 39, 45],
+      labels: ["Mapped", "Sourced", "Active", "Gated", "Blocked", "Live feed"],
+      revenue: [14, 11, 5, 9, 2, 0],
+      target: [14, 14, 14, 14, 14, 14],
     },
     pipeline: [
-      ["New Leads", 46, "#2596a6"],
-      ["Demos", 28, "#2563eb"],
-      ["Proposals", 17, "#b7791f"],
-      ["Closing", 9, "#d04f3f"],
+      ["Service", 3, "#2596a6"],
+      ["Automation", 2, "#7157d9"],
+      ["Revenue / People", 3, "#2563eb"],
+      ["Other Support", 6, "#b7791f"],
     ],
     reps: [
-      ["Avery", 11],
-      ["Jordan", 9],
-      ["Riley", 7],
-      ["Morgan", 6],
-      ["Casey", 4],
+      ["Mapped", 14],
+      ["Needs source", 9],
+      ["Active", 5],
+      ["Blocked", 2],
     ],
     funnel: [
-      ["Applicants", 64, "#2596a6"],
-      ["Screened", 42, "#2563eb"],
-      ["Interviewing", 25, "#b7791f"],
-      ["Offers", 9, "#16865a"],
+      ["Mapped tunnels", 14, "#2596a6"],
+      ["Local files", 11, "#2563eb"],
+      ["Approval gates", 9, "#b7791f"],
+      ["Live feeds", 0, "#d04f3f"],
     ],
     followUps: [
-      ["Summit Homes", "Proposal follow-up due", "Avery", "High", "Due today", "sales"],
-      ["BrightLine Solar", "Demo no-show needs rebook", "Jordan", "Medium", "Contacting", "sales"],
-      ["Applicant: Taylor M.", "Interview confirmation pending", "Riley", "High", "Awaiting reply", "recruiting"],
-      ["Northstar Fitness", "Decision maker opened pricing", "Morgan", "High", "Call queued", "sales"],
-      ["Applicant: Chris R.", "Background packet incomplete", "Casey", "Low", "Needs docs", "recruiting"],
+      ["Data policy", "Do not show revenue/deals without a source feed", "PSE", "High", "In force", "sales"],
+      ["Operation owners", "Confirm real owner names before publishing", "PSE", "High", "Needs source", "sales"],
+      ["Worker intake", "Connect only verified registration totals", "PSE", "Medium", "Not connected", "recruiting"],
+      ["Compliance gates", "Keep approval-required lanes visibly gated", "PSE", "High", "Visible", "sales"],
+      ["Public copy", "Keep private metrics out of public pages", "PSE", "Medium", "Guarded", "sales"],
     ],
     activities: [
-      ["Deal", "Avery closed Summit Homes", "$6.4K booked 12 minutes ago"],
-      ["Recruiting", "Riley moved Taylor M. to interview", "2:30 PM slot held"],
-      ["Pipeline", "Northstar opened pricing", "High-intent signal captured"],
+      ["Truth", "Demo numbers removed from the board", "Only source-backed status should display"],
+      ["Source", "Operation tunnels are a local static index", "No live business feed is connected"],
+      ["Gate", "Approval lanes remain marked before outreach or publishing", "Honesty-first operating view"],
     ],
   },
   week: {
-    label: "7 Days",
+    label: "Source Review",
     metrics: {
-      revenue: 268700,
-      deals: 214,
-      conversion: 26.1,
-      applicants: 318,
-      revenueTrend: "+9% vs last week",
-      dealsTrend: "+31 closed",
-      conversionTrend: "+1.4 pts",
-      applicantsTrend: "76 interviews set",
+      revenue: 14,
+      deals: 11,
+      conversion: 0,
+      applicants: 9,
+      revenueTrend: "Mapped in this file",
+      dealsTrend: "Have local context",
+      conversionTrend: "No live feed",
+      applicantsTrend: "Approval or source checks",
     },
-    goals: { revenue: 270000, deals: 220, applicants: 300 },
+    goals: { revenue: 14, deals: 14, applicants: 14 },
     momentum: {
-      labels: ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue", "Wed"],
-      revenue: [33.2, 71.6, 103.4, 128.9, 181.2, 223.6, 268.7],
-      target: [36, 72, 108, 144, 180, 225, 270],
+      labels: ["Mapped", "Docs", "Runbooks", "Reports", "Gates", "Live feed"],
+      revenue: [14, 11, 7, 5, 9, 0],
+      target: [14, 14, 14, 14, 14, 14],
     },
     pipeline: [
-      ["New Leads", 214, "#2596a6"],
-      ["Demos", 132, "#2563eb"],
-      ["Proposals", 74, "#b7791f"],
-      ["Closing", 41, "#d04f3f"],
+      ["Local docs", 7, "#2596a6"],
+      ["Reports", 5, "#2563eb"],
+      ["Compliance gates", 9, "#b7791f"],
+      ["Live feeds", 0, "#d04f3f"],
     ],
     reps: [
-      ["Avery", 58],
-      ["Jordan", 46],
-      ["Riley", 42],
-      ["Morgan", 38],
-      ["Casey", 30],
+      ["Mapped", 14],
+      ["Local context", 11],
+      ["Needs owner", 9],
+      ["Live feed", 0],
     ],
     funnel: [
-      ["Applicants", 318, "#2596a6"],
-      ["Screened", 204, "#2563eb"],
-      ["Interviewing", 116, "#b7791f"],
-      ["Offers", 38, "#16865a"],
+      ["Mapped tunnels", 14, "#2596a6"],
+      ["Has files", 11, "#2563eb"],
+      ["Needs approval", 9, "#b7791f"],
+      ["Verified metrics", 0, "#d04f3f"],
     ],
     followUps: [
-      ["Summit Homes", "Contract review still open", "Avery", "High", "Legal review", "sales"],
-      ["Evergreen Dental", "Referral intro requested", "Jordan", "Medium", "Draft ready", "sales"],
-      ["Applicant: Maya J.", "Second interview ready", "Riley", "High", "Scheduling", "recruiting"],
-      ["Peak Roofing", "Install date blocking close", "Morgan", "Medium", "Ops check", "sales"],
-      ["Applicant: Luis P.", "Offer call needed", "Casey", "High", "Queued", "recruiting"],
+      ["Source audit", "Attach each tunnel to its source file", "PSE", "High", "Open", "sales"],
+      ["Metric feeds", "Do not estimate sales or applicant counts", "PSE", "High", "Open", "sales"],
+      ["Owners", "Replace placeholder owners with confirmed owners", "PSE", "Medium", "Open", "sales"],
+      ["Recruiting", "Use worker-registration storage before showing totals", "PSE", "Medium", "Not connected", "recruiting"],
+      ["Publishing", "Keep YouTube and channel work gated until authorized", "PSE", "High", "Gated", "sales"],
     ],
     activities: [
-      ["Deal", "Jordan added Evergreen Dental", "Referral source marked warm"],
-      ["Recruiting", "Casey prepared Luis P. offer", "Approval needed this week"],
-      ["Team", "Avery led weekly closes", "58 deals across assigned book"],
+      ["Source", "Static tunnel map is visible", "Use the tunnel detail before acting"],
+      ["Metric", "No sales, deal, or applicant totals are asserted", "Verified feed required"],
+      ["Owner", "Placeholder names should be confirmed or removed", "Truth mode keeps gaps visible"],
     ],
   },
   month: {
-    label: "30 Days",
+    label: "Approval Gates",
     metrics: {
-      revenue: 1124000,
-      deals: 918,
-      conversion: 24.8,
-      applicants: 1256,
-      revenueTrend: "+18% vs target",
-      dealsTrend: "+142 closed",
-      conversionTrend: "+2.1 pts",
-      applicantsTrend: "311 interviews set",
+      revenue: 14,
+      deals: 9,
+      conversion: 0,
+      applicants: 2,
+      revenueTrend: "Every tunnel shown",
+      dealsTrend: "Approval or evidence needed",
+      conversionTrend: "No verified live feed",
+      applicantsTrend: "Blocked until source exists",
     },
-    goals: { revenue: 1100000, deals: 900, applicants: 1200 },
+    goals: { revenue: 14, deals: 14, applicants: 14 },
     momentum: {
-      labels: ["W1", "W2", "W3", "W4", "W5"],
-      revenue: [192, 416, 647, 884, 1124],
-      target: [200, 420, 650, 900, 1100],
+      labels: ["Mapped", "Review", "Approve", "Connect", "Publish"],
+      revenue: [14, 9, 5, 0, 0],
+      target: [14, 14, 14, 14, 14],
     },
     pipeline: [
-      ["New Leads", 875, "#2596a6"],
-      ["Demos", 492, "#2563eb"],
-      ["Proposals", 266, "#b7791f"],
-      ["Closing", 153, "#d04f3f"],
+      ["Human approval", 5, "#b7791f"],
+      ["Source missing", 4, "#d04f3f"],
+      ["Ready with guardrails", 3, "#2563eb"],
+      ["Support", 2, "#64748b"],
     ],
     reps: [
-      ["Avery", 242],
-      ["Jordan", 201],
-      ["Riley", 184],
-      ["Morgan", 164],
-      ["Casey", 127],
+      ["Mapped", 14],
+      ["Gated", 9],
+      ["Blocked", 2],
+      ["Live feed", 0],
     ],
     funnel: [
-      ["Applicants", 1256, "#2596a6"],
-      ["Screened", 824, "#2563eb"],
-      ["Interviewing", 436, "#b7791f"],
-      ["Offers", 148, "#16865a"],
+      ["Tunnels", 14, "#2596a6"],
+      ["Gates", 9, "#b7791f"],
+      ["Blocked", 2, "#d04f3f"],
+      ["Connected feeds", 0, "#64748b"],
     ],
     followUps: [
-      ["Northstar Fitness", "Quarterly expansion close", "Morgan", "High", "Executive call", "sales"],
-      ["BrightLine Solar", "Renewal at risk", "Jordan", "High", "Save plan", "sales"],
-      ["Applicant: Taylor M.", "Training cohort placement", "Riley", "Medium", "Ready", "recruiting"],
-      ["Summit Homes", "Upsell proposal draft", "Avery", "Medium", "Building", "sales"],
-      ["Applicant: Priya K.", "Offer accepted, onboarding due", "Casey", "Low", "Onboarding", "recruiting"],
+      ["Compliance", "Approve health-insurance language before use", "PSE", "High", "Gated", "sales"],
+      ["Medical delivery", "Complete training before operations expand", "PSE", "High", "Gated", "sales"],
+      ["YouTube", "No publishing without official account authorization", "PSE", "High", "Gated", "sales"],
+      ["Surplus research", "No outreach until permitted use is confirmed", "PSE", "High", "Gated", "sales"],
+      ["Referrals", "No campaign until official link is confirmed", "PSE", "Medium", "Blocked", "sales"],
     ],
     activities: [
-      ["Revenue", "Monthly target cleared", "$1.12M booked against $1.10M target"],
-      ["Recruiting", "Priya K. accepted offer", "Onboarding checklist opened"],
-      ["Pipeline", "BrightLine renewal flagged", "Save plan assigned to Jordan"],
+      ["Gate", "Approval-required tunnels remain visible", "No hidden green lights"],
+      ["Truth", "Missing metrics are shown as missing", "No invented counts"],
+      ["Scope", "Tunnels explain limits before action", "Use detail view for the guardrails"],
     ],
   },
 };
 
 const marketMultipliers = {
   all: { revenue: 1, deals: 1, applicants: 1, conversion: 1 },
-  phoenix: { revenue: 1.12, deals: 1.06, applicants: 0.92, conversion: 1.03 },
-  dallas: { revenue: 1.04, deals: 1.12, applicants: 1.08, conversion: 1.01 },
-  tampa: { revenue: 0.91, deals: 0.96, applicants: 1.18, conversion: 0.97 },
-  atlanta: { revenue: 0.98, deals: 0.93, applicants: 1.1, conversion: 0.99 },
+  public: { revenue: 1, deals: 1, applicants: 1, conversion: 1 },
+  operations: { revenue: 1, deals: 1, applicants: 1, conversion: 1 },
+  vps: { revenue: 1, deals: 1, applicants: 1, conversion: 1 },
+  gates: { revenue: 1, deals: 1, applicants: 1, conversion: 1 },
 };
 
 const colors = {
@@ -169,52 +166,170 @@ const colors = {
   ink: "#18202b",
 };
 
+const operationVisuals = {
+  "command-dashboard": { label: "Command", icon: "op-command", color: "#2596a6", soft: "#e7f8fb" },
+  "website-sales": { label: "Web Sales", icon: "op-website", color: "#2563eb", soft: "#eaf0ff" },
+  "sales-recruiting": { label: "Recruiting", icon: "op-recruiting", color: "#16865a", soft: "#e5f8ef" },
+  "medical-supply-delivery": { label: "Med Delivery", icon: "op-delivery", color: "#b7791f", soft: "#fff3d8" },
+  "health-insurance": { label: "Health Leads", icon: "op-health", color: "#d04f3f", soft: "#ffe9e5" },
+  "barnacle-removal": { label: "Barnacle", icon: "op-marine", color: "#137d8b", soft: "#e4f6f8" },
+  "solar-bird-proofing": { label: "Solar Proof", icon: "op-solar", color: "#ca8a04", soft: "#fff4cc" },
+  "youtube-media": { label: "YouTube", icon: "op-media", color: "#dc2626", soft: "#fee2e2" },
+  "vps-bot-ops": { label: "Bot Ops", icon: "op-automation", color: "#7157d9", soft: "#f0edff" },
+  "sports-arbitrage": { label: "Sports", icon: "op-sports", color: "#d04f3f", soft: "#ffe9e5" },
+  "surplus-funds": { label: "Surplus", icon: "op-research", color: "#0f766e", soft: "#e3f8f4" },
+  "trezor-referrals": { label: "Trezor", icon: "op-referral", color: "#7c3aed", soft: "#f1eaff" },
+  "channel-updates": { label: "Channels", icon: "op-channel", color: "#2563eb", soft: "#eaf0ff" },
+  "documents-handoffs": { label: "Docs", icon: "op-docs", color: "#64748b", soft: "#eef2f7" },
+};
+
+const defaultOperationVisual = { label: "Operation", icon: "op-command", color: "#2596a6", soft: "#e7f8fb" };
+
 const operations = [
+  {
+    id: "command-dashboard",
+    name: "PSE Command Dashboard",
+    category: "Control",
+    status: "Live",
+    tone: "active",
+    owner: "PSE",
+    metric: "14 lanes mapped",
+    meta: "brand pull-up view",
+    freshness: "Today",
+    summary: "Simple branded command view for seeing every operation, opening its tunnel, and checking the next gate without digging through folders.",
+    tunnel: [
+      ["Collect", "Pull lane notes, reports, and active dashboard signals into one view.", "active"],
+      ["Map", "Group every operation by status, owner, scope, blockers, and outputs.", "active"],
+      ["Watch", "Keep gates visible before work moves into outreach, publishing, or paid traffic.", "watch"],
+      ["Decide", "Use the open tunnel to choose the next move for the selected lane.", "active"]
+    ],
+    scope: [
+      ["Brand", "Pilot Sales Enterprise logo, colors, and command-center language"],
+      ["Coverage", "Sales, recruiting, media, bots, referrals, research, documents, and service lanes"],
+      ["Source", "PSE dashboard files plus operations-hub records"]
+    ],
+    analytics: [
+      ["Mapped lanes", 14, 14, "#16865a"],
+      ["Live or active", 5, 14, "#2596a6"],
+      ["Gated lanes", 6, 14, "#b7791f"],
+      ["Support lanes", 3, 14, "#2563eb"]
+    ],
+    charts: ["All Operation Tunnels", "Priority Follow-Ups", "Live Activity"],
+    next: ["Choose a production location", "Keep this source versioned", "Update tunnel status after each lane changes"]
+  },
   {
     id: "website-sales",
     name: "Website Sales",
+    category: "Revenue",
     status: "Active",
     tone: "active",
-    owner: "Jordan",
-    metric: "$42.1K booked",
-    meta: "37 closed deals",
-    summary: "Website offer pipeline, rep performance, proposals, and close-rate movement.",
-    analytics: [
-      ["New leads", 46, 60, "#2596a6"],
-      ["Demos", 28, 46, "#2563eb"],
-      ["Proposals", 17, 28, "#b7791f"],
-      ["Closing", 9, 17, "#d04f3f"]
+    owner: "Unverified",
+    metric: "No revenue feed",
+    meta: "source needed",
+    freshness: "Needs verification",
+    summary: "Website sales is mapped, but verified revenue, deal, proposal, and customer data are not connected.",
+    tunnel: [
+      ["Lead", "Capture website prospects and market demand.", "active"],
+      ["Qualify", "Move prospects into demos, pricing, and proposal follow-ups.", "active"],
+      ["Close", "Track offers, decision-maker activity, and rep performance.", "active"],
+      ["Retain", "Record upsells, referrals, and account expansion chances.", "watch"]
     ],
-    charts: ["Sales Momentum", "Pipeline Mix", "Rep Performance"],
-    next: ["Work proposal follow-ups", "Review low-converting reps", "Keep offer notes current"]
+    scope: [
+      ["Offer", "Website and sales service packages"],
+      ["Team", "Rep close rate, proposal quality, and follow-up speed"],
+      ["Output", "Only source-backed revenue, deal, and account notes"]
+    ],
+    analytics: [
+      ["Tunnel mapped", 1, 1, "#16865a"],
+      ["Revenue feed", 0, 1, "#d04f3f"],
+      ["Owner verified", 0, 1, "#b7791f"]
+    ],
+    charts: ["Source Coverage", "Tunnel Mix"],
+    next: ["Choose a sales source of truth", "Connect it before showing numbers", "Remove placeholder owner names"]
   },
   {
     id: "sales-recruiting",
     name: "Sales Recruiting",
+    category: "People",
     status: "Active",
     tone: "active",
-    owner: "Riley",
-    metric: "64 applicants",
-    meta: "18 interviews set",
-    summary: "Applicant intake, screening, interviews, offers, and onboarding readiness.",
-    analytics: [
-      ["Applicants", 64, 70, "#2596a6"],
-      ["Screened", 42, 64, "#2563eb"],
-      ["Interviewing", 25, 42, "#b7791f"],
-      ["Offers", 9, 25, "#16865a"]
+    owner: "Unverified",
+    metric: "No applicant feed",
+    meta: "source needed",
+    freshness: "Needs verification",
+    summary: "Recruiting is mapped, but applicant and interview counts are hidden until a verified feed is connected.",
+    tunnel: [
+      ["Source", "Use worker registration storage or an approved recruiting tracker.", "hold"],
+      ["Verify", "Confirm totals before showing applicant or interview counts.", "watch"],
+      ["Protect", "Keep private contact details out of the public dashboard.", "active"],
+      ["Report", "Display only aggregate, approved recruiting status.", "watch"]
     ],
-    charts: ["Recruiting Funnel", "Live Activity", "Priority Follow-Ups"],
-    next: ["Confirm interview slots", "Screen new applicants", "Move accepted reps into onboarding"]
+    scope: [
+      ["Known", "Worker registration route exists in the site server"],
+      ["Not Shown", "Applicant totals, interview counts, candidate names"],
+      ["Reason", "Recruiting data needs a verified source and privacy review"]
+    ],
+    analytics: [
+      ["Tunnel mapped", 1, 1, "#16865a"],
+      ["Applicant feed", 0, 1, "#d04f3f"],
+      ["Privacy gate", 1, 1, "#b7791f"]
+    ],
+    charts: ["Truth Funnel", "Activity Notes", "Priority Follow-Ups"],
+    next: ["Point the dashboard to verified aggregate data", "Keep applicant PII private", "Confirm who owns recruiting"]
+  },
+  {
+    id: "medical-supply-delivery",
+    name: "Medical Supply Delivery",
+    category: "Service",
+    status: "Launching",
+    tone: "watch",
+    owner: "Pilot",
+    metric: "Eastvale radius",
+    meta: "50-mile courier lane",
+    freshness: "Today",
+    summary: "Transport-only contractor route lane for professional pickup and delivery of approved client-owned healthcare supplies around Eastvale.",
+    tunnel: [
+      ["Certify", "Finish HIPAA, Bloodborne Pathogens, OSHA 10, and HazCom training.", "watch"],
+      ["Package", "Use the contractor profile, route tracker, and rate-card packet.", "active"],
+      ["Apply", "Target medical courier and independent contractor route companies first.", "active"],
+      ["Operate", "Accept only approved non-regulated loads until written procedures expand scope.", "hold"]
+    ],
+    scope: [
+      ["Market", "Eastvale, California with car and truck coverage inside a 50-mile radius"],
+      ["Accepted", "Healthcare office supplies, DME accessories, records, and approved supply loads"],
+      ["Do Not Accept", "Controlled substances, prescriptions, oxygen, specimens, infectious waste, or cold-chain meds at launch"]
+    ],
+    analytics: [
+      ["Training", 35, 100, "#b7791f"],
+      ["Route targets", 10, 10, "#16865a"],
+      ["Profile packet", 80, 100, "#2596a6"],
+      ["Compliance gate", 40, 100, "#d04f3f"]
+    ],
+    charts: ["Priority Follow-Ups", "Live Activity"],
+    next: ["Complete the first certifications", "Apply to the first courier targets", "Keep regulated-load exclusions visible"]
   },
   {
     id: "health-insurance",
     name: "Health Insurance Leads",
+    category: "Revenue",
     status: "Scoped",
     tone: "watch",
-    owner: "Casey",
+    owner: "Unverified",
     metric: "Compliance first",
     meta: "scripts pending",
+    freshness: "Draft",
     summary: "Lead or appointment generation after approved language, source rules, and routing are documented.",
+    tunnel: [
+      ["Define", "Clarify allowed offer language and appointment-routing rules.", "watch"],
+      ["Approve", "Confirm sources, disclaimers, and compliance owner signoff.", "hold"],
+      ["Launch", "Route approved leads or appointments to the right sales lane.", "watch"],
+      ["Audit", "Keep copy, source, and follow-up records reviewable.", "watch"]
+    ],
+    scope: [
+      ["Offer", "Lead or appointment generation only after compliance signoff"],
+      ["Controls", "Approved language, approved sources, and routing rules"],
+      ["Output", "Qualified handoffs with audit notes"]
+    ],
     analytics: [
       ["Script approval", 35, 100, "#b7791f"],
       ["Source review", 50, 100, "#2563eb"],
@@ -226,46 +341,85 @@ const operations = [
   {
     id: "barnacle-removal",
     name: "Barnacle Removal",
+    category: "Service",
     status: "Building",
     tone: "watch",
-    owner: "Morgan",
+    owner: "Unverified",
     metric: "Offer setup",
-    meta: "markets needed",
-    summary: "Local service lead flow, territory selection, partner capacity, and follow-up status.",
-    analytics: [
-      ["Market list", 45, 100, "#2596a6"],
-      ["Partner capacity", 30, 100, "#b7791f"],
-      ["Follow-up queue", 60, 100, "#2563eb"]
+    meta: "source needed",
+    freshness: "Today",
+    summary: "Barnacle removal is mapped as a planning lane until partner capacity, service areas, and job records are verified.",
+    tunnel: [
+      ["Research", "Verify service areas and partner candidates.", "active"],
+      ["Qualify", "Collect vessel details, photos, location, growth severity, and timing.", "watch"],
+      ["Match", "Route work to insured marine partners before any direct service promise.", "watch"],
+      ["Book", "Track inspection, cleaning appointment, and recurring-account potential.", "active"]
     ],
-    charts: ["Pipeline Mix", "Priority Follow-Ups"],
+    scope: [
+      ["Model", "PSE handles sales, qualification, scheduling, and partner coordination"],
+      ["Guardrail", "Do not promise in-water work before marina, environmental, and partner checks"],
+      ["Output", "Booked inspections, partner handoffs, and recurring service opportunities"]
+    ],
+    analytics: [
+      ["Tunnel mapped", 1, 1, "#16865a"],
+      ["Partner verified", 0, 1, "#b7791f"],
+      ["Job feed", 0, 1, "#d04f3f"]
+    ],
+    charts: ["Tunnel Mix", "Priority Follow-Ups"],
     next: ["Confirm service areas", "Load partner capacity", "Tag local follow-ups"]
   },
   {
     id: "solar-bird-proofing",
     name: "Solar Bird Proofing",
+    category: "Service",
     status: "Active",
     tone: "active",
-    owner: "Avery",
-    metric: "4 markets",
-    meta: "home-service leads",
-    summary: "Solar-panel bird proofing demand, city coverage, consultation pipeline, and partner handoff.",
-    analytics: [
-      ["Market coverage", 4, 6, "#2596a6"],
-      ["Lead quality", 72, 100, "#16865a"],
-      ["Partner handoff", 58, 100, "#2563eb"]
+    owner: "Unverified",
+    metric: "Demand check",
+    meta: "source needed",
+    freshness: "Needs source",
+    summary: "Solar bird proofing is mapped as a possible service lane, but market, lead, and handoff metrics need verified records before display.",
+    tunnel: [
+      ["Demand", "Watch city-level homeowner demand and lead quality.", "active"],
+      ["Consult", "Book inspections and consultation calls.", "active"],
+      ["Handoff", "Send qualified jobs to partner installers or service teams.", "active"],
+      ["Follow", "Track completion, reviews, referrals, and market expansion.", "watch"]
     ],
-    charts: ["Sales Momentum", "Pipeline Mix", "Priority Follow-Ups"],
-    next: ["Review city-level demand", "Track booked consultations", "Tighten partner handoff"]
+    scope: [
+      ["Market", "Home-service lead lane pending verified market source"],
+      ["Workflow", "Demand check, consultation, partner handoff, follow-up"],
+      ["Output", "Booked consultations and partner-ready jobs"]
+    ],
+    analytics: [
+      ["Tunnel mapped", 1, 1, "#16865a"],
+      ["Market source", 0, 1, "#b7791f"],
+      ["Lead feed", 0, 1, "#d04f3f"]
+    ],
+    charts: ["Tunnel Mix", "Priority Follow-Ups"],
+    next: ["Verify market demand source", "Confirm partner handoff process", "Keep lead counts hidden until sourced"]
   },
   {
     id: "youtube-media",
-    name: "YouTube Media",
+    name: "YouTube Shorts Media",
+    category: "Media",
     status: "Gated",
     tone: "watch",
-    owner: "Ada",
+    owner: "Unverified",
     metric: "Review queue",
     meta: "publishing approval needed",
+    freshness: "Operations hub",
     summary: "Shorts prep, review queue, publishing readiness, and release approvals.",
+    tunnel: [
+      ["Package", "Prep local Shorts assets, sidecars, titles, descriptions, hashtags, and rights notes.", "active"],
+      ["Review", "Manual approval checks audience setting, rights clearance, and target channel.", "watch"],
+      ["Authorize", "Publisher waits for official Google OAuth client secrets and channel-owner token.", "hold"],
+      ["Release", "Timed public posting stays capped and recorded after authorization.", "watch"]
+    ],
+    scope: [
+      ["Bots", "Prep worker, watchdog, publisher, and video ledger"],
+      ["Gate", "No account access or publishing without official authorization"],
+      ["Output", "Ready packages, ledger exports, and release records"]
+    ],
     analytics: [
       ["Package prep", 85, 100, "#16865a"],
       ["Review queue", 70, 100, "#2596a6"],
@@ -275,14 +429,89 @@ const operations = [
     next: ["Finish owner approval", "Review first private upload", "Log release decisions"]
   },
   {
+    id: "vps-bot-ops",
+    name: "VPS Bot Operations",
+    category: "Automation",
+    status: "Active",
+    tone: "active",
+    owner: "Status",
+    metric: "Reports staged",
+    meta: "verify service state",
+    freshness: "Operations hub",
+    summary: "Bot health, dashboard snapshots, records browser, exports, and continuous improvement queue for the VPS control panel.",
+    tunnel: [
+      ["Monitor", "Check configured bots, logs, records, and status exports.", "active"],
+      ["Record", "Write JSON, Markdown, CSV, and dashboard summaries for each bot lane.", "active"],
+      ["Improve", "Use the improvement manager queue to refresh stale safe records.", "active"],
+      ["Gate", "Keep human approval gates visible for publishing, betting, and surplus outreach.", "watch"]
+    ],
+    scope: [
+      ["Panel", "Bot control route, service, app directory, records, and runtime logs"],
+      ["Bots", "YouTube, sports, dashboard recorder, surplus, status reporter, and improvement manager"],
+      ["Output", "Health status, records browser, exports, and improvement queue"]
+    ],
+    analytics: [
+      ["Bots enabled", 9, 9, "#16865a"],
+      ["Reports present", 1, 1, "#2596a6"],
+      ["Human gates", 3, 3, "#b7791f"],
+      ["Record lanes", 9, 9, "#2563eb"]
+    ],
+    charts: ["Live Activity", "Priority Follow-Ups"],
+    next: ["Watch warning lanes", "Review improvement queue", "Keep dashboard source versioned"]
+  },
+  {
+    id: "sports-arbitrage",
+    name: "Sports Arbitrage Monitor",
+    category: "Automation",
+    status: "Read-only",
+    tone: "hold",
+    owner: "Compliance",
+    metric: "No wager alerts",
+    meta: "configuration required",
+    freshness: "Operations hub",
+    summary: "Read-only public-view monitor for source coverage and readiness checks. It does not place bets, bypass access controls, or send active wagering alerts.",
+    tunnel: [
+      ["Observe", "Check public sportsbook visibility without login, scraping bypass, or geolocation bypass.", "active"],
+      ["Normalize", "Only emit odds rows when event, market, outcome, line, and price are parseable.", "watch"],
+      ["Approve", "Wait for approved source, jurisdiction, operators, markets, margin, and alert channel.", "hold"],
+      ["Alert", "Future alerts must be operational signals, not financial advice.", "hold"]
+    ],
+    scope: [
+      ["Mode", "Read-only public-view monitoring"],
+      ["Gate", "No active betting readiness until required configuration is approved"],
+      ["Output", "Source coverage CSVs, public odds rows, and opportunity sheets when valid"]
+    ],
+    analytics: [
+      ["Pages checked", 73, 73, "#2596a6"],
+      ["Reachable pages", 44, 73, "#2563eb"],
+      ["Parseable sources", 0, 2, "#d04f3f"],
+      ["Compliance gate", 25, 100, "#b7791f"]
+    ],
+    charts: ["Live Activity", "Priority Follow-Ups"],
+    next: ["Approve a compliant odds source", "Add a second parseable source", "Define an approved alert channel"]
+  },
+  {
     id: "surplus-funds",
     name: "Surplus Funds Research",
+    category: "Research",
     status: "Research",
     tone: "watch",
     owner: "Boyle",
     metric: "Source sweeps",
     meta: "use gate open",
+    freshness: "Operations hub",
     summary: "Official-source discovery and evidence notes before any lead handling or outreach.",
+    tunnel: [
+      ["Find", "Identify official surplus sources and evidence records.", "active"],
+      ["Confirm", "Check holding office, permitted use, freshness, and source governance.", "watch"],
+      ["Rank", "Improve amount parsing and source-quality scoring before lead handling.", "watch"],
+      ["Outreach", "Stay blocked until permitted use and office confirmation are complete.", "hold"]
+    ],
+    scope: [
+      ["Source", "Official public records and holding-office confirmation"],
+      ["Gate", "No lead handling or outreach until permitted use is documented"],
+      ["Output", "Research candidates, source evidence, and freshness notes"]
+    ],
     analytics: [
       ["Source discovery", 68, 100, "#2596a6"],
       ["Amount parsing", 54, 100, "#2563eb"],
@@ -292,23 +521,370 @@ const operations = [
     next: ["Record permitted use", "Keep source evidence", "Block outreach until approved"]
   },
   {
-    id: "bot-ops",
-    name: "VPS Bot Operations",
-    status: "Active",
-    tone: "active",
-    owner: "Status",
-    metric: "8 bots",
-    meta: "dashboard monitored",
-    summary: "Bot health, dashboard snapshots, records, and improvement queue ownership.",
+    id: "trezor-referrals",
+    name: "Trezor Referrals",
+    category: "Affiliate",
+    status: "Blocked",
+    tone: "hold",
+    owner: "Owner needed",
+    metric: "Launch gate blocked",
+    meta: "terms checked 2026-05-23",
+    freshness: "Official sources",
+    summary: "VPS-staged referral or affiliate lane with compliant copy, tracker, and launch gate ready once the official link/account and channel permissions are confirmed.",
+    tunnel: [
+      ["Confirm", "Get the actual referral link or affiliate dashboard account.", "hold"],
+      ["Route", "Use Affiliate Program for public, commercial, SEO, newsletter, paid-ad, or repeatable campaign use.", "hold"],
+      ["Disclose", "Use disclosure-first copy and official link destinations.", "watch"],
+      ["Publish", "Use only approved owned channels and avoid coupon-style public spam.", "hold"],
+      ["Track", "Record links, channels, voucher status, and follow-up dates.", "watch"]
+    ],
+    scope: [
+      ["Files", "Setup runbook, copy bank, referral tracker, and landing-page notes"],
+      ["Gate", "No publication until the official link/account, route choice, and channel rules are confirmed"],
+      ["Output", "Compliant referral posts and weekly tracking"]
+    ],
     analytics: [
-      ["Bots enabled", 8, 8, "#16865a"],
-      ["Live VPS", 4, 5, "#2596a6"],
-      ["Warning lanes", 4, 8, "#b7791f"]
+      ["Setup packet", 80, 100, "#2596a6"],
+      ["Official terms", 100, 100, "#16865a"],
+      ["Copy bank", 100, 100, "#16865a"],
+      ["Referral link", 0, 1, "#d04f3f"],
+      ["Channel approval", 0, 100, "#d04f3f"]
     ],
     charts: ["Live Activity", "Priority Follow-Ups"],
-    next: ["Watch warning lanes", "Review improvement queue", "Keep dashboard source versioned"]
+    next: ["Find the official referral or affiliate link", "Choose personal referral vs affiliate route", "Confirm owned channels before publishing"]
+  },
+  {
+    id: "channel-updates",
+    name: "Channel Updates",
+    category: "Marketing",
+    status: "Ready",
+    tone: "support",
+    owner: "PSE",
+    metric: "Assets staged",
+    meta: "owned channels first",
+    freshness: "Operations hub",
+    summary: "Announcement calendars, channel copy, WhatsApp promotion assets, and cross-posting checklists for owned-channel publishing.",
+    tunnel: [
+      ["Prepare", "Use announcement copy, social posts, and channel assets.", "active"],
+      ["Approve", "Confirm account access, billing, and permissions before paid traffic.", "watch"],
+      ["Publish", "Start owned-channel posts before Meta paid tests.", "active"],
+      ["Measure", "Track engagement, replies, and next publishing slots.", "watch"]
+    ],
+    scope: [
+      ["Assets", "WhatsApp banner, social card, social calendar, email draft, and ad setup notes"],
+      ["Gate", "Website CMS, social account, Meta Business, and payment access"],
+      ["Output", "Owned-channel posts and paid-test readiness"]
+    ],
+    analytics: [
+      ["Owned assets", 90, 100, "#16865a"],
+      ["Paid setup", 35, 100, "#b7791f"],
+      ["Calendar", 70, 100, "#2596a6"],
+      ["Account access", 30, 100, "#d04f3f"]
+    ],
+    charts: ["Live Activity", "Priority Follow-Ups"],
+    next: ["Publish owned-channel assets first", "Confirm Meta billing and permissions", "Log post performance"]
+  },
+  {
+    id: "documents-handoffs",
+    name: "Documents and Handoffs",
+    category: "Support",
+    status: "Support",
+    tone: "support",
+    owner: "Docs",
+    metric: "Templates lane",
+    meta: "packets and records",
+    freshness: "Operations hub",
+    summary: "Reusable operating documents, checklists, handoff packets, route profiles, trackers, and safety notes that support the mapped lanes.",
+    tunnel: [
+      ["Template", "Create reusable operating docs and checklists.", "active"],
+      ["Attach", "Connect docs to the operation that uses them.", "watch"],
+      ["Version", "Keep source snapshots, backups, and exports traceable.", "watch"],
+      ["Hand Off", "Package instructions so a lane can be resumed quickly.", "active"]
+    ],
+    scope: [
+      ["Content", "Runbooks, contractor profiles, trackers, packets, and checklists"],
+      ["Control", "Keep source and backup locations clear"],
+      ["Output", "Reusable handoff packets for each operation"]
+    ],
+    analytics: [
+      ["Templates", 45, 100, "#2596a6"],
+      ["Lane links", 55, 100, "#2563eb"],
+      ["Backups", 80, 100, "#16865a"],
+      ["Open packets", 65, 100, "#b7791f"]
+    ],
+    charts: ["Live Activity", "Priority Follow-Ups"],
+    next: ["Add reusable templates", "Tie each packet to a tunnel", "Keep backup notes current"]
   }
 ];
+
+const truthOverrides = {
+  "command-dashboard": {
+    status: "Mapped",
+    owner: "PSE",
+    metric: "Static index",
+    meta: "no live feed",
+    freshness: "Local file",
+    summary:
+      "This is a visual index of operation tunnels. It is not a live sales, recruiting, or finance system until verified data feeds are connected.",
+    tunnel: [
+      ["Map", "Show each known tunnel without inventing performance numbers.", "active"],
+      ["Source", "Use local files, runbooks, reports, or approved systems as the source of truth.", "watch"],
+      ["Gate", "Leave approval-required work visibly gated before outreach, publishing, or regulated activity.", "watch"],
+      ["Connect", "Only display live metrics after a verified feed exists.", "hold"],
+    ],
+    scope: [
+      ["Truth Rule", "No revenue, deal, applicant, or owner claim without a verified source"],
+      ["Current State", "Static dashboard index with visual tunnels"],
+      ["Missing", "Live business data feed"],
+    ],
+    analytics: [
+      ["Mapped", 1, 1, "#16865a"],
+      ["Source noted", 1, 1, "#2596a6"],
+      ["Live feed", 0, 1, "#d04f3f"],
+    ],
+    charts: ["Source Coverage", "Tunnel Mix", "Activity Notes"],
+    next: ["Keep false metrics out", "Attach source paths to every tunnel", "Connect live feeds only when verified"],
+  },
+  "website-sales": {
+    status: "Needs Source",
+    tone: "watch",
+    owner: "Unverified",
+    metric: "No revenue feed",
+    meta: "public site exists",
+    freshness: "Needs verification",
+    summary:
+      "Website sales is mapped as a business lane, but this dashboard does not currently have verified revenue, deal, proposal, or customer data.",
+    tunnel: [
+      ["Source", "Identify the approved sales record or CRM before showing totals.", "hold"],
+      ["Verify", "Confirm real owners, accounts, and deal stages from that system.", "watch"],
+      ["Display", "Show only source-backed metrics once connected.", "hold"],
+      ["Audit", "Keep the source path visible for every sales claim.", "watch"],
+    ],
+    scope: [
+      ["Known", "Public website and sales-lane idea are present"],
+      ["Not Shown", "Revenue, closed deals, close rate, and customer names"],
+      ["Reason", "No verified sales data feed is connected"],
+    ],
+    analytics: [
+      ["Tunnel mapped", 1, 1, "#16865a"],
+      ["Revenue feed", 0, 1, "#d04f3f"],
+      ["Owner verified", 0, 1, "#b7791f"],
+    ],
+    charts: ["Source Coverage", "Tunnel Mix"],
+    next: ["Choose a sales source of truth", "Connect it before showing numbers", "Remove placeholder owner names"],
+  },
+  "sales-recruiting": {
+    status: "Needs Source",
+    tone: "watch",
+    owner: "Unverified",
+    metric: "No applicant feed",
+    meta: "worker intake exists",
+    freshness: "Needs verification",
+    summary:
+      "Recruiting is mapped, but applicant counts and interview counts are not shown because no verified recruiting feed is connected to this dashboard.",
+    tunnel: [
+      ["Source", "Use worker registration storage or an approved recruiting tracker.", "hold"],
+      ["Verify", "Confirm totals before showing applicant or interview counts.", "watch"],
+      ["Protect", "Keep private contact details out of the public dashboard.", "active"],
+      ["Report", "Display only aggregate, approved recruiting status.", "watch"],
+    ],
+    scope: [
+      ["Known", "Worker registration route exists in the site server"],
+      ["Not Shown", "Applicant totals, interview counts, candidate names"],
+      ["Reason", "Recruiting data needs a verified source and privacy review"],
+    ],
+    analytics: [
+      ["Tunnel mapped", 1, 1, "#16865a"],
+      ["Applicant feed", 0, 1, "#d04f3f"],
+      ["Privacy gate", 1, 1, "#b7791f"],
+    ],
+    charts: ["Truth Funnel", "Activity Notes", "Priority Follow-Ups"],
+    next: ["Point the dashboard to verified aggregate data", "Keep applicant PII private", "Confirm who owns recruiting"],
+  },
+  "medical-supply-delivery": {
+    status: "Gated",
+    owner: "Unverified",
+    metric: "Training first",
+    meta: "transport-only scope",
+    freshness: "Local files",
+    summary:
+      "Medical supply delivery remains a gated setup lane. The dashboard should keep certification, scope, and regulated-load limits visible before any operations expand.",
+    analytics: [
+      ["Tunnel mapped", 1, 1, "#16865a"],
+      ["Training gate", 1, 1, "#b7791f"],
+      ["Live ops feed", 0, 1, "#d04f3f"],
+    ],
+    charts: ["Priority Follow-Ups", "Activity Notes"],
+    next: ["Complete required training", "Keep transport-only limits visible", "Verify any route source before posting"],
+  },
+  "health-insurance": {
+    status: "Compliance Gate",
+    tone: "hold",
+    owner: "Unverified",
+    metric: "Approval needed",
+    meta: "no live lead feed",
+    freshness: "Draft",
+    summary:
+      "Health insurance work must stay gated until approved language, source rules, routing, and compliance ownership are confirmed.",
+    analytics: [
+      ["Tunnel mapped", 1, 1, "#16865a"],
+      ["Compliance approval", 0, 1, "#d04f3f"],
+      ["Lead feed", 0, 1, "#d04f3f"],
+    ],
+    charts: ["Priority Follow-Ups", "Activity Notes"],
+    next: ["Confirm approved wording", "Document source rules", "Do not show lead counts without a verified feed"],
+  },
+  "barnacle-removal": {
+    status: "Planning",
+    owner: "Unverified",
+    metric: "Partner checks",
+    meta: "no job feed",
+    freshness: "Local files",
+    summary:
+      "Barnacle removal is a planning lane until service areas, partner capacity, environmental checks, and job records are verified.",
+    analytics: [
+      ["Tunnel mapped", 1, 1, "#16865a"],
+      ["Partner verified", 0, 1, "#b7791f"],
+      ["Job feed", 0, 1, "#d04f3f"],
+    ],
+    charts: ["Tunnel Mix", "Priority Follow-Ups"],
+    next: ["Verify service partners", "Confirm allowed service areas", "Do not imply booked jobs without records"],
+  },
+  "solar-bird-proofing": {
+    status: "Planning",
+    tone: "watch",
+    owner: "Unverified",
+    metric: "Demand check",
+    meta: "no lead feed",
+    freshness: "Needs source",
+    summary:
+      "Solar bird proofing is mapped as a possible service lane, but market count, lead quality, and handoff metrics need verified records before display.",
+    analytics: [
+      ["Tunnel mapped", 1, 1, "#16865a"],
+      ["Market source", 0, 1, "#b7791f"],
+      ["Lead feed", 0, 1, "#d04f3f"],
+    ],
+    charts: ["Tunnel Mix", "Priority Follow-Ups"],
+    next: ["Verify market demand source", "Confirm partner handoff process", "Keep lead counts hidden until sourced"],
+  },
+  "youtube-media": {
+    status: "Approval Gate",
+    owner: "Unverified",
+    metric: "Owner approval",
+    meta: "no publishing claim",
+    freshness: "Local reports",
+    summary:
+      "YouTube media remains gated. The dashboard should show prep and approval status only, not account access, publishing, or performance claims.",
+    analytics: [
+      ["Tunnel mapped", 1, 1, "#16865a"],
+      ["Owner approval", 0, 1, "#d04f3f"],
+      ["Publish feed", 0, 1, "#d04f3f"],
+    ],
+    charts: ["Activity Notes", "Priority Follow-Ups"],
+    next: ["Confirm channel-owner authorization", "Keep publishing blocked until approved", "Record source files for media packages"],
+  },
+  "vps-bot-ops": {
+    status: "Reports",
+    owner: "Unverified",
+    metric: "Reports staged",
+    meta: "verify service state",
+    freshness: "Local reports",
+    summary:
+      "VPS bot operations has local report material, but service health should be verified from the running system before showing live bot counts.",
+    analytics: [
+      ["Tunnel mapped", 1, 1, "#16865a"],
+      ["Reports present", 1, 1, "#2596a6"],
+      ["Live service feed", 0, 1, "#d04f3f"],
+    ],
+    charts: ["Activity Notes", "Priority Follow-Ups"],
+    next: ["Verify service status from the VPS", "Connect logs before showing live counts", "Keep human approval gates visible"],
+  },
+  "sports-arbitrage": {
+    status: "Read-Only Gate",
+    owner: "Compliance",
+    metric: "No wager alerts",
+    meta: "configuration required",
+    freshness: "Local reports",
+    summary:
+      "Sports arbitrage stays read-only. The dashboard must not imply betting readiness, financial advice, or active alerting without approved configuration.",
+    analytics: [
+      ["Tunnel mapped", 1, 1, "#16865a"],
+      ["Compliance gate", 1, 1, "#b7791f"],
+      ["Active alerts", 0, 1, "#d04f3f"],
+    ],
+    charts: ["Activity Notes", "Priority Follow-Ups"],
+    next: ["Keep read-only language", "Approve sources before alerts", "Do not show opportunities as advice"],
+  },
+  "surplus-funds": {
+    status: "Research Only",
+    owner: "Unverified",
+    metric: "No outreach",
+    meta: "use approval needed",
+    freshness: "Local reports",
+    summary:
+      "Surplus funds is research-only until official sources, permitted use, and outreach rules are confirmed.",
+    analytics: [
+      ["Tunnel mapped", 1, 1, "#16865a"],
+      ["Official source", 0, 1, "#b7791f"],
+      ["Outreach allowed", 0, 1, "#d04f3f"],
+    ],
+    charts: ["Activity Notes", "Priority Follow-Ups"],
+    next: ["Record official source evidence", "Confirm permitted use", "Block outreach until approved"],
+  },
+  "trezor-referrals": {
+    status: "Blocked",
+    owner: "Owner needed",
+    metric: "Launch gate blocked",
+    meta: "do not publish",
+    freshness: "Verified 2026-05-23",
+    summary:
+      "Trezor referrals stay blocked until the official referral or affiliate link/account, route choice, and owned-channel rules are verified.",
+    analytics: [
+      ["Tunnel mapped", 1, 1, "#16865a"],
+      ["Official terms", 1, 1, "#16865a"],
+      ["Official link", 0, 1, "#d04f3f"],
+      ["Publication allowed", 0, 1, "#d04f3f"],
+    ],
+    charts: ["Activity Notes", "Priority Follow-Ups"],
+    next: ["Get the official link", "Confirm channel rules", "Keep campaign unpublished until sourced"],
+  },
+  "channel-updates": {
+    status: "Guarded",
+    owner: "Unverified",
+    metric: "Assets staged",
+    meta: "owned channels first",
+    freshness: "Local files",
+    summary:
+      "Channel updates can use staged owned-channel assets, while paid traffic and account claims remain gated until permissions and billing are verified.",
+    analytics: [
+      ["Tunnel mapped", 1, 1, "#16865a"],
+      ["Assets present", 1, 1, "#2596a6"],
+      ["Paid access", 0, 1, "#d04f3f"],
+    ],
+    charts: ["Activity Notes", "Priority Follow-Ups"],
+    next: ["Use owned-channel copy first", "Confirm account access", "Do not imply paid ads are live"],
+  },
+  "documents-handoffs": {
+    status: "Support",
+    owner: "Docs",
+    metric: "Templates staged",
+    meta: "source paths needed",
+    freshness: "Local files",
+    summary:
+      "Documents and handoffs support the operation tunnels. They should make source paths and resume instructions clearer, not invent progress.",
+    analytics: [
+      ["Tunnel mapped", 1, 1, "#16865a"],
+      ["Templates present", 1, 1, "#2596a6"],
+      ["Source paths complete", 0, 1, "#b7791f"],
+    ],
+    charts: ["Activity Notes", "Priority Follow-Ups"],
+    next: ["Attach source paths", "Keep packets tied to tunnels", "Use handoffs to preserve context"],
+  },
+};
+
+operations.forEach((operation) => {
+  Object.assign(operation, truthOverrides[operation.id] || {});
+});
 
 const state = {
   range: "today",
@@ -362,12 +938,42 @@ function money(value) {
 }
 
 function marketLabel(market) {
-  if (market === "all") return "all markets";
-  return `${market.charAt(0).toUpperCase()}${market.slice(1)}`;
+  const labels = {
+    all: "all sources",
+    public: "public-site sources",
+    operations: "operation-file sources",
+    vps: "VPS report sources",
+    gates: "approval-gate sources",
+  };
+  return labels[market] || "selected sources";
 }
 
-function selectedOperation() {
-  return operations.find((operation) => operation.id === state.operation) || operations[0];
+function selectedOperation(source = operations) {
+  return source.find((operation) => operation.id === state.operation) || source[0] || operations[0];
+}
+
+function operationVisual(operation) {
+  return operationVisuals[operation.id] || defaultOperationVisual;
+}
+
+function operationMatchesQuery(operation) {
+  if (!state.query) return true;
+  const searchableText = [
+    operation.name,
+    operation.category,
+    operation.status,
+    operation.owner,
+    operation.metric,
+    operation.meta,
+    operation.summary,
+    ...(operation.next || []),
+    ...(operation.scope || []).flat(),
+    ...(operation.tunnel || []).flat(),
+  ]
+    .join(" ")
+    .toLowerCase();
+
+  return searchableText.includes(state.query);
 }
 
 function getViewData() {
@@ -397,13 +1003,14 @@ function getViewData() {
 
   const reps = range.reps.map(([rep, value], index) => {
     const marketShift = state.market === "all" ? 1 : multiplier.deals - index * 0.018;
-    return [rep, Math.max(1, Math.round(value * marketShift))];
+    return [rep, Math.max(0, Math.round(value * marketShift))];
   });
 
   const maxFunnel = Math.max(...range.funnel.map(([, value]) => value * multiplier.applicants));
   const funnel = range.funnel.map(([label, value, color]) => {
     const adjusted = Math.round(value * multiplier.applicants);
-    return [label, adjusted, Math.max(8, Math.round((adjusted / maxFunnel) * 100)), color];
+    const percent = maxFunnel ? Math.round((adjusted / maxFunnel) * 100) : 0;
+    return [label, adjusted, adjusted === 0 ? 0 : Math.max(8, percent), color];
   });
 
   const followUps = range.followUps
@@ -416,9 +1023,9 @@ function getViewData() {
 
   const activities = range.activities.filter((activity) => {
     if (state.view === "overview") return true;
-    if (state.view === "pipeline") return ["Pipeline", "Deal", "Revenue"].includes(activity[0]);
-    if (state.view === "recruiting") return activity[0] === "Recruiting";
-    if (state.view === "team") return ["Team", "Deal"].includes(activity[0]);
+    if (state.view === "pipeline") return ["Source", "Truth", "Metric"].includes(activity[0]);
+    if (state.view === "recruiting") return ["Source", "Truth", "Metric"].includes(activity[0]);
+    if (state.view === "team") return ["Owner", "Source", "Scope"].includes(activity[0]);
     return true;
   });
 
@@ -442,7 +1049,7 @@ function drawLineChart(canvas, momentum) {
   const chartH = height - pad.top - pad.bottom;
   const max = Math.ceil(Math.max(...momentum.revenue, ...momentum.target) / 10) * 10;
   const series = [
-    ["Booked", momentum.revenue, colors.revenue],
+    ["Current", momentum.revenue, colors.revenue],
     ["Target", momentum.target, colors.target],
   ];
 
@@ -459,7 +1066,7 @@ function drawLineChart(canvas, momentum) {
     ctx.moveTo(pad.left, y);
     ctx.lineTo(width - pad.right, y);
     ctx.stroke();
-    ctx.fillText(`$${Math.round(value)}K`, 9, y + 4);
+    ctx.fillText(String(Math.round(value)), 15, y + 4);
   }
 
   momentum.labels.forEach((label, index) => {
@@ -529,7 +1136,7 @@ function drawDonutChart(canvas, pipeline) {
   ctx.fillText(String(total), centerX, centerY + 8);
   ctx.font = "700 12px system-ui, sans-serif";
   ctx.fillStyle = colors.muted;
-  ctx.fillText("OPEN", centerX, centerY + 30);
+  ctx.fillText("TUNNELS", centerX, centerY + 30);
   ctx.textAlign = "left";
 
   elements.mixLegend.innerHTML = pipeline
@@ -671,20 +1278,34 @@ function renderFollowUps(followUps) {
 }
 
 function renderOperationHub() {
-  const operation = selectedOperation();
-  elements.operationSummary.textContent = `${operations.length} tunnels - ${operation.name}`;
+  const visibleOperations = operations.filter(operationMatchesQuery);
+  const operation = selectedOperation(visibleOperations.length ? visibleOperations : operations);
+  const activeCount = operations.filter((item) => item.tone === "active").length;
+  const watchCount = operations.length - activeCount;
 
-  elements.operationGrid.innerHTML = operations
-    .map(
-      (item) => `
-        <button class="operation-card ${item.tone}${item.id === operation.id ? " selected" : ""}" type="button" data-operation="${item.id}" aria-pressed="${item.id === operation.id}">
-          <span>${item.status}</span>
-          <strong>${item.name}</strong>
-          <small>${item.metric} - ${item.meta}</small>
+  if (visibleOperations.length && operation.id !== state.operation) {
+    state.operation = operation.id;
+  }
+
+  elements.operationSummary.textContent = `${visibleOperations.length}/${operations.length} tunnels - ${activeCount} active - ${watchCount} gated or pending`;
+
+  elements.operationGrid.innerHTML = visibleOperations.length
+    ? visibleOperations
+        .map((item) => {
+          const visual = operationVisual(item);
+          return `
+        <button class="operation-card ${item.tone}${item.id === operation.id ? " selected" : ""}" type="button" data-operation="${item.id}" aria-pressed="${item.id === operation.id}" aria-label="${item.name}, ${item.status}, ${item.metric}, owner ${item.owner}" style="--operation-color:${visual.color}; --operation-soft:${visual.soft}">
+          <span class="operation-icon" aria-hidden="true"><svg><use href="#${visual.icon}"></use></svg></span>
+          <span class="operation-copy">
+            <strong>${visual.label}</strong>
+            <small>${item.metric}</small>
+            <span class="operation-chip">${item.status}</span>
+          </span>
         </button>
-      `,
-    )
-    .join("");
+      `;
+        })
+        .join("")
+    : `<div class="operation-empty">No tunnel matches the current search.</div>`;
 
   const analytics = operation.analytics
     .map(([label, value, total, color]) => {
@@ -701,24 +1322,66 @@ function renderOperationHub() {
     })
     .join("");
 
+  const tunnel = operation.tunnel
+    .map(
+      ([label, detail, tone]) => `
+        <div class="tunnel-stage ${tone || ""}">
+          <span class="tunnel-node"></span>
+          <strong>${label}</strong>
+          <p>${detail}</p>
+        </div>
+      `,
+    )
+    .join("");
+
+  const scope = operation.scope
+    .map(
+      ([label, detail]) => `
+        <div class="scope-item">
+          <span>${label}</span>
+          <strong>${detail}</strong>
+        </div>
+      `,
+    )
+    .join("");
+
+  const selectedVisual = operationVisual(operation);
+  elements.operationDetail.style.setProperty("--operation-color", selectedVisual.color);
+  elements.operationDetail.style.setProperty("--operation-soft", selectedVisual.soft);
+
   elements.operationDetail.innerHTML = `
     <div class="operation-detail-head">
-      <span class="operation-status ${operation.tone}">${operation.status}</span>
-      <div>
-        <p class="eyebrow">${operation.owner}</p>
+      <div class="operation-hero" aria-hidden="true">
+        <svg><use href="#${selectedVisual.icon}"></use></svg>
+        <span class="operation-status ${operation.tone}">${operation.status}</span>
+      </div>
+      <div class="operation-detail-copy">
+        <p class="eyebrow">Selected tunnel / ${operation.category}</p>
         <h3>${operation.name}</h3>
         <p>${operation.summary}</p>
       </div>
     </div>
+    <div class="operation-facts">
+      <span><strong>Owner</strong>${operation.owner}</span>
+      <span><strong>Signal</strong>${operation.metric}</span>
+      <span><strong>Updated</strong>${operation.freshness}</span>
+    </div>
+    <div class="operation-tunnel" aria-label="${operation.name} tunnel">${tunnel}</div>
+    <div class="operation-scope">${scope}</div>
     <div class="operation-analytics">${analytics}</div>
     <div class="operation-chart-list">
-      <span>Relevant charts</span>
+      <span>Connected views</span>
       <strong>${operation.charts.join(" / ")}</strong>
     </div>
-    <ul class="operation-next">
-      ${operation.next.map((item) => `<li>${item}</li>`).join("")}
-    </ul>
+    <div class="operation-next-wrap">
+      <span>Next moves</span>
+      <ul class="operation-next">
+        ${operation.next.map((item) => `<li>${item}</li>`).join("")}
+      </ul>
+    </div>
   `;
+
+  return operation;
 }
 
 function setGoalBar(bar, value, colorClass = "") {
@@ -734,9 +1397,9 @@ function renderGoals(data) {
   const dealPercent = (data.deals / data.goals.deals) * 100;
   const applicantPercent = (data.applicants / data.goals.applicants) * 100;
 
-  elements.revenueGoalLabel.textContent = `${money(data.revenue)} / ${money(data.goals.revenue)}`;
-  elements.dealGoalLabel.textContent = `${data.deals} / ${data.goals.deals} closed`;
-  elements.applicantGoalLabel.textContent = `${data.applicants} / ${data.goals.applicants} applicants`;
+  elements.revenueGoalLabel.textContent = `${data.revenue} / ${data.goals.revenue} mapped`;
+  elements.dealGoalLabel.textContent = `${data.deals} / ${data.goals.deals} source checked`;
+  elements.applicantGoalLabel.textContent = `${data.applicants} / ${data.goals.applicants} gated`;
   setGoalBar(elements.revenueGoalBar, revenuePercent, revenuePercent >= 100 ? "strong" : revenuePercent < 94 ? "warning" : "");
   setGoalBar(elements.dealGoalBar, dealPercent, dealPercent >= 100 ? "strong" : dealPercent < 88 ? "warning" : "");
   setGoalBar(
@@ -756,33 +1419,30 @@ function applyView() {
 
 function render() {
   const data = getViewData();
-  const operation = selectedOperation();
-  const goal = data.goals.revenue;
-  const pace = data.revenue / goal;
 
-  elements.revenueValue.textContent = money(data.revenue);
+  applyView();
+  const operation = renderOperationHub();
+
+  elements.revenueValue.textContent = String(data.revenue);
   elements.dealsValue.textContent = String(data.deals);
-  elements.conversionValue.textContent = `${data.conversion.toFixed(1)}%`;
+  elements.conversionValue.textContent = String(Math.round(data.conversion));
   elements.applicantsValue.textContent = String(data.applicants);
   elements.revenueTrend.textContent = data.range.metrics.revenueTrend;
   elements.dealsTrend.textContent = data.range.metrics.dealsTrend;
   elements.conversionTrend.textContent = data.range.metrics.conversionTrend;
   elements.applicantsTrend.textContent = data.range.metrics.applicantsTrend;
-  elements.pulseBadge.textContent = pace >= 1 ? "Ahead" : pace >= 0.94 ? "On Pace" : "Watch";
-  elements.pulseBadge.style.color = pace >= 1 ? "#0d5d46" : pace >= 0.94 ? "#835100" : "#a2342a";
-  elements.pulseBadge.style.background = pace >= 1 ? "#dcf7ed" : pace >= 0.94 ? "#fff0cf" : "#ffe3df";
+  elements.pulseBadge.textContent = data.conversion > 0 ? "Connected" : "No Live Feed";
+  elements.pulseBadge.style.color = data.conversion > 0 ? "#0d5d46" : "#a2342a";
+  elements.pulseBadge.style.background = data.conversion > 0 ? "#dcf7ed" : "#ffe3df";
   elements.pulseCaption.textContent = `${data.range.label} view across ${marketLabel(state.market)}`;
   const openFollowUps = data.followUps.filter((row) => !completedFollowUps.has(followUpId(row))).length;
   elements.alertCaption.textContent = `${openFollowUps} open follow-up${openFollowUps === 1 ? "" : "s"} in current view`;
   elements.activityCaption.textContent = `${data.activities.length || "No"} recent update${
     data.activities.length === 1 ? "" : "s"
   } for ${operation.name}`;
-  elements.hiringCaption.textContent = `${data.applicants} applicants tracked, with recruiting focus ${
-    state.recruitingFocus ? "enabled" : "filtered from follow-ups"
-  }.`;
+  elements.hiringCaption.textContent =
+    "Applicant totals stay hidden until a verified recruiting source is connected and privacy-reviewed.";
 
-  applyView();
-  renderOperationHub();
   renderGoals(data);
   drawLineChart(elements.pulseChart, data.momentum);
   drawDonutChart(elements.mixChart, data.pipeline);
@@ -854,9 +1514,9 @@ document.querySelector("#refresh-button").addEventListener("click", () => {
 
 document.querySelector("#export-button").addEventListener("click", () => {
   const data = getViewData();
-  const summary = `Pilot Sales Enterprise ${data.range.label} | ${marketLabel(state.market)} | Revenue ${money(
-    data.revenue,
-  )} | Deals ${data.deals} | Applicants ${data.applicants}`;
+  const summary = `Pilot Sales Enterprise ${data.range.label} | ${marketLabel(
+    state.market,
+  )} | Mapped tunnels ${data.revenue}/${data.goals.revenue} | Source checked ${data.deals}/${data.goals.deals} | Live data feeds ${data.conversion}`;
   navigator.clipboard
     ?.writeText(summary)
     .then(() => showToast("Summary copied"))
