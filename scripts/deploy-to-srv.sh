@@ -7,6 +7,7 @@ APPLY="${2:-}"
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 PUBLIC_TARGET="/srv/codex/repos/pilot-sales-enterprise"
 DASHBOARD_TARGET="/srv/codex/repos/pse-dashboard"
+DASHBOARD_SOURCE="${PSE_DASHBOARD_SOURCE:-$REPO_ROOT/deploy/pse-dashboard}"
 
 RSYNC_FLAGS=(-rvc --itemize-changes)
 if [[ "$APPLY" != "--apply" ]]; then
@@ -22,7 +23,8 @@ Default is dry-run. Add --apply only after reviewing the listed changes.
 
 Modes:
   public     Deploy public site files to /srv/codex/repos/pilot-sales-enterprise
-  dashboard  Deploy dashboard shell files only, preserving operations-hub/assets/backups
+  dashboard  Deploy private dashboard shell from deploy/pse-dashboard,
+             preserving operations-hub/assets/backups
   all        Run public and dashboard deploys
 EOF
 }
@@ -41,6 +43,7 @@ deploy_public() {
   rsync "${RSYNC_FLAGS[@]}" \
     --exclude '.git/' \
     --exclude 'data/' \
+    --exclude 'deploy/' \
     --exclude 'scripts/' \
     --exclude 'node_modules/' \
     --exclude '.env' \
@@ -49,10 +52,11 @@ deploy_public() {
 
 deploy_dashboard() {
   require_target "$DASHBOARD_TARGET"
-  echo "==> Dashboard shell: $REPO_ROOT/pse-dashboard -> $DASHBOARD_TARGET"
-  rsync "${RSYNC_FLAGS[@]}" "$REPO_ROOT/pse-dashboard/index.html" "$DASHBOARD_TARGET/index.html"
-  rsync "${RSYNC_FLAGS[@]}" "$REPO_ROOT/pse-dashboard/app.js" "$DASHBOARD_TARGET/app.js"
-  rsync "${RSYNC_FLAGS[@]}" "$REPO_ROOT/pse-dashboard/styles.css" "$DASHBOARD_TARGET/styles.css"
+  require_target "$DASHBOARD_SOURCE"
+  echo "==> Dashboard shell: $DASHBOARD_SOURCE -> $DASHBOARD_TARGET"
+  rsync "${RSYNC_FLAGS[@]}" "$DASHBOARD_SOURCE/index.html" "$DASHBOARD_TARGET/index.html"
+  rsync "${RSYNC_FLAGS[@]}" "$DASHBOARD_SOURCE/app.js" "$DASHBOARD_TARGET/app.js"
+  rsync "${RSYNC_FLAGS[@]}" "$DASHBOARD_SOURCE/styles.css" "$DASHBOARD_TARGET/styles.css"
 }
 
 case "$MODE" in

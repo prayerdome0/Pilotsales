@@ -1,0 +1,1535 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PSE Operations Portal</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #142027;
+      --nav: #0f171a;
+      --muted: #627179;
+      --line: #d8e1e5;
+      --paper: #ffffff;
+      --wash: #f4f7f8;
+      --teal: #0f766e;
+      --teal-dark: #0b5f59;
+      --gold: #b7791f;
+      --green: #18744f;
+      --blue: #315fbd;
+      --red: #b23a32;
+      --shadow: 0 1px 2px rgba(20, 32, 39, 0.08), 0 18px 40px rgba(20, 32, 39, 0.08);
+      --sidebar: 248px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--wash); }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background: linear-gradient(180deg, #ffffff 0, #f7f9fa 42%, var(--wash) 100%);
+      font-family: Inter, Aptos, Arial, sans-serif;
+      letter-spacing: 0;
+    }
+    a { color: inherit; }
+    p, h1, h2, h3 { margin: 0; }
+    [id] { scroll-margin-top: 24px; }
+
+    .app-shell {
+      display: grid;
+      grid-template-columns: var(--sidebar) minmax(0, 1fr);
+      min-height: 100vh;
+    }
+    .sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      padding: 20px 16px;
+      color: #ffffff;
+      background: var(--nav);
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: inherit;
+      text-decoration: none;
+    }
+    .brand img {
+      width: 46px;
+      height: 46px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      background: #ffffff;
+    }
+    .brand strong {
+      display: block;
+      font-size: 18px;
+      line-height: 1.05;
+    }
+    .brand span span {
+      display: block;
+      margin-top: 4px;
+      color: #c9d5d8;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .nav-list {
+      display: grid;
+      gap: 7px;
+      margin-top: 34px;
+    }
+    .nav-item {
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      color: #c5d0d3;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 850;
+    }
+    .nav-item:hover, .nav-item.active {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: inset 3px 0 0 var(--teal);
+    }
+    .sidebar-note {
+      margin-top: 28px;
+      padding: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+    .sidebar-note span {
+      display: block;
+      color: #f4c86f;
+      font-size: 12px;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+    .sidebar-note strong {
+      display: block;
+      margin-top: 8px;
+      line-height: 1.2;
+    }
+
+    .workspace { min-width: 0; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      min-height: 78px;
+      padding: 16px 28px;
+      background: rgba(255, 255, 255, 0.92);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(16px);
+    }
+    .eyebrow {
+      color: var(--teal-dark);
+      font-size: 12px;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+    .topbar h1 {
+      margin-top: 4px;
+      font-size: 28px;
+      line-height: 1.05;
+    }
+    .topbar-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .pill {
+      min-height: 36px;
+      display: inline-flex;
+      align-items: center;
+      border-radius: 8px;
+      padding: 8px 12px;
+      color: var(--ink);
+      background: #ffffff;
+      border: 1px solid var(--line);
+      font-size: 13px;
+      font-weight: 950;
+      text-decoration: none;
+    }
+    .pill.primary {
+      color: #ffffff;
+      background: var(--teal);
+      border-color: var(--teal);
+    }
+
+    .dashboard {
+      width: min(1480px, calc(100vw - var(--sidebar) - 40px));
+      margin: 0 auto;
+      padding: 24px 0 44px;
+    }
+    .section { margin-top: 30px; }
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 14px;
+    }
+    .section-head h2 {
+      margin-top: 6px;
+      font-size: 30px;
+      line-height: 1.08;
+    }
+    .section-head p {
+      margin-top: 7px;
+      color: var(--muted);
+      font-weight: 850;
+      line-height: 1.35;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.92fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+    .hero-copy {
+      min-height: 380px;
+      display: grid;
+      align-content: space-between;
+      gap: 24px;
+      padding: 26px;
+      color: #ffffff;
+      background: linear-gradient(135deg, #0f171a 0%, #142027 58%, #0b5f59 100%);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+    .hero-copy .eyebrow { color: #f4c86f; }
+    .hero-copy h2 {
+      max-width: 760px;
+      margin-top: 14px;
+      font-size: 52px;
+      line-height: 0.98;
+    }
+    .hero-copy p {
+      max-width: 620px;
+      margin-top: 18px;
+      color: #dce7ea;
+      font-size: 20px;
+      line-height: 1.32;
+      font-weight: 850;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+    }
+    .hero-actions a {
+      min-height: 40px;
+      display: inline-flex;
+      align-items: center;
+      border-radius: 8px;
+      padding: 9px 13px;
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      font-size: 13px;
+      font-weight: 950;
+      text-decoration: none;
+    }
+    .hero-actions a:first-child {
+      color: #142027;
+      background: #f4c86f;
+      border-color: #f4c86f;
+    }
+    .hero-signals {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .hero-signal {
+      min-height: 74px;
+      display: grid;
+      gap: 7px;
+      align-content: center;
+      padding: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .hero-signal span {
+      color: #f4c86f;
+      font-size: 11px;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+    .hero-signal strong {
+      font-size: 24px;
+      line-height: 1.04;
+    }
+    .visual-panel {
+      min-height: 380px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 12px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+      box-shadow: var(--shadow);
+    }
+    .visual-panel header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .visual-panel img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+    .visual-panel h3 {
+      font-size: 24px;
+      line-height: 1.08;
+    }
+    .status-chip, .label-chip {
+      width: max-content;
+      max-width: 100%;
+      display: inline-flex;
+      align-items: center;
+      border-radius: 6px;
+      padding: 4px 8px;
+      color: #25313a;
+      background: #eef4f4;
+      font-size: 11px;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+    .status-chip.green {
+      color: #ffffff;
+      background: var(--green);
+    }
+    .command-map {
+      position: relative;
+      min-height: 260px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background:
+        linear-gradient(90deg, rgba(49, 95, 189, 0.08) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(15, 118, 110, 0.08) 1px, transparent 1px),
+        #f8fafb;
+      background-size: 34px 34px;
+    }
+    .command-map::before {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border: 1px solid rgba(15, 118, 110, 0.25);
+      border-radius: 999px;
+    }
+    .map-core {
+      position: relative;
+      z-index: 1;
+      width: 116px;
+      height: 116px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--teal);
+      border-radius: 999px;
+      color: #ffffff;
+      background: var(--teal);
+      text-align: center;
+      font-weight: 950;
+      line-height: 1.05;
+    }
+    .map-node {
+      position: absolute;
+      z-index: 1;
+      min-width: 92px;
+      min-height: 38px;
+      display: grid;
+      place-items: center;
+      padding: 7px 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+      box-shadow: 0 8px 20px rgba(20, 32, 39, 0.08);
+      font-size: 12px;
+      font-weight: 950;
+    }
+    .map-node.media { top: 24px; left: 32px; border-top: 4px solid var(--gold); }
+    .map-node.research { top: 24px; right: 32px; border-top: 4px solid var(--blue); }
+    .map-node.field { bottom: 30px; left: 44px; border-top: 4px solid var(--red); }
+    .map-node.finance { bottom: 30px; right: 44px; border-top: 4px solid var(--green); }
+    .visual-foot {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .visual-foot div {
+      min-height: 58px;
+      display: grid;
+      gap: 5px;
+      align-content: center;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f8fafb;
+    }
+    .visual-foot span {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+    .visual-foot strong {
+      font-size: 18px;
+      line-height: 1.08;
+    }
+    .ops-list {
+      display: grid;
+      gap: 10px;
+    }
+    .ops-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(92px, 0.55fr) minmax(96px, 0.7fr);
+      gap: 10px;
+      align-items: center;
+      min-height: 54px;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f8fafb;
+    }
+    .ops-row strong {
+      font-size: 17px;
+      line-height: 1.1;
+    }
+    .ops-row small {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-weight: 850;
+      line-height: 1.2;
+    }
+    .ops-row span:last-child {
+      justify-self: end;
+      color: var(--teal-dark);
+      font-size: 13px;
+      font-weight: 950;
+      text-align: right;
+    }
+
+    .access-grid, .operation-grid, .analytics-grid, .team-grid, .link-grid {
+      display: grid;
+      gap: 12px;
+    }
+    .access-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .access-card, .operation-card, .analytics-card, .team-card, .link-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+      box-shadow: 0 12px 28px rgba(20, 32, 39, 0.06);
+    }
+    .access-card {
+      min-height: 118px;
+      display: grid;
+      gap: 9px;
+      align-content: start;
+      padding: 16px;
+      color: inherit;
+      text-decoration: none;
+      border-top: 5px solid var(--teal);
+    }
+    .access-card.gold { border-top-color: var(--gold); }
+    .access-card.red { border-top-color: var(--red); }
+    .access-card.green { border-top-color: var(--green); }
+    .access-card.blue { border-top-color: var(--blue); }
+    .access-card.ink { border-top-color: var(--ink); }
+    .access-card strong {
+      font-size: 22px;
+      line-height: 1.08;
+    }
+    .access-card p, .operation-card p, .analytics-card p, .link-card p {
+      color: var(--muted);
+      font-weight: 850;
+      line-height: 1.35;
+    }
+
+    .launcher-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .launcher-card {
+      min-height: 254px;
+      display: grid;
+      grid-template-rows: auto 118px auto 1fr;
+      gap: 9px;
+      align-content: start;
+      padding: 15px;
+      color: inherit;
+      text-decoration: none;
+      border: 1px solid var(--line);
+      border-top: 5px solid var(--teal);
+      border-radius: 8px;
+      background: #ffffff;
+      box-shadow: 0 12px 28px rgba(20, 32, 39, 0.06);
+    }
+    .launcher-card.gold { border-top-color: var(--gold); }
+    .launcher-card.green { border-top-color: var(--green); }
+    .launcher-card.red { border-top-color: var(--red); }
+    .launcher-card.teal { border-top-color: var(--teal); }
+    .launcher-card.ink { border-top-color: var(--ink); }
+    .launcher-code {
+      width: max-content;
+      max-width: 100%;
+      display: inline-flex;
+      align-items: center;
+      border-radius: 6px;
+      padding: 4px 8px;
+      color: #ffffff;
+      background: var(--ink);
+      font-size: 11px;
+      font-weight: 950;
+      letter-spacing: 0;
+    }
+    .launcher-card img {
+      width: 94px;
+      height: 118px;
+      object-fit: contain;
+      align-self: center;
+      justify-self: start;
+      filter: drop-shadow(0 10px 16px rgba(20, 32, 39, 0.16));
+    }
+    .launcher-card strong {
+      font-size: 22px;
+      line-height: 1.08;
+    }
+    .launcher-card p {
+      color: var(--muted);
+      font-weight: 850;
+      line-height: 1.35;
+    }
+
+    .operation-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .operation-card {
+      min-height: 262px;
+      display: grid;
+      gap: 10px;
+      align-content: start;
+      padding: 16px;
+      border-top: 6px solid var(--teal);
+    }
+    .operation-card.gold { border-top-color: var(--gold); }
+    .operation-card.red { border-top-color: var(--red); }
+    .operation-card.green { border-top-color: var(--green); }
+    .operation-card.blue { border-top-color: var(--blue); }
+    .operation-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .operation-top small {
+      color: var(--muted);
+      text-align: right;
+      font-size: 12px;
+      font-weight: 950;
+    }
+    .operation-card h3 {
+      font-size: 24px;
+      line-height: 1.05;
+    }
+    .support-line {
+      display: grid;
+      gap: 4px;
+      padding: 10px;
+      border: 1px solid #e4ecef;
+      border-radius: 8px;
+      background: #f8fafb;
+    }
+    .support-line strong {
+      font-size: 13px;
+      line-height: 1.25;
+    }
+    .metrics {
+      display: grid;
+      gap: 8px;
+    }
+    .metric-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      min-height: 34px;
+      padding: 7px 9px;
+      border: 1px solid #e4ecef;
+      border-radius: 8px;
+      background: #f8fafb;
+      font-size: 13px;
+      font-weight: 850;
+    }
+    .metric-row span {
+      color: var(--muted);
+    }
+    .metric-row strong {
+      text-align: right;
+    }
+    .operation-card a, .link-card {
+      color: inherit;
+      text-decoration: none;
+    }
+    .operation-card > a {
+      align-self: end;
+      width: max-content;
+      max-width: 100%;
+      color: var(--teal-dark);
+      font-weight: 950;
+      overflow-wrap: anywhere;
+    }
+
+    .analytics-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    .analytics-card {
+      min-height: 186px;
+      display: grid;
+      gap: 10px;
+      align-content: start;
+      padding: 16px;
+      border-top: 5px solid var(--blue);
+    }
+    .analytics-card.gold { border-top-color: var(--gold); }
+    .analytics-card.green { border-top-color: var(--green); }
+    .analytics-card.red { border-top-color: var(--red); }
+    .analytics-card h3 {
+      font-size: 20px;
+      line-height: 1.1;
+    }
+    .data-bar {
+      display: grid;
+      gap: 5px;
+    }
+    .data-bar div {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 900;
+    }
+    .bar-track {
+      display: block;
+      height: 9px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e5ecef;
+    }
+    .bar-track span {
+      display: block;
+      width: var(--bar);
+      height: 100%;
+      border-radius: inherit;
+      background: var(--bar-color, var(--teal));
+    }
+
+    .team-grid {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+    .team-card {
+      min-height: 136px;
+      display: grid;
+      gap: 10px;
+      align-content: center;
+      justify-items: start;
+      padding: 16px;
+      border-top: 5px solid var(--gold);
+    }
+    .team-card.teal { border-top-color: var(--teal); }
+    .team-card.blue { border-top-color: var(--blue); }
+    .team-card.green { border-top-color: var(--green); }
+    .team-card.ink { border-top-color: var(--ink); }
+    .avatar {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      color: #ffffff;
+      background: var(--ink);
+      font-size: 17px;
+      font-weight: 950;
+    }
+    .team-card strong {
+      font-size: 22px;
+      line-height: 1.05;
+    }
+
+    .link-grid {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+    .link-card {
+      min-height: 154px;
+      display: grid;
+      gap: 8px;
+      align-content: start;
+      padding: 16px;
+      border-top: 5px solid var(--teal);
+    }
+    .link-card.gold { border-top-color: var(--gold); }
+    .link-card.red { border-top-color: var(--red); }
+    .link-card.blue { border-top-color: var(--blue); }
+    .link-card.ink { border-top-color: var(--ink); }
+    .link-card strong {
+      font-size: 19px;
+      line-height: 1.1;
+    }
+    .link-card small {
+      color: var(--teal-dark);
+      overflow-wrap: anywhere;
+      line-height: 1.25;
+      font-weight: 800;
+    }
+
+    footer {
+      margin-top: 32px;
+      padding: 20px 0;
+      color: var(--muted);
+      text-align: center;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    @media (max-width: 1280px) {
+      .dashboard { width: min(100% - 32px, 1480px); }
+      .hero { grid-template-columns: 1fr; }
+      .access-grid, .launcher-grid, .operation-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .analytics-grid, .link-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .team-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (max-width: 860px) {
+      .app-shell { display: block; }
+      .sidebar { position: static; height: auto; }
+      .nav-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin-top: 18px;
+      }
+      .sidebar-note { margin-top: 18px; }
+      .topbar { position: static; display: block; padding: 16px; }
+      .topbar-actions {
+        justify-content: flex-start;
+        margin-top: 12px;
+      }
+      .dashboard {
+        width: min(100% - 20px, 1480px);
+        padding-top: 12px;
+      }
+      .hero-copy {
+        min-height: auto;
+        padding: 22px;
+      }
+      .hero-copy h2 { font-size: 46px; }
+      .hero-copy p { font-size: 18px; }
+      .hero-signals, .visual-foot, .access-grid, .launcher-grid, .operation-grid, .analytics-grid, .team-grid, .link-grid {
+        grid-template-columns: 1fr;
+      }
+      .ops-row {
+        grid-template-columns: 1fr;
+      }
+      .ops-row span:last-child {
+        justify-self: start;
+        text-align: left;
+      }
+      .visual-panel { min-height: auto; }
+      .command-map { min-height: 250px; }
+      .map-node { min-width: 82px; font-size: 11px; }
+      .map-node.media { left: 14px; }
+      .map-node.research { right: 14px; }
+      .map-node.field { left: 18px; }
+      .map-node.finance { right: 18px; }
+      .section-head { display: block; }
+      .section-head h2 { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="PSE navigation">
+      <a class="brand" href="#home">
+        <img src="assets/pse-logo.png" alt="PSE logo" />
+        <span>
+          <strong>PSE</strong>
+          <span>Operations Portal</span>
+        </span>
+      </a>
+      <nav class="nav-list">
+        <a class="nav-item active" href="#home"><span>Home</span></a>
+        <a class="nav-item" href="#access"><span>Apps</span></a>
+        <a class="nav-item" href="#main-operations"><span>Main Ops</span></a>
+        <a class="nav-item" href="#scope"><span>Scope</span></a>
+        <a class="nav-item" href="#analytics"><span>Analytics</span></a>
+        <a class="nav-item" href="https://dashboard.74.208.216.118.sslip.io/pse-dashboard/live-briefing.html"><span>Briefing</span></a>
+        <a class="nav-item" href="#team"><span>Team</span></a>
+        <a class="nav-item" href="https://dashboard.74.208.216.118.sslip.io/pse-dashboard/operations-hub/governance/brand-company-profile.html"><span>Company</span></a>
+        <a class="nav-item" href="#links"><span>Links</span></a>
+      </nav>
+      <div class="sidebar-note">
+        <span>Operating Standard</span>
+        <strong>Source, proof, approval, and notes before public movement.</strong>
+      </div>
+    </aside>
+
+    <div class="workspace">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">PSE Command Center</p>
+          <h1>Operations Portal</h1>
+        </div>
+        <div class="topbar-actions">
+          <span class="pill">Verified data</span>
+          <a class="pill primary" href="#access">Employee Apps</a>
+          <a class="pill" href="#main-operations">Main Operations</a>
+          <a class="pill" href="#scope">Full Scope</a>
+          <a class="pill" href="https://dashboard.74.208.216.118.sslip.io/pse-dashboard/operations-hub/governance/brand-company-profile.html">Company Profile</a>
+          <a class="pill" href="http://74.208.216.118/pilot-sales-enterprise/">Public Site</a>
+          <a class="pill" href="https://dashboard.74.208.216.118.sslip.io/pse-dashboard/operations-hub/status.html">Status</a>
+          <a class="pill" href="https://dashboard.74.208.216.118.sslip.io/pse-dashboard/live-briefing.html">Live Briefing</a>
+          <a class="pill" href="https://dashboard.74.208.216.118.sslip.io/vps-visualizer/">Visualizer</a>
+          <a class="pill" href="http://74.208.216.118/bot-control/">Bot Control</a>
+        </div>
+      </header>
+
+      <main class="dashboard">
+        <section class="hero" id="home" aria-label="PSE operations overview">
+          <div class="hero-copy">
+            <div>
+              <p class="eyebrow">Executive home</p>
+              <h2>PSE sales operations.</h2>
+              <p>Life insurance sales, website sales, bulk merchandise sales, and NFC review tag sales are the main operating lanes.</p>
+              <div class="hero-actions">
+                <a href="#access">Employee apps</a>
+                <a href="#main-operations">Main ops</a>
+                <a href="#scope">Full scope</a>
+              </div>
+            </div>
+            <div class="hero-signals" aria-label="Current PSE signals">
+              <div class="hero-signal"><span>Core</span><strong>4 lanes</strong></div>
+              <div class="hero-signal"><span>Insurance</span><strong>Sales</strong></div>
+              <div class="hero-signal"><span>Websites</span><strong>Sales</strong></div>
+              <div class="hero-signal"><span>Tags</span><strong>NFC</strong></div>
+            </div>
+          </div>
+
+          <div class="visual-panel" aria-label="Current operations snapshot">
+            <header>
+              <div>
+                <span class="status-chip green">Live VPS</span>
+                <h3>Main Operations</h3>
+              </div>
+              <img src="assets/pse-logo.png" alt="PSE logo" />
+            </header>
+            <div class="ops-list">
+              <div class="ops-row">
+                <div><strong>Life Insurance Sales</strong><small>Prospects, appointments, licensed follow-up.</small></div>
+                <span class="label-chip">Core</span>
+                <span>Compliance first</span>
+              </div>
+              <div class="ops-row">
+                <div><strong>Website Sales</strong><small>Business outreach, proposals, site packages.</small></div>
+                <span class="label-chip">Core</span>
+                <span>Offer build</span>
+              </div>
+              <div class="ops-row">
+                <div><strong>Bulk Merchandise Sales</strong><small>Source, margin, buyers, delivery path.</small></div>
+                <span class="label-chip">Core</span>
+                <span>Margin gate</span>
+              </div>
+              <div class="ops-row">
+                <div><strong>NFC Review Tag Sales</strong><small>Review URL approvals, tag kits, proofs.</small></div>
+                <span class="label-chip">Core</span>
+                <span>Sample kit</span>
+              </div>
+              <div class="ops-row">
+                <div><strong>Complete Scope Tunnel</strong><small>Research, media, field, finance, bots.</small></div>
+                <span class="label-chip">Scope</span>
+                <span>Open below</span>
+              </div>
+            </div>
+            <div class="visual-foot">
+              <div><span>Dashboard</span><strong>Healthy</strong></div>
+              <div><span>Visualizer</span><strong>Protected</strong></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="access">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Employee desktop</p>
+              <h2>9 PSE Apps</h2>
+              <p>The same launch set employees see on the VPS desktop.</p>
+            </div>
+          </div>
+          <div class="launcher-grid">
+            <a class="launcher-card green" href="https://dashboard.74.208.216.118.sslip.io/pse-dashboard/">
+              <span class="launcher-code">DASH</span>
+              <img src="assets/pse-launcher-dashboard.png" alt="" />
+              <strong>Company Dashboard</strong>
+              <p>Main employee portal for PSE operations.</p>
+            </a>
+            <a class="launcher-card gold" href="https://dashboard.74.208.216.118.sslip.io/pse-dashboard/operations-hub/">
+              <span class="launcher-code">OPS</span>
+              <img src="assets/pse-launcher-ops.png" alt="" />
+              <strong>Operations Hub</strong>
+              <p>Command board, operation rooms, and reports.</p>
+            </a>
+            <a class="launcher-card red" href="https://dashboard.74.208.216.118.sslip.io/pse-dashboard/operations-hub/applicants.html">
+              <span class="launcher-code">APPS</span>
+              <img src="assets/pse-launcher-ops.png" alt="" />
+              <strong>Sales Applicants</strong>
+              <p>Master queue for assigning applicants to the right sales field.</p>
+            </a>
+            <a class="launcher-card teal" href="http://74.208.216.118/pilot-sales-enterprise/">
+              <span class="launcher-code">WEB</span>
+              <img src="assets/pse-launcher-web.png" alt="" />
+              <strong>Public Site</strong>
+              <p>Role board and worker registration.</p>
+            </a>
+            <a class="launcher-card gold" href="https://dashboard.74.208.216.118.sslip.io/ceo-access/">
+              <span class="launcher-code">CEO</span>
+              <img src="assets/pse-launcher-ceo.png" alt="" />
+              <strong>CEO Access</strong>
+              <p>Private employee access tracker.</p>
+            </a>
+            <a class="launcher-card ink" href="https://dashboard.74.208.216.118.sslip.io/pse-dashboard/operations-hub/files.html">
+              <span class="launcher-code">FILES</span>
+              <img src="assets/pse-launcher-files.png" alt="" />
+              <strong>PSE Files</strong>
+              <p>Workspace folders and file locations.</p>
+            </a>
+            <a class="launcher-card green" href="https://dashboard.74.208.216.118.sslip.io/pse-dashboard/operations-hub/governance/brand-company-profile.html">
+              <span class="launcher-code">INFO</span>
+              <img src="assets/pse-launcher-info.png" alt="" />
+              <strong>Company Info</strong>
+              <p>Brand, company, routes, and governance status.</p>
+            </a>
+            <a class="launcher-card teal" href="https://dashboard.74.208.216.118.sslip.io/pse-dashboard/operations-hub/status.html">
+              <span class="launcher-code">VPS</span>
+              <img src="assets/pse-launcher-vps.png" alt="" />
+              <strong>VPS Status</strong>
+              <p>Services, launchers, and route checks.</p>
+            </a>
+            <a class="launcher-card blue" href="https://dashboard.74.208.216.118.sslip.io/pse-dashboard/live-briefing.html">
+              <span class="launcher-code">LIVE</span>
+              <img src="assets/pse-launcher-vps.png" alt="" />
+              <strong>Live Briefing</strong>
+              <p>Current VPS, bot fleet, events, and watch points.</p>
+            </a>
+            <a class="launcher-card red" href="http://74.208.216.118/bot-control/">
+              <span class="launcher-code">CTRL</span>
+              <img src="assets/pse-launcher-control.png" alt="" />
+              <strong>PSE Control</strong>
+              <p>Protected bot-control workspace.</p>
+            </a>
+          </div>
+        </section>
+
+        <section class="section" id="main-operations">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Main operations</p>
+              <h2>Core Sales Lanes</h2>
+              <p>The front page stays focused on the business PSE is pushing first.</p>
+            </div>
+          </div>
+          <div class="operation-grid">
+            <article class="operation-card green">
+              <div class="operation-top"><span class="label-chip">Core</span><small>Sales lane</small></div>
+              <h3>Life Insurance Sales</h3>
+              <p>Prospecting, appointment setting, licensed follow-up, and compliant close tracking.</p>
+              <div class="support-line">
+                <strong>Help: referrals, appointment notes, compliant scripts.</strong>
+              </div>
+              <div class="metrics">
+                <div class="metric-row"><span>Pipeline</span><strong>Prospect to appointment</strong></div>
+                <div class="metric-row"><span>Gate</span><strong>Licensed review</strong></div>
+              </div>
+              <a href="https://dashboard.74.208.216.118.sslip.io/pse-dashboard/operations-hub/operations/life-insurance-sales/">Open workspace</a>
+            </article>
+
+            <article class="operation-card blue">
+              <div class="operation-top"><span class="label-chip">Core</span><small>Sales lane</small></div>
+              <h3>Website Sales</h3>
+              <p>Business outreach, offer packaging, proposal tracking, and delivery handoff.</p>
+              <div class="support-line">
+                <strong>Help: local leads, sample sites, proposal notes.</strong>
+              </div>
+              <div class="metrics">
+                <div class="metric-row"><span>Offer</span><strong>Site package</strong></div>
+                <div class="metric-row"><span>Gate</span><strong>Scope + price</strong></div>
+              </div>
+              <a href="https://dashboard.74.208.216.118.sslip.io/pse-dashboard/operations-hub/operations/website-sales/">Open workspace</a>
+            </article>
+
+            <article class="operation-card gold">
+              <div class="operation-top"><span class="label-chip">Core</span><small>Sales lane</small></div>
+              <h3>Bulk Merchandise Sales</h3>
+              <p>Inventory sourcing, margin checks, buyer list building, and delivery coordination.</p>
+              <div class="support-line">
+                <strong>Help: product lists, buyer contacts, margin checks.</strong>
+              </div>
+              <div class="metrics">
+                <div class="metric-row"><span>Flow</span><strong>Source to buyer</strong></div>
+                <div class="metric-row"><span>Gate</span><strong>Margin + shipping</strong></div>
+              </div>
+              <a href="https://dashboard.74.208.216.118.sslip.io/pse-dashboard/operations-hub/operations/bulk-merchandise-sales/">Open workspace</a>
+            </article>
+
+            <article class="operation-card green">
+              <div class="operation-top"><span class="label-chip">Core</span><small>Sales lane</small></div>
+              <h3>NFC Review Tag Sales</h3>
+              <p>Local business NFC/QR review tag kits, review URL approvals, pricing, proofs, and delivery support.</p>
+              <div class="support-line">
+                <strong>Help: prospect list, sample kit, approved review URLs.</strong>
+              </div>
+              <div class="metrics">
+                <div class="metric-row"><span>Flow</span><strong>Prospect to kit</strong></div>
+                <div class="metric-row"><span>Gate</span><strong>URL approval</strong></div>
+              </div>
+              <a href="https://dashboard.74.208.216.118.sslip.io/pse-dashboard/operations-hub/operations/nfc-review-tag-sales/">Open workspace</a>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="scope">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Complete operations scope tunnel</p>
+              <h2>Full PSE Scope</h2>
+              <p>Supporting, research, automation, and review lanes behind the main sales operations.</p>
+            </div>
+          </div>
+          <div class="operation-grid">
+            <article class="operation-card green">
+              <div class="operation-top"><span class="label-chip">Command</span><small>VPS agents</small></div>
+              <h3>Dashboard + Command</h3>
+              <p>Public board, operations hub, status checks, and route health.</p>
+              <div class="support-line">
+                <strong>Help: source records, notes, clean route checks.</strong>
+              </div>
+              <div class="metrics">
+                <div class="metric-row"><span>Dashboard</span><strong>Healthy</strong></div>
+                <div class="metric-row"><span>Warnings</span><strong>0</strong></div>
+              </div>
+              <a href="https://dashboard.74.208.216.118.sslip.io/pse-dashboard/operations-hub/">Open hub</a>
+            </article>
+
+            <article class="operation-card gold">
+              <div class="operation-top"><span class="label-chip">Media</span><small>Support lane</small></div>
+              <h3>YouTube Media + Social Ads</h3>
+              <p>Creative, short-form assets, social campaigns, and approval gates.</p>
+              <div class="support-line">
+                <strong>Help: assets, metadata, release approval.</strong>
+              </div>
+              <div class="metrics">
+                <div class="metric-row"><span>Review queue</span><strong>3 Shorts</strong></div>
+                <div class="metric-row"><span>Publisher</span><strong>1 ready / 9 blocked</strong></div>
+              </div>
+              <a href="http://74.208.216.118/bot-control/">Open bot panel</a>
+            </article>
+
+            <article class="operation-card blue">
+              <div class="operation-top"><span class="label-chip">Research</span><small>Read-only</small></div>
+              <h3>Sports Research Monitor</h3>
+              <p>Public checks only. No betting or account actions.</p>
+              <div class="support-line">
+                <strong>Help: approved sources, compliance rules.</strong>
+              </div>
+              <div class="metrics">
+                <div class="metric-row"><span>Sports checked</span><strong>15</strong></div>
+                <div class="metric-row"><span>Opportunities</span><strong>0</strong></div>
+              </div>
+              <a href="http://74.208.216.118/bot-control/">Open monitor</a>
+            </article>
+
+            <article class="operation-card gold">
+              <div class="operation-top"><span class="label-chip">Research</span><small>Official sources</small></div>
+              <h3>Surplus Funds Research</h3>
+              <p>Official sources checked. Outreach remains blocked.</p>
+              <div class="support-line">
+                <strong>Help: claim status, permitted use, approval.</strong>
+              </div>
+              <div class="metrics">
+                <div class="metric-row"><span>Official sources</span><strong>13</strong></div>
+                <div class="metric-row"><span>Primary lead rows</span><strong>78</strong></div>
+                <div class="metric-row"><span>Primary amount</span><strong>$1,813,353.77</strong></div>
+              </div>
+              <a href="http://74.208.216.118/bot-control/">Open monitor</a>
+            </article>
+
+            <article class="operation-card green">
+              <div class="operation-top"><span class="label-chip">Manual board</span><small>Lead operations</small></div>
+              <h3>Real Estate Lead Operations</h3>
+              <p>Sourced rows, proof, stage, gate, last touch.</p>
+              <div class="support-line">
+                <strong>Help: source links, proof, due dates.</strong>
+              </div>
+              <div class="metrics">
+                <div class="metric-row"><span>Source proof</span><strong>Required</strong></div>
+                <div class="metric-row"><span>Outreach</span><strong>Approval first</strong></div>
+              </div>
+              <a href="#analytics">Check gates</a>
+            </article>
+
+            <article class="operation-card red">
+              <div class="operation-top"><span class="label-chip">Setup needed</span><small>Field services</small></div>
+              <h3>Barnacle Removal</h3>
+              <p>Quotes, bookings, photos, proof, margin.</p>
+              <div class="support-line">
+                <strong>Help: service area, script, partner capacity.</strong>
+              </div>
+              <div class="metrics">
+                <div class="metric-row"><span>Mode</span><strong>Manual first</strong></div>
+                <div class="metric-row"><span>Gate</span><strong>Script approval</strong></div>
+              </div>
+              <a href="#team">View team names</a>
+            </article>
+
+            <article class="operation-card red">
+              <div class="operation-top"><span class="label-chip">Setup needed</span><small>Field services</small></div>
+              <h3>Solar Bird Proofing</h3>
+              <p>Field-service lane waiting on lead and partner records.</p>
+              <div class="support-line">
+                <strong>Help: consultation flow, quotes, service area.</strong>
+              </div>
+              <div class="metrics">
+                <div class="metric-row"><span>Mode</span><strong>Manual first</strong></div>
+                <div class="metric-row"><span>Gate</span><strong>Partner proof</strong></div>
+              </div>
+              <a href="#team">View team names</a>
+            </article>
+
+            <article class="operation-card red">
+              <div class="operation-top"><span class="label-chip">Review only</span><small>Finance lane</small></div>
+              <h3>Pest Control</h3>
+              <p>Placeholder field-service lane.</p>
+              <div class="support-line">
+                <strong>Help: decide separate lane or merge.</strong>
+              </div>
+              <div class="metrics">
+                <div class="metric-row"><span>Mode</span><strong>Placeholder</strong></div>
+                <div class="metric-row"><span>Gate</span><strong>Source proof</strong></div>
+              </div>
+              <a href="#team">View team names</a>
+            </article>
+
+            <article class="operation-card blue">
+              <div class="operation-top"><span class="label-chip">Review only</span><small>Finance lane</small></div>
+              <h3>Crypto Bot Review</h3>
+              <p>Visible only. No trading automation approved.</p>
+              <div class="support-line">
+                <strong>Help: legal review, risk limits, audit log.</strong>
+              </div>
+              <div class="metrics">
+                <div class="metric-row"><span>Action mode</span><strong>Review only</strong></div>
+                <div class="metric-row"><span>Gate</span><strong>Legal review</strong></div>
+              </div>
+              <a href="#analytics">Check gates</a>
+            </article>
+
+            <article class="operation-card blue">
+              <div class="operation-top"><span class="label-chip">Review only</span><small>Payment lane</small></div>
+              <h3>Crypto Payments Review</h3>
+              <p>Inactive until treasury rules and audit controls exist.</p>
+              <div class="support-line">
+                <strong>Help: approval policy, incident status, audit.</strong>
+              </div>
+              <div class="metrics">
+                <div class="metric-row"><span>Action mode</span><strong>Review only</strong></div>
+                <div class="metric-row"><span>Gate</span><strong>Audit log</strong></div>
+              </div>
+              <a href="#analytics">Check gates</a>
+            </article>
+
+            <article class="operation-card gold">
+              <div class="operation-top"><span class="label-chip">Automation</span><small>VPS queue</small></div>
+              <h3>Bot Improvement</h3>
+              <p>Standing queue for safe reviews and human-gated bot changes.</p>
+              <div class="support-line">
+                <strong>Help: approve real fixes, keep records tied to sources.</strong>
+              </div>
+              <div class="metrics">
+                <div class="metric-row"><span>Managed bots</span><strong>8</strong></div>
+                <div class="metric-row"><span>Open items</span><strong>8</strong></div>
+              </div>
+              <a href="http://74.208.216.118/vps-visualizer/">Open visualizer</a>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="analytics">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Relevant charts</p>
+              <h2>Operating Analytics</h2>
+              <p>Core sales gates plus VPS health.</p>
+            </div>
+          </div>
+          <div class="analytics-grid">
+            <article class="analytics-card green">
+              <span class="label-chip">Core sales</span>
+              <h3>Main Operations</h3>
+              <div class="metric-row"><span>Life insurance</span><strong>Compliance gate</strong></div>
+              <div class="metric-row"><span>Website sales</span><strong>Offer build</strong></div>
+              <div class="metric-row"><span>Bulk merchandise</span><strong>Margin gate</strong></div>
+            </article>
+            <article class="analytics-card gold">
+              <span class="label-chip">Scope</span>
+              <h3>Operations Coverage</h3>
+              <div class="metric-row"><span>Main lanes</span><strong>3</strong></div>
+              <div class="metric-row"><span>Scope lanes</span><strong>11</strong></div>
+              <div class="metric-row"><span>Managed bots</span><strong>8</strong></div>
+            </article>
+            <article class="analytics-card blue">
+              <span class="label-chip">Services</span>
+              <h3>VPS Routes</h3>
+              <div class="metric-row"><span>Dashboard</span><strong>Open</strong></div>
+              <div class="metric-row"><span>Visualizer</span><strong>Protected</strong></div>
+              <div class="metric-row"><span>Bot Control</span><strong>Protected</strong></div>
+            </article>
+            <article class="analytics-card red">
+              <span class="label-chip">Gates</span>
+              <h3>Sales Requirements</h3>
+              <div class="metric-row"><span>Insurance</span><strong>Licensed review</strong></div>
+              <div class="metric-row"><span>Websites</span><strong>Scope + price</strong></div>
+              <div class="metric-row"><span>Merchandise</span><strong>Margin + shipping</strong></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="team">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Team directory</p>
+              <h2>Names</h2>
+              <p>No role assignments on the front page. Just the current names on the board.</p>
+            </div>
+          </div>
+          <div class="team-grid">
+            <article class="team-card gold"><div class="avatar">KY</div><strong>Kyrin</strong></article>
+            <article class="team-card teal"><div class="avatar">AZ</div><strong>Az</strong></article>
+            <article class="team-card blue"><div class="avatar">LK</div><strong>Lakshay</strong></article>
+            <article class="team-card green"><div class="avatar">SH</div><strong>Shai</strong></article>
+            <article class="team-card ink"><div class="avatar">ZA</div><strong>Zacheus</strong></article>
+          </div>
+        </section>
+
+        <section class="section" id="links">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Working routes</p>
+              <h2>Links</h2>
+              <p>Routes are marked open, protected, or reference so they are easier to share.</p>
+            </div>
+          </div>
+          <div class="link-grid">
+            <a class="link-card green" href="https://dashboard.74.208.216.118.sslip.io/pse-dashboard/">
+              <span class="label-chip">Protected</span>
+              <strong>PSE Dashboard</strong>
+              <small>https://dashboard.74.208.216.118.sslip.io/pse-dashboard/</small>
+              <p>Main employee portal.</p>
+            </a>
+            <a class="link-card gold" href="https://dashboard.74.208.216.118.sslip.io/pse-dashboard/operations-hub/">
+              <span class="label-chip">Protected</span>
+              <strong>Operations Hub</strong>
+              <small>https://dashboard.74.208.216.118.sslip.io/pse-dashboard/operations-hub/</small>
+              <p>Command-center board.</p>
+            </a>
+            <a class="link-card red" href="https://dashboard.74.208.216.118.sslip.io/pse-dashboard/operations-hub/applicants.html">
+              <span class="label-chip">Protected</span>
+              <strong>Sales Applicants</strong>
+              <small>https://dashboard.74.208.216.118.sslip.io/pse-dashboard/operations-hub/applicants.html</small>
+              <p>Applicant queue and field assignment dashboard.</p>
+            </a>
+            <a class="link-card green" href="https://dashboard.74.208.216.118.sslip.io/pse-dashboard/operations-hub/governance/brand-company-profile.html">
+              <span class="label-chip">Protected</span>
+              <strong>Company Profile</strong>
+              <small>https://dashboard.74.208.216.118.sslip.io/pse-dashboard/operations-hub/governance/brand-company-profile.html</small>
+              <p>Brand, company, and governance snapshot.</p>
+            </a>
+            <a class="link-card blue" href="http://74.208.216.118/pilot-sales-enterprise/">
+              <span class="label-chip">Open</span>
+              <strong>Pilot Sales Site</strong>
+              <small>http://74.208.216.118/pilot-sales-enterprise/</small>
+              <p>Public role board and worker registration.</p>
+            </a>
+            <a class="link-card gold" href="https://dashboard.74.208.216.118.sslip.io/pse-dashboard/operations-hub/status.html">
+              <span class="label-chip">Protected</span>
+              <strong>VPS Desktop Status</strong>
+              <small>https://dashboard.74.208.216.118.sslip.io/pse-dashboard/operations-hub/status.html</small>
+              <p>Manual status snapshot for routes and services.</p>
+            </a>
+            <a class="link-card green" href="https://dashboard.74.208.216.118.sslip.io/pse-dashboard/live-briefing.html">
+              <span class="label-chip">Protected</span>
+              <strong>Live Briefing</strong>
+              <small>https://dashboard.74.208.216.118.sslip.io/pse-dashboard/live-briefing.html</small>
+              <p>Live executive read from VPS bot and system APIs.</p>
+            </a>
+            <a class="link-card blue" href="http://74.208.216.118/vps-visualizer/">
+              <span class="label-chip">Protected</span>
+              <strong>VPS Visualizer</strong>
+              <small>http://74.208.216.118/vps-visualizer/</small>
+              <p>Visual VPS review route.</p>
+            </a>
+            <a class="link-card red" href="http://74.208.216.118/bot-control/">
+              <span class="label-chip">Protected</span>
+              <strong>Bot Control</strong>
+              <small>http://74.208.216.118/bot-control/</small>
+              <p>Systems route remains locked.</p>
+            </a>
+            <a class="link-card ink" href="http://74.208.216.118/vp-ops-X5Qz2l1TiJQvvAgre0P5zw/">
+              <span class="label-chip">Reference</span>
+              <strong>VP Ops View</strong>
+              <small>http://74.208.216.118/vp-ops-X5Qz2l1TiJQvvAgre0P5zw/</small>
+              <p>Use for verification.</p>
+            </a>
+          </div>
+        </section>
+
+        <footer>Last merged with VPS agent records: 2026-05-21 03:11 UTC. Real data only. No sample leads, revenue, CPU, spend, or sales metrics.</footer>
+      </main>
+    </div>
+  </div>
+
+  <script id="pse-data" type="application/json">
+{
+  "clusters": [
+    {
+      "id": "core-sales",
+      "title": "Core Sales Operations",
+      "cadence": "Daily manual review",
+      "controls": ["lead-board", "vp-ops"],
+      "summary": "life insurance sales, website sales, and bulk merchandise sales are the main front-page PSE operating lanes."
+    },
+    {
+      "id": "command",
+      "title": "Dashboard + Command",
+      "cadence": "Every 15 minutes",
+      "controls": ["dashboard-auto-recorder", "status-update-reporter"],
+      "summary": "service status, snapshot time, dashboard route, and bot-control route are monitored by VPS agents."
+    },
+    {
+      "id": "media",
+      "title": "YouTube + Social Ads",
+      "cadence": "Every 30 minutes",
+      "controls": ["youtube-shorts-prep", "youtube-bot-watchdog", "youtube-publisher"],
+      "summary": "channel target, asset inbox, metadata package, publishing approval status, channel URL, publish queue, creative assets, and campaign status stay gated until approval."
+    },
+    {
+      "id": "research",
+      "title": "Research Monitors",
+      "cadence": "Hourly to every 6 hours",
+      "controls": ["sports-arbitrage-monitor", "real-estate-surplus-monitor"],
+      "summary": "jurisdiction, approved odds source, readiness status, compliance posture, lead rows, source freshness, amount total, and claim confirmation status are recorded."
+    },
+    {
+      "id": "field-services",
+      "title": "Field Services",
+      "cadence": "Manual approval first",
+      "controls": ["vp-ops", "lead-board"],
+      "summary": "quotes, booked jobs, photos/proof, and gross margin must be recorded before active field-service reporting."
+    },
+    {
+      "id": "finance",
+      "title": "Crypto / Finance",
+      "cadence": "Review only",
+      "controls": ["vp-ops", "bot-improvement-manager"],
+      "summary": "legal review, risk limits, audit log, and incident status are required before finance workflows move beyond review."
+    }
+  ],
+  "operations": [
+    {
+      "id": "life-insurance-sales",
+      "name": "Life Insurance Sales",
+      "cluster": "core-sales",
+      "control": "Manual sales lane with licensed review before policy-specific guidance or close activity.",
+      "covers": "prospects, appointments, compliant scripts, licensed follow-up, objections, next touch, and close notes.",
+      "setup": "Main PSE sales lane shown on the front page; pipeline records should stay source-backed and compliance-reviewed.",
+      "risks": "No policy advice, quote promise, or close action without licensed review and compliance approval.",
+      "next": "Build prospect list, appointment tracker, script approval record, and follow-up notes.",
+      "team": ["Kyrin", "Az", "Shai", "Lakshay"],
+      "kpis": ["prospects", "appointments", "follow-up due", "licensed review status"]
+    },
+    {
+      "id": "website-sales",
+      "name": "Website Sales",
+      "cluster": "core-sales",
+      "control": "Manual sales lane for outreach, packaged offers, proposal tracking, and delivery handoff.",
+      "covers": "target business list, contact status, package, proposal, scope, price, deposit status, and delivery owner.",
+      "setup": "Main PSE sales lane shown on the front page; offer, examples, scope, and price need a clean tracker.",
+      "risks": "No delivery promise without written scope, price, timeline, and handoff record.",
+      "next": "Create target list, proposal template, package options, and handoff checklist.",
+      "team": ["Kyrin", "Az", "Shai", "Zacheus"],
+      "kpis": ["target businesses", "proposals", "scope approvals", "handoffs"]
+    },
+    {
+      "id": "bulk-merchandise-sales",
+      "name": "Bulk Merchandise Sales",
+      "cluster": "core-sales",
+      "control": "Manual sales lane for sourcing, margin checks, buyer development, and delivery coordination.",
+      "covers": "product lot, supplier/source, quantity, landed cost, target margin, buyer list, payment status, and shipping path.",
+      "setup": "Main PSE sales lane shown on the front page; inventory, margin, and buyer records must be verified before movement.",
+      "risks": "No purchase, resale promise, or shipment without source proof, margin check, payment terms, and delivery path.",
+      "next": "Build source list, margin calculator, buyer list, and delivery checklist.",
+      "team": ["Kyrin", "Az", "Shai", "Lakshay"],
+      "kpis": ["verified lots", "margin checks", "buyer contacts", "delivery status"]
+    },
+    {
+      "id": "nfc-review-tag-sales",
+      "name": "NFC Review Tag Sales",
+      "cluster": "core-sales",
+      "control": "Manual sales lane for NFC/QR review tag kits with destination approval before production.",
+      "covers": "prospects, approved review URLs, package interest, proofs, pricing, payment status, tag production, delivery confirmation, support, and reorders.",
+      "setup": "Operation workspace, product/order workflow, prospect tracker, pricing template, compliance guardrails, and delivery checklist are now created.",
+      "risks": "No tag production, review-routing promise, or public outreach without approved destination URL, neutral review language, proof approval, payment status, and current platform-policy check.",
+      "next": "Approve starter package, create one sample kit, test scans, and build the first 25-prospect local business list.",
+      "team": ["Kyrin", "Az", "Shai", "Zacheus"],
+      "kpis": ["prospects", "approved review URLs", "sample kits", "paid orders", "delivered orders"]
+    },
+    {
+      "id": "social-ads",
+      "name": "YouTube Media + Social Ads",
+      "cluster": "media",
+      "control": "Manual review with YouTube prep, watchdog, and publisher gates.",
+      "covers": "channel target, channel URL, asset inbox, metadata package, publish queue, creative assets, campaign status, and publishing approval status.",
+      "setup": "3 Shorts in review queue; publisher has 1 ready candidate and 9 blocked candidates; public approval is present but OAuth token is still missing.",
+      "risks": "No account access, publishing, or campaign launch without explicit owner approval.",
+      "next": "Finish channel-owner OAuth, review rights-cleared packages, then update campaign status.",
+      "team": ["Kyrin", "Lakshay", "Shai", "Zacheus"],
+      "kpis": ["review queue count", "ready publisher candidates", "blocked packages", "approval status"],
+      "links": ["http://74.208.216.118/bot-control/"]
+    },
+    {
+      "id": "sports-arbitrage",
+      "name": "Sports Research Monitor",
+      "cluster": "research",
+      "control": "Read-only public visibility monitor.",
+      "covers": "jurisdiction, approved odds source, readiness status, and compliance posture.",
+      "setup": "15 sports checked, 51 sportsbook candidates checked, 73 public pages checked, 0 current opportunities.",
+      "risks": "Bet placement, sportsbook login automation, geolocation bypass, and prohibited scraping are disabled.",
+      "next": "Keep active betting blocked until jurisdiction, source, books, markets, bankroll, alert, and approval gates are configured.",
+      "team": ["Lakshay", "Kyrin", "Shai"],
+      "kpis": ["sports checked", "sportsbooks checked", "public source coverage", "opportunity count"],
+      "links": ["http://74.208.216.118/bot-control/"]
+    },
+    {
+      "id": "surplus-real-estate-funds",
+      "name": "Surplus Funds Research",
+      "cluster": "research",
+      "control": "Official-source checks only.",
+      "covers": "lead rows, source freshness, county-office coverage, amount total, claim confirmation status, lead source, and compliance gate.",
+      "setup": "3,144 county/county-equivalent clerk-office targets seeded for 50 states plus DC; 16 active official surplus sources checked/reachable; 39 clerk/equivalent office sources verified; 36 official county websites verified for follow-up; Atlas discovery is paused; 78 primary lead rows; primary amount total $1,813,353.77; 369 review rows after excluding expired deadlines and sale dates older than one year.",
+      "risks": "Lead handling and outreach stay blocked until holding-office status, permitted use, and claim confirmation status are recorded.",
+      "next": "Confirm permitted use and holding-office status before any outreach.",
+      "team": ["Shai", "Kyrin", "Az", "Lakshay"],
+      "kpis": ["county office targets", "official sources", "amount total", "manual review sources", "claim confirmation status"],
+      "links": ["http://74.208.216.118/bot-control/"]
+    },
+    {
+      "id": "real-estate",
+      "name": "Real Estate Lead Operations",
+      "cluster": "research",
+      "control": "Manual lead board before outreach.",
+      "covers": "lead source, deal stage, compliance gate, owner, proof, and last-touch note.",
+      "setup": "Real estate workflows are visible to the dashboard recorder and must route through sourced lead rows.",
+      "risks": "No outreach without source proof and compliance gate.",
+      "next": "Attach source, owner, proof, deal stage, and next due date to every lead.",
+      "team": ["Shai", "Az", "Kyrin"],
+      "kpis": ["lead source", "deal stage", "compliance gate"]
+    },
+    {
+      "id": "barnacle-removal",
+      "name": "Barnacle Removal",
+      "cluster": "field-services",
+      "control": "Manual field-service lane.",
+      "covers": "quotes, booked jobs, photos/proof, gross margin, service area, owner, and script approval.",
+      "setup": "Field-service workflow is staged; source and partner capacity must be logged before outreach.",
+      "risks": "No job promise or outreach without approved script and partner capacity.",
+      "next": "Define service area, quote process, booked jobs status, photos/proof process, and gross margin target.",
+      "team": ["Az", "Kyrin", "Shai", "Zacheus"],
+      "kpis": ["quotes", "booked jobs", "photos/proof", "gross margin"]
+    },
+    {
+      "id": "solar-bird-proofing",
+      "name": "Solar Bird Proofing",
+      "cluster": "field-services",
+      "control": "Manual field-service lane.",
+      "covers": "quotes, booked jobs, photos/proof, gross margin, service area, owner, and partner handoff.",
+      "setup": "Solar bird proofing is grouped under field services until sourced lead and partner handoff records are live.",
+      "risks": "No outreach without approved script, source proof, and partner capacity.",
+      "next": "Record service areas, consultation flow, quote status, booked jobs, photos/proof, and gross margin.",
+      "team": ["Az", "Kyrin", "Shai", "Zacheus"],
+      "kpis": ["quotes", "booked jobs", "photos/proof", "gross margin"]
+    },
+    {
+      "id": "pest-control",
+      "name": "Pest Control",
+      "cluster": "field-services",
+      "control": "Placeholder field-service operation.",
+      "covers": "quotes, booked jobs, photos/proof, gross margin, service area, owner, and compliance gate.",
+      "setup": "Held as a field-service coverage slot because the recorder expects pest-control coverage with barnacle and solar.",
+      "risks": "No public offer until source, partner, proof, and compliance gate are documented.",
+      "next": "Confirm whether this stays as a separate lane or merges into field services.",
+      "team": ["Az", "Kyrin", "Shai", "Lakshay"],
+      "kpis": ["quotes", "booked jobs", "photos/proof", "gross margin"]
+    },
+    {
+      "id": "crypto-bot",
+      "name": "Crypto Bot Review",
+      "cluster": "finance",
+      "control": "Review-only finance lane.",
+      "covers": "legal review, risk limits, audit log, and incident status.",
+      "setup": "Crypto finance workflows are visible but no trading or payment automation is approved.",
+      "risks": "No financial action without legal review, risk limits, audit log, incident status, and owner approval.",
+      "next": "Define legal review, risk limits, audit log, and incident status before any automation.",
+      "team": ["Lakshay", "Kyrin", "Shai"],
+      "kpis": ["legal review", "risk limits", "audit log", "incident status"]
+    },
+    {
+      "id": "crypto-payments",
+      "name": "Crypto Payments Review",
+      "cluster": "finance",
+      "control": "Review-only payment lane.",
+      "covers": "legal review, risk limits, audit log, incident status, treasury owner, and approval gate.",
+      "setup": "Payment workflow remains inactive until rules and audit controls are documented.",
+      "risks": "No payment movement without documented owner approval and audit log.",
+      "next": "Record legal review, risk limits, incident status, and payment approval policy.",
+      "team": ["Lakshay", "Kyrin", "Shai"],
+      "kpis": ["legal review", "risk limits", "audit log", "incident status"]
+    }
+  ]
+}
+  </script>
+</body>
+</html>
